@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import FaqButtons from '../components/FaqButtons'
+import Laptop from '../components/Laptop';
 
 const page = () => {
   const faqs: string[] = [
@@ -13,7 +14,7 @@ const page = () => {
   return (
     <div className='h-screen w-screen bg-[#125A76] relative flex flex-col justify-center '>
       
-        <h1 className='text-[6rem] text-[#FF9737] font-bold z-10 mx-24 relative'>
+        <h1 className='text-center lg:text-start text-[6rem] text-[#FF9737] font-bold z-10 lg:mx-24 relative'>
           FAQs
         </h1>
     <div className='flex items-center justify-center'>
@@ -25,18 +26,11 @@ const page = () => {
       </div>
 
 
-      <div className='h-[500px] w-[40%] relative z-10'>
-        <Image 
-          src="/faqscreen.svg" 
-          alt="FAQ Screen" 
-          layout="fill" 
-          objectFit="contain" 
-          className="relative inset-0 z-10" 
-        />
+      <div className='h-[626.67px] w-[40%] relative z-10'>
+        <Laptop />
       </div>
         </div>
       
-
       <Image 
         src="/faqbg.svg" 
         alt="FAQ Background" 
