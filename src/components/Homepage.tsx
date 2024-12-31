@@ -99,7 +99,7 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
 
 // Update CircularText component
 const CircularText = () => {
-    const text = " DEVSOC'25  DEVSOC'25 ";
+    const text = ". DEVSOC'25 . DEVSOC'25 ";
     const characters = text.split('');
     
     return (
@@ -113,7 +113,7 @@ const CircularText = () => {
                 return (
                     <div
                         key={i}
-                        className="absolute text-[#1B4965] font-bold text-2xl sm:text-3xl md:text-5xl transform -translate-x-1/2 -translate-y-1/2"
+                        className="absolute text-black font-bold text-2xl ml-8 mt-8 sm:text-3xl md:text-5xl transform -translate-x-1/2 -translate-y-1/2"
                         style={{
                             left: `${x}px`,
                             top: `${y}px`,
@@ -150,12 +150,9 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
             initial="initial"
         >
             <motion.div
-                className="bg-[#FF6B6B] px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded transition-all duration-200"
-                style={{
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                }}
+                className="bg-[#FF6B6B] px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded transition-all duration-200 shadow-md"
                 variants={{
-                    initial: { y: 0 },
+                    initial: { y: 0, boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' },
                     hover: { y: 2, boxShadow: 'none' },
                 }}
             >
@@ -164,7 +161,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
                     style={{ height: "1.5rem" }}
                     variants={{
                         initial: { y: 0, fontSize: '0.875rem' },
-                        hover: { y: -19, fontSize: '0.7rem', marginBottom: '0.8px' },
+                        hover: { y: -14, fontSize: '0.7rem', marginBottom: '0.8px' },
                     }}
                     transition={{ duration: 0.2 }}
                 >
