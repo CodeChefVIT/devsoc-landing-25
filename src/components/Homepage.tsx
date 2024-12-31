@@ -26,7 +26,7 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                 <div className="w-full">
                     <div className="w-full h-1 bg-white" />
                     
-                    <div className="w-full bg-[#62B6CB] py-3 sm:py-4 md:py-6">
+                    <div className="w-full bg-[#2682A6] py-3 sm:py-4 md:py-6">
                         <div className="max-w-7xl mx-auto px-4 flex justify-around items-center">
                             <AnimatedButton 
                                 text="Discord" 
@@ -35,11 +35,26 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                             />
                             
                             <div className="flex items-center">
-                                <span className="text-3xl sm:text-4xl md:text-6xl text-[#FF6B6B] font-bold tracking-wider">
-                                    DEVSOC
+                                <span className="text-9xl mt-2 sm:text-4xl md:text-6xl text-[#FF7657] font-yerk tracking-wider relative">
+                                    {/* Splitting the text into individual letters */}
+                                    <span className="letter-shadow-wrapper">
+                                        {
+                                            "DEVSOC".split("").map((letter, index) => (
+                                                <span
+                                                    key={index}
+                                                    className="inline-block relative"
+                                                    style={{
+                                                        textShadow: `2px 2px 4px rgba(0,0,0,0.5)`,
+                                                    }}
+                                                >
+                                                    {letter}
+                                                </span>
+                                            ))
+                                        }
+                                    </span>
                                 </span>
                                 <span 
-                                    className="text-sm sm:text-base md:text-xl text-[#FF6B6B] font-bold ml-1 sm:ml-2"
+                                    className="font-bold text-sm sm:text-base md:text-xl text-[#FF6B6B] font-mono ml-1 sm:ml-2"
                                     style={{ 
                                         writingMode: 'vertical-rl',
                                         textOrientation: 'mixed',
@@ -65,7 +80,7 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                 {/* Main Content */}
                 <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6 md:py-8">
                     <div className="flex flex-col items-center justify-center min-h-[600px] sm:min-h-[700px] md:min-h-[800px] relative">
-                        <div className="absolute top-8 sm:top-12 md:top-16 left-4 sm:left-8 md:left-16 text-[#FF6B6B] text-3xl sm:text-4xl md:text-6xl font-bold" style={{ fontFamily: 'var(--font-game)' }}>
+                        <div className="absolute top-8 sm:top-12 md:top-16 left-4 sm:left-8 md:left-16 text-[#FF7657] text-3xl sm:text-4xl md:text-6xl font-mono" style={{ fontFamily: 'var(--font-game)' }}>
                             LEARN.
                         </div>
 
@@ -79,11 +94,11 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                             </div>
                         </div>
 
-                        <div className="absolute top-2 sm:top-3 md:top-4 right-4 sm:right-8 md:right-16 text-[#FF6B6B] text-3xl sm:text-4xl md:text-6xl font-bold" style={{ fontFamily: 'var(--font-game)' }}>
+                        <div className="absolute top-2 sm:top-3 md:top-4 right-4 sm:right-8 md:right-16 text-[#FF7657] text-3xl sm:text-4xl md:text-6xl font-mono" style={{ fontFamily: 'var(--font-game)' }}>
                             CODE.
                         </div>
 
-                        <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 right-4 sm:right-8 md:right-16 text-[#FF6B6B] text-3xl sm:text-4xl md:text-6xl font-bold" style={{ fontFamily: 'var(--font-game)' }}>
+                        <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 right-4 sm:right-8 md:right-16 text-[#FF7657] text-3xl sm:text-4xl md:text-6xl font-mono" style={{ fontFamily: 'var(--font-game)' }}>
                             SIMPLIFY.
                         </div>
 
@@ -97,7 +112,7 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
     );
 };
 
-// Update CircularText component
+
 const CircularText = () => {
     const text = ". DEVSOC'25 . DEVSOC'25 ";
     const characters = text.split('');
@@ -129,7 +144,6 @@ const CircularText = () => {
     );
 };
 
-// Update AnimatedButton component
 interface AnimatedButtonProps {
     text: string;
     mascotImage: StaticImageData;
@@ -150,7 +164,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
             initial="initial"
         >
             <motion.div
-                className="bg-[#FF6B6B] px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded transition-all duration-200 shadow-md"
+                className="bg-[#FF7657] px-1 py-2 sm:py-3 md:py-4 rounded transition-all duration-200 shadow-md"
                 variants={{
                     initial: { y: 0, boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' },
                     hover: { y: 2, boxShadow: 'none' },
@@ -174,7 +188,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
                             className="mr-1 sm:mr-2 w-3 sm:w-4 md:w-5"
                         />
                     )}
-                    <span className={`text-white font-medium text-sm sm:text-base md:text-lg ${text === 'discord' ? 'lowercase' : ''}`}>
+                    <span className={`text-white font-mono sm:text-base md:text-lg ${text === 'discord' ? 'lowercase' : ''}`}>
                         {text}
                     </span>
                 </motion.div>
