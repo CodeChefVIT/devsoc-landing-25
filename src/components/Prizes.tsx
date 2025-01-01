@@ -1,55 +1,36 @@
 "use client";
-import { useEffect, useState } from "react";
-
-const SquareCard = ({
-  positionStart,
-  positionEnd,
-  bgColor,
-  animate,
-  reverse,
-}: {
-  positionStart: string;
-  positionEnd: string;
-  bgColor: string;
-  animate: boolean;
-  reverse: boolean;
-}) => {
-  return (
-    <div
-      className={`absolute ${bgColor}  text-center text-sm font-semibold rounded-3xl h-56 w-64 flex flex-col items-center justify-center transition-all duration-1000 border-[5px] border-white ${
-        animate ? positionEnd : positionStart
-      }`}
-    >
-      <p className={`text-[1.25rem] font-bold tracking-wide text-white`}>
-        First
-      </p>
-      <p className={`text-[1.25rem] font-bold tracking-wide text-white mt-2`}>
-        Runner Up
-      </p>
-      <p
-        className={`mt-24 text-[1rem] font-semibold ${
-          reverse ? "text-[#A85059]" : "text-[#2C2847]"
-        }`}
-      >
-        INR 1,00,000
-      </p>
-    </div>
-  );
-};
+import { useEffect, useState, useRef } from "react";
 
 const Prizes = () => {
   const [animate, setAnimate] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimate(true);
-    }, 100);
-    return () => clearTimeout(timer);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          setAnimate(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   return (
-    <div className="relative h-screen w-full flex items-center justify-center bg-[#fbead5] overflow-hidden font-yerk">
-      <h1 className="absolute top-16  left-32 text-7xl font-bold tracking-wider">
+    <div
+      ref={sectionRef}
+      className="relative h-screen w-full flex items-center justify-center bg-[#fbead5] overflow-hidden font-yerk"
+    >
+      <h1 className="absolute top-16 left-32 text-7xl font-bold tracking-wider">
         PRIZES
       </h1>
       <div
@@ -93,5 +74,40 @@ const Prizes = () => {
     </div>
   );
 };
-
 export default Prizes;
+
+const SquareCard = ({
+  positionStart,
+  positionEnd,
+  bgColor,
+  animate,
+  reverse,
+}: {
+  positionStart: string;
+  positionEnd: string;
+  bgColor: string;
+  animate: boolean;
+  reverse: boolean;
+}) => {
+  return (
+    <div
+      className={`absolute ${bgColor}  text-center text-sm font-semibold rounded-3xl h-56 w-64 flex flex-col items-center justify-center transition-all duration-1000 border-[5px] border-white ${
+        animate ? positionEnd : positionStart
+      }`}
+    >
+      <p className={`text-[1.25rem] font-bold tracking-wide text-white`}>
+        First
+      </p>
+      <p className={`text-[1.25rem] font-bold tracking-wide text-white mt-2`}>
+        Runner Up
+      </p>
+      <p
+        className={`mt-24 text-[1rem] font-semibold ${
+          reverse ? "text-[#A85059]" : "text-[#2C2847]"
+        }`}
+      >
+        INR 1,00,000
+      </p>
+    </div>
+  );
+};

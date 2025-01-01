@@ -4,6 +4,7 @@ import About from "@/components/About";
 const Page = () => {
   return (
     <div>
+      <About/>
       <Prizes/> 
     </div>
 
