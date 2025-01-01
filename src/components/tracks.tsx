@@ -107,22 +107,6 @@ const Tracks: React.FC = () => {
           zIndex: 1,
         }}
       />
-      <img
-  src="/track1.svg"
-  alt="Track 1"
-  style={{
-    width: "1124.577px",
-    height: "216.578px",
-    transform: "rotate(-39.978deg)",
-    flexShrink: 0,
-    position: "absolute",
-    top: 0,
-    right: 0,
-    transformOrigin: "top right",
-  }}
-/>
-
-
       <div
         style={{
           display: 'flex',
