@@ -7,7 +7,6 @@ const Page = () => {
     <div>
       <About />
       <TrackPage />
-      <About/>
       <Prizes/> 
     </div>
 
