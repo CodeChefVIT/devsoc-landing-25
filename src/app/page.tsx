@@ -1,12 +1,7 @@
-import Faq from "../components/Faq";
 import React from "react";
-
+import About from "@/components/About";
 const Page = () => {
-  return (
-    <>
-      <Faq/>
-    </>
-  )
+  return <div>Devsoc&apos;25 lesgoo</div>;
 };
 
 export default Page;

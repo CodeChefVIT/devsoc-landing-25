@@ -12,6 +12,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        mono: ['"Monomaniac One"', 'serif'],
+        yerk: ['"Yerk"', 'sans-serif'],
+      },
     },
   },
   plugins: [],
