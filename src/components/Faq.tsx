@@ -1,11 +1,12 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import FaqButtons from '../components/FaqButtons'
-import Laptop from '../components/Laptop';
+import FaqButtons from '../assets/FaqButtons'
+import Laptop from '../assets/Laptop';
 import { useState } from 'react';
+import FaqDialog from '../assets/FaqDialog';
 
-const Page = () => {
+const Faq = () => {
   const faqs: string[] = [
     'This is the best event in South East Asia, as well as Karan is the best CP',
     'Hola',
@@ -41,6 +42,8 @@ const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
       <Laptop faqans={selectedIndex !== null ? FAQans[selectedIndex] : ''} />
       </div>
         </div>
+
+      <FaqDialog isOpen={selectedIndex !== null} onClose={()=>setSelectedIndex(null)} content={selectedIndex !== null ? FAQans[selectedIndex] : ''} />
       
       <Image 
         src="/faqbg.svg" 
@@ -54,4 +57,4 @@ const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   )
 }
 
-export default Page
+export default Faq

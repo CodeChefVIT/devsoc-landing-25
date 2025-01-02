@@ -1,7 +1,12 @@
+import Faq from "../components/Faq";
 import React from "react";
 
 const Page = () => {
-  return <div>Devsoc&apos;25 lesgoo</div>;
+  return (
+    <>
+      <Faq/>
+    </>
+  )
 };
 
 export default Page;
