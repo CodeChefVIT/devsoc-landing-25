@@ -78,16 +78,34 @@ const Tracks: React.FC = () => {
 
   return (
     <div style={{ position: "relative", width: "100%", height: "250vh", overflow: "hidden" }}>
+     <img
+        src="/tracks.svg"
+        alt="Tracks"
+        style={{
+          position: 'absolute',
+          width: '309px',
+          height: '385px',
+          flexShrink: 0,
+          borderRadius: '12px',
+          opacity: 0.7,
+          background: '#D9D9D9',
+          left: '565px',
+          top: '543px',
+          right: '566px',
+          bottom: '96px',
+          zIndex: 1,
+        }}
+      />
           <motion.div
             ref={track1Ref}
             style={{
               position: "absolute",
               width: "100vw",
-              height: "1010.578px",
-              transform: "rotate(2deg)",
+              height: "950.578px",
+              transform: "rotate(0deg)",
               flexShrink: 0,
               top: "-200px",
-              left: "800",
+              left: "500px",
               right: "-210px",
               zIndex: 1,
               ...(isInView ? animatedTrackStyle : initialTrackStyle)
@@ -107,13 +125,13 @@ const Tracks: React.FC = () => {
       style={{
         position: "absolute",
         width: "100vw",
-        height: "1110.578px",
-        transform: "rotate(-2deg)",
+        height: "1200.578px",
+        transform: "rotate(-500deg)",
         flexShrink: 0,
-        top: "-100px",
-        left: "200px",
+        top: "-250px",
+        left: "400px",
         right: "-1000px",
-        bottom: "-0px",
+        bottom: "-300px",
         zIndex: 1,
            ...(isInView ? animatedTrackStyle : initialTrackStyle)
       }}
@@ -132,11 +150,11 @@ const Tracks: React.FC = () => {
         style={{
             position: "absolute",
             width: "110vw",
-            height: "1147.578px",
-            transform: "rotate(-1deg)",
+            height: "1336.578px",
+            transform: "rotate(1deg)",
             flexShrink: 0,
-            top: "-40px",
-            left: "155px",
+            top: "-255px",
+            left: "205px",
             right: "-600px",
             bottom: "0",
             zIndex: 1,
@@ -157,11 +175,11 @@ const Tracks: React.FC = () => {
             style={{
                 position: "absolute",
                 width: "100vw",
-                height: "1140.578px",
+                height: "1670.578px",
                 transform: "rotate(0deg)",
                 flexShrink: 0,
-                top: "-90px",
-                left: "45px",
+                top: "-450px",
+                left: "190px",
                 right: "0",
                 bottom: "0",
                 zIndex: 1,
