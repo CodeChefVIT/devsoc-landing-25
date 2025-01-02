@@ -1,10 +1,10 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import FaqButtons from '../faqcomponents/FaqButtons'
-import Laptop from '../faqcomponents/Laptop';
+import FaqButtons from './FaqButtons'
+import Laptop from './Laptop';
 import { useState } from 'react';
-import FaqDialog from '../faqcomponents/FaqDialog';
+import FaqDialog from './FaqDialog';
 
 const Faq = () => {
   const faqs: string[] = [
