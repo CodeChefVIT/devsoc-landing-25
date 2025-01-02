@@ -75,14 +75,14 @@ const Tracks: React.FC = () => {
           zIndex: 1,
         }}
       />
-      <img
+     <img
   src="/track1.svg"
   alt="Track Background"
   style={{
     position: "absolute",
     width: "100vw",
     height: "1010.578px",
-    transform: "rotate(-1deg)",
+    transform: "rotate(2deg)",
     flexShrink: 0,
     top: "-200px",
     left: "800",
@@ -95,14 +95,14 @@ const Tracks: React.FC = () => {
   alt="Track Background"
   style={{
     position: "absolute",
-    width: "110vw",
-    height: "2200px",
-    transform: "rotate(0deg)",
+    width: "100vw", 
+    height: "1110.578px", 
+    transform: "rotate(-2deg)",
     flexShrink: 0,
-    top: "-750px",
-    left: "0",
-    right: "-1210px",
-    bottom: "-200px",
+    top: "-100px",
+    left: "200px",
+    right: "-1000px",
+    bottom: "-0px",
     zIndex: 1,
   }}
 />
@@ -111,13 +111,13 @@ const Tracks: React.FC = () => {
   alt="Track Background"
   style={{
     position: "absolute",
-    width: "110vw",
-    height: "1440.578px",
-    transform: "rotate(0deg)",
+    width: "110vw", 
+    height: "1147.578px", 
+    transform: "rotate(-1deg)",
     flexShrink: 0,
-    top: "-225px",
-    left: "0",
-    right: "-200px",
+    top: "-40px",
+    left: "155px",
+    right: "-600px",
     bottom: "0",
     zIndex: 1,
   }}
@@ -127,12 +127,12 @@ const Tracks: React.FC = () => {
   alt="Track Background"
   style={{
     position: "absolute",
-    width: "100vw",
-    height: "1200.578px",
-    transform: "rotate(-2deg)",
+    width: "100vw", 
+    height: "1140.578px", 
+    transform: "rotate(0deg)",
     flexShrink: 0,
-    top: "-60px",
-    left: "0",
+    top: "-90px",
+    left: "45px",
     right: "0",
     bottom: "0",
     zIndex: 1,
