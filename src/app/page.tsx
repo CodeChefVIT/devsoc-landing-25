@@ -1,7 +1,15 @@
-import React from "react";
 import About from "@/components/About";
+import Faq from "@/components/Faq";
+import Prizes from "@/components/Prizes";
+import React from "react";
 const Page = () => {
-  return <div>Devsoc&apos;25 lesgoo</div>;
+  return (
+    <>
+      <About/>
+      <Prizes/>
+      <Faq/>
+    </>
+  )
 };
 
 export default Page;

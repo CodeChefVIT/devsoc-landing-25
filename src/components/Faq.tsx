@@ -1,10 +1,10 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import FaqButtons from '../assets/FaqButtons'
-import Laptop from '../assets/Laptop';
+import FaqButtons from '../faqcomponents/FaqButtons'
+import Laptop from '../faqcomponents/Laptop';
 import { useState } from 'react';
-import FaqDialog from '../assets/FaqDialog';
+import FaqDialog from '../faqcomponents/FaqDialog';
 
 const Faq = () => {
   const faqs: string[] = [
@@ -24,9 +24,9 @@ const Faq = () => {
 const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   return (
-    <div className='h-screen w-screen bg-[#125A76] relative flex flex-col justify-center '>
+    <div className='lg:h-[110vh] h-screen bg-[#125A76] relative flex flex-col justify-center '>
       
-        <h1 className='text-center lg:text-start text-[6rem] text-[#FF9737] font-bold z-10 lg:mx-24 relative'>
+        <h1 className='text-center lg:text-start lg:text-[6rem] text-[4rem] text-[#FF9737] font-bold z-10 lg:mx-24 relative font-yerk mt-8 '>
           FAQs
         </h1>
     <div className='flex items-center justify-center'>

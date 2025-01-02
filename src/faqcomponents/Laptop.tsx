@@ -10,7 +10,7 @@ const Laptop = ({faqans}: Props) => {
   return (
     <>
     <div className="relative w-full max-w-[600px] mx-auto lg:my-28">
-      <div className="absolute inset-0 z-20 justify-center items-center bg-transparent text-white text-center py-8 px-12 text-[1.5rem] font-bold hidden lg:flex">
+      <div className="absolute inset-0 z-20 justify-center items-center bg-transparent text-white font-yerk text-center py-8 px-12 text-[1rem] font-bold hidden lg:flex">
         {faqans}
       </div>
       <Image
@@ -23,14 +23,6 @@ const Laptop = ({faqans}: Props) => {
       />
       
     </div>
-      {/* <Image
-        src="/glass-mascot.svg"
-        alt="FAQ Screen"
-        layout="responsive"
-        width={600}
-        height={375}
-        className='absolute top-0 right-0 z-0'
-      /> */}
     </>
   );
 };
