@@ -76,68 +76,69 @@ const Tracks: React.FC = () => {
         }}
       />
       <img
-        src="/track1.svg"
-        alt="Track Background"
-        style={{
-          position: "absolute",
-          width: "1300.577px",
-          height: "900.578px",
-          transform: "rotate(0deg)",
-          flexShrink: 0,
-          top: "0px", 
-          left: "900px", 
-          right: "0px",
-          zIndex: 1
-        }}
-      />
-      <img
-        src="/track2.svg"
-        alt="Track Background"
-        style={{
-          position: "absolute",
-          width: "1224.577px",
-          height: "1200.578px",
-          transform: "rotate(1deg)",
-          flexShrink: 0,
-          top: "-90px", 
-          left: "850px", 
-          right: "0px",
-          bottom: "0px",
-          zIndex: 1
-        }}
-      />
-      <img
-        src="/track3.svg"
-        alt="Track Background"
-        style={{
-          position: "absolute",
-          width: "1224.577px",
-          height: "1200.578px",
-          transform: "rotate(6deg)",
-          flexShrink: 0,
-          top: "-90px", 
-          left: "710px", 
-          right: "0px",
-          bottom: "0px",
-          zIndex: 1
-        }}
-      />
-      <img
-        src="/track4.svg"
-        alt="Track Background"
-        style={{
-          position: "absolute",
-          width: "1224.577px",
-          height: "1200.578px",
-          transform: "rotate(6deg)",
-          flexShrink: 0,
-          top: "-90px", 
-          left: "650px", 
-          right: "0px",
-          bottom: "0px",
-          zIndex: 1
-        }}
-      />
+  src="/track1.svg"
+  alt="Track Background"
+  style={{
+    position: "absolute",
+    width: "100vw",
+    height: "1010.578px",
+    transform: "rotate(-1deg)",
+    flexShrink: 0,
+    top: "-200px",
+    left: "800",
+    right: "-210px",
+    zIndex: 1,
+  }}
+/>
+<img
+  src="/track2.svg"
+  alt="Track Background"
+  style={{
+    position: "absolute",
+    width: "110vw",
+    height: "2200px",
+    transform: "rotate(0deg)",
+    flexShrink: 0,
+    top: "-750px",
+    left: "0",
+    right: "-1210px",
+    bottom: "-200px",
+    zIndex: 1,
+  }}
+/>
+<img
+  src="/track3.svg"
+  alt="Track Background"
+  style={{
+    position: "absolute",
+    width: "110vw",
+    height: "1440.578px",
+    transform: "rotate(0deg)",
+    flexShrink: 0,
+    top: "-225px",
+    left: "0",
+    right: "-200px",
+    bottom: "0",
+    zIndex: 1,
+  }}
+/>
+<img
+  src="/track4.svg"
+  alt="Track Background"
+  style={{
+    position: "absolute",
+    width: "100vw",
+    height: "1200.578px",
+    transform: "rotate(-2deg)",
+    flexShrink: 0,
+    top: "-60px",
+    left: "0",
+    right: "0",
+    bottom: "0",
+    zIndex: 1,
+  }}
+/>
+
       <div style={{ zIndex: 2, position: "relative" }}>
         <h1
           style={{
