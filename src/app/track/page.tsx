@@ -1,4 +1,3 @@
-// app/track/page.tsx
 import React from 'react';
 import Tracks from '@/components/tracks';
 
