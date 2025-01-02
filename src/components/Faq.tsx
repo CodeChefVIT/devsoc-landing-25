@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import FaqButtons from './FaqButtons'
-import Laptop from './Laptop';
+import Laptop from './FaqLaptop';
 import { useState } from 'react';
 import FaqDialog from './FaqDialog';
 
