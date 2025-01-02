@@ -1,12 +1,33 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
 const Tracks: React.FC = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [activeButton, setActiveButton] = useState<string | null>(null);
 
   const popupRef = useRef<HTMLDivElement>(null);
+  const track1Ref = useRef<HTMLDivElement>(null);
+  const track2Ref = useRef<HTMLDivElement>(null);
+  const track3Ref = useRef<HTMLDivElement>(null);
+  const track4Ref = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll();
+  const isInView = useInView(track1Ref, { once: true });
+
+  const trackX = useTransform(scrollYProgress, [0, 1], [0, -600]);
+  const trackY = useTransform(scrollYProgress, [0, 1], [0, 500]);
+
+    const initialTrackStyle = {
+      x:0,
+      y:0
+  }
+    const animatedTrackStyle = {
+      x: trackX,
+      y: trackY
+    }
+
 
   const buttonContent: { [key: string]: { title: string, description: string } } = {
     'Track 1': {
@@ -57,87 +78,105 @@ const Tracks: React.FC = () => {
 
   return (
     <div style={{ position: "relative", width: "100%", height: "250vh", overflow: "hidden" }}>
-      <img
-        src="/tracks.svg"
-        alt="Tracks"
+          <motion.div
+            ref={track1Ref}
+            style={{
+              position: "absolute",
+              width: "100vw",
+              height: "1010.578px",
+              transform: "rotate(2deg)",
+              flexShrink: 0,
+              top: "-200px",
+              left: "800",
+              right: "-210px",
+              zIndex: 1,
+              ...(isInView ? animatedTrackStyle : initialTrackStyle)
+            }}
+            >
+                <img
+                src="/track1.svg"
+                alt="Track Background"
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+           </motion.div>
+     <motion.div
+      ref={track2Ref}
+      style={{
+        position: "absolute",
+        width: "100vw",
+        height: "1110.578px",
+        transform: "rotate(-2deg)",
+        flexShrink: 0,
+        top: "-100px",
+        left: "200px",
+        right: "-1000px",
+        bottom: "-0px",
+        zIndex: 1,
+           ...(isInView ? animatedTrackStyle : initialTrackStyle)
+      }}
+     >
+            <img
+                src="/track2.svg"
+                alt="Track Background"
+                style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+            />
+          </motion.div>
+      <motion.div
+        ref={track3Ref}
         style={{
-          position: 'absolute',
-          width: '309px',
-          height: '385px',
-          flexShrink: 0,
-          borderRadius: '12px',
-          opacity: 0.7,
-          background: '#D9D9D9',
-          left: '565px',
-          top: '543px',
-          right: '566px',
-          bottom: '96px',
-          zIndex: 1,
+            position: "absolute",
+            width: "110vw",
+            height: "1147.578px",
+            transform: "rotate(-1deg)",
+            flexShrink: 0,
+            top: "-40px",
+            left: "155px",
+            right: "-600px",
+            bottom: "0",
+            zIndex: 1,
+               ...(isInView ? animatedTrackStyle : initialTrackStyle)
         }}
-      />
-     <img
-  src="/track1.svg"
-  alt="Track Background"
-  style={{
-    position: "absolute",
-    width: "100vw",
-    height: "1010.578px",
-    transform: "rotate(2deg)",
-    flexShrink: 0,
-    top: "-200px",
-    left: "800",
-    right: "-210px",
-    zIndex: 1,
-  }}
-/>
-<img
-  src="/track2.svg"
-  alt="Track Background"
-  style={{
-    position: "absolute",
-    width: "100vw", 
-    height: "1110.578px", 
-    transform: "rotate(-2deg)",
-    flexShrink: 0,
-    top: "-100px",
-    left: "200px",
-    right: "-1000px",
-    bottom: "-0px",
-    zIndex: 1,
-  }}
-/>
-<img
-  src="/track3.svg"
-  alt="Track Background"
-  style={{
-    position: "absolute",
-    width: "110vw", 
-    height: "1147.578px", 
-    transform: "rotate(-1deg)",
-    flexShrink: 0,
-    top: "-40px",
-    left: "155px",
-    right: "-600px",
-    bottom: "0",
-    zIndex: 1,
-  }}
-/>
-<img
-  src="/track4.svg"
-  alt="Track Background"
-  style={{
-    position: "absolute",
-    width: "100vw", 
-    height: "1140.578px", 
-    transform: "rotate(0deg)",
-    flexShrink: 0,
-    top: "-90px",
-    left: "45px",
-    right: "0",
-    bottom: "0",
-    zIndex: 1,
-  }}
-/>
+      >
+            <img
+                src="/track3.svg"
+                alt="Track Background"
+                style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+            />
+      </motion.div>
+      <motion.div
+            ref={track4Ref}
+            style={{
+                position: "absolute",
+                width: "100vw",
+                height: "1140.578px",
+                transform: "rotate(0deg)",
+                flexShrink: 0,
+                top: "-90px",
+                left: "45px",
+                right: "0",
+                bottom: "0",
+                zIndex: 1,
+                ...(isInView ? animatedTrackStyle : initialTrackStyle)
+            }}
+        >
+        <img
+            src="/track4.svg"
+            alt="Track Background"
+            style={{
+                width: "100%",
+                height: "100%",
+            }}
+        />
+        </motion.div>
 
       <div style={{ zIndex: 2, position: "relative" }}>
         <h1
