@@ -1,23 +1,23 @@
-import Prizes from "@/components/Prizes";
-import React from "react";
+import React from 'react';
+import Tracks from '@/components/tracks';
+import Prizes from '@/components/Prizes';
+import About from '@/components/About';
+import HomePage from '@/components/Homepage';
+import SlantedBanner from '@/components/SlantedBanner';
 import frameImage from '../assets/images/Frame 34.png';
 import bgHomeImage from '../assets/images/Frame 53.png';
 import peekImage from '../assets/images/Group 236.png';
-import HomePage from "@/components/Homepage";
-import About from "@/components/About";
 
-import TrackPage from "./track/page";
-const Page = () => {
+const CombinedPage: React.FC = () => {
   return (
-
-    <div style={{height: '500vh', maxWidth: '100vw', overflowX: 'hidden'}}>
+    <div style={{ backgroundColor: '#48634A', minHeight: '100vh', overflowX: 'hidden' }}>
       <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
       <SlantedBanner starsImageUrl={frameImage} />
       <About />
-      <TrackPage />
-      <Prizes/> 
+      <Tracks />
+      <Prizes />
     </div>
-  )
+  );
 };
 
-export default Page;
+export default CombinedPage;

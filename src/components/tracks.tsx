@@ -94,10 +94,10 @@ const Tracks: React.FC = () => {
         style={{
           position: "absolute",
           width: "100vw",
-          height: "950.578px",
+          height: "1100.578px",
           flexShrink: 0,
-          top: "-200px",
-          left: "500px",
+          top: "-289px",
+          left: "450px",
           zIndex: 1,
           ...(isInView ? animatedTrackStyle : initialTrackStyle),
         }}
