@@ -1,10 +1,82 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import FaqButtons from './FaqButtons'
-import Laptop from './FaqLaptop';
 import { useState } from 'react';
-import FaqDialog from './FaqDialog';
+
+
+
+interface ButtonProps {
+  text: string
+  onClick: () => void;
+  }
+
+const FaqButtons = ({text,onClick}:ButtonProps) => {
+return (
+  <button onClick={onClick} className='bg-[#FF7657] text-white font-yerk py-4 px-8 rounded-[10px] w-[80vw] lg:w-[36vw] h-[12vh] text-[0.8rem] lg:text-[1rem] flex items-center justify-center text-start shadow-[0_4px_6px_rgba(0,0,0,0.1),10px_10px_0px_#FF9737] active:translate-y-[10px] active:translate-x-[10px] active:shadow-[0_4px_6px_rgba(0,0,0,0.1)] transition'>
+  {text}
+  </button>
+
+)
+}
+
+interface DialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+  content: string;
+}
+
+const FaqDialog = ({ isOpen, onClose, content }: DialogProps) => {
+  if (!isOpen) {
+    return null;
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#4B5862] bg-opacity-70 backdrop-blur-sm lg:hidden">
+      <div className="relative bg-[#4B5862] border-8 border-[#FFCE00] text-white font-yerk p-6 rounded-lg shadow-lg w-[90%] max-w-md flex flex-col items-center">
+        <div className="absolute top-0 left-0 m-2 w-4 h-4 bg-white rounded-full"></div>
+        <div className="absolute top-0 right-0 m-2 w-4 h-4 bg-white rounded-full"></div>
+        <div className="absolute bottom-0 left-0 m-2 w-4 h-4 bg-white rounded-full"></div>
+        <div className="absolute bottom-0 right-0 m-2 w-4 h-4 bg-white rounded-full"></div>
+
+        <p className="text-center text-lg font-medium my-12">{content}</p>
+        <button
+          onClick={onClose}
+          className="bg-[#FFCE00] text-[#125A76] font-yerk py-2 px-6 rounded-lg hover:bg-[#e6b800] my-4"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+};
+
+
+interface LaptopProps {
+    faqans: string
+    }
+
+const Laptop = ({faqans}: LaptopProps) => {
+
+  return (
+    <>
+    <div className="relative w-full max-w-[600px] mx-auto lg:my-28">
+      <div className="absolute inset-0 z-20 justify-center items-center bg-transparent text-white font-yerk text-center py-8 px-12 text-[1rem] font-bold hidden lg:flex">
+        {faqans}
+      </div>
+      <Image
+        src="/faqscreen.svg"
+        alt="FAQ Screen"
+        layout="responsive"
+        width={600}
+        height={375}
+        className="hidden lg:block z-10"
+      />
+      
+    </div>
+    </>
+  );
+};
+
 
 const Faq = () => {
   const faqs: string[] = [
