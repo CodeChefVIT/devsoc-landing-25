@@ -2,6 +2,7 @@ import React from 'react';
 import Tracks from '@/components/tracks';
 import Prizes from '@/components/Prizes';
 import About from '@/components/About';
+import Faq from '@/components/Faq';
 import HomePage from '@/components/Homepage';
 import SlantedBanner from '@/components/SlantedBanner';
 import frameImage from '../assets/images/Frame 34.png';
@@ -16,6 +17,7 @@ const CombinedPage: React.FC = () => {
       <About />
       <Tracks />
       <Prizes />
+      <Faq/>
     </div>
   );
 };
