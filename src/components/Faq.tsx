@@ -79,19 +79,24 @@ const Laptop = ({faqans}: LaptopProps) => {
 
 
 const Faq = () => {
-  const faqs: string[] = [
-    'This is the best event in South East Asia, as well as Karan is the best CP',
-    'Hola',
-    'JP',
-    'Okay'
+  const faqs: { question: string; answer: string }[] = [
+    {
+      question: 'This is the best event in South East Asia, as well as Karan is the best CP',
+      answer: '1 This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and CodeChef is the best innovative club in VIT.',
+    },
+    {
+      question: 'Hola',
+      answer: '2 This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and CodeChef is the best innovative club in VIT.',
+    },
+    {
+      question: 'JP',
+      answer: '3 This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and CodeChef is the best innovative club in VIT.',
+    },
+    {
+      question: 'Okay',
+      answer: '4 This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and CodeChef is the best innovative club in VIT.',
+    },
   ];
-
-  const FAQans:string[]=[
-    "1This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and codechef is the best innovative club in vit.",
-    "2This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and codechef is the best innovative club in vit.",
-    "3This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and codechef is the best innovative club in vit.",
-    "4This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and codechef is the best innovative club in vit.",
-];
 
 const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
@@ -105,17 +110,17 @@ const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
       <div className='flex flex-col space-y-10 p-6 w-[50%] relative z-10'>
         {faqs.map((faq, index) => (
-          <FaqButtons text={faq} key={index} onClick={()=>setSelectedIndex(index)} />
+          <FaqButtons text={faq.question} key={index} onClick={()=>setSelectedIndex(index)} />
         ))}
       </div>
 
 
       <div className='h-[626.67px] w-[40%] relative z-10'>
-      <Laptop faqans={selectedIndex !== null ? FAQans[selectedIndex] : ''} />
+      <Laptop faqans={selectedIndex !== null ? faqs[selectedIndex].answer : ''} />
       </div>
         </div>
 
-      <FaqDialog isOpen={selectedIndex !== null} onClose={()=>setSelectedIndex(null)} content={selectedIndex !== null ? FAQans[selectedIndex] : ''} />
+      <FaqDialog isOpen={selectedIndex !== null} onClose={()=>setSelectedIndex(null)} content={selectedIndex !== null ? faqs[selectedIndex].answer : ''} />
       
       <Image 
         src="/faqbg.svg" 
