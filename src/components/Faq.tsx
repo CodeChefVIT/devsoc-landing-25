@@ -31,7 +31,7 @@ const FaqDialog = ({ isOpen, onClose, content }: DialogProps) => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#4B5862] bg-opacity-70 backdrop-blur-sm lg:hidden">
+    <div id='faq' className="fixed inset-0 z-50 flex items-center justify-center bg-[#4B5862] bg-opacity-70 backdrop-blur-sm lg:hidden">
       <div className="relative bg-[#4B5862] border-8 border-[#FFCE00] text-white font-yerk p-6 rounded-lg shadow-lg w-[90%] max-w-md flex flex-col items-center">
         <div className="absolute top-0 left-0 m-2 w-4 h-4 bg-white rounded-full"></div>
         <div className="absolute top-0 right-0 m-2 w-4 h-4 bg-white rounded-full"></div>
