@@ -4,6 +4,7 @@ import React from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion } from 'framer-motion';
 import devsoc from '../assets/images/DEVSOC.png';
+import HomeRIve from './HomeRIve';
 
 interface HomePageProps {
     backgroundImage: StaticImageData;
@@ -80,11 +81,11 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                 {/* Main Content */}
                 <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6 md:py-8">
                     <div className="flex flex-col items-center justify-center min-h-[600px] sm:min-h-[700px] md:min-h-[800px] relative">
-                        <div className="absolute top-8 sm:top-12 md:top-16 left-4 sm:left-8 md:left-16 text-[#FF7657] text-3xl sm:text-4xl md:text-6xl font-mono" style={{ fontFamily: 'var(--font-game)' }}>
+                        {/* <div className="absolute top-8 sm:top-12 md:top-16 left-4 sm:left-8 md:left-16 text-[#FF7657] text-3xl sm:text-4xl md:text-6xl font-mono" style={{ fontFamily: 'var(--font-game)' }}>
                             LEARN.
                         </div>
 
-                        {/* Central Logo */}
+                    
                         <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] mx-auto">
                             <div className="absolute inset-0 rounded-full border-[4px] sm:border-[5px] md:border-[6px] border-white">
                                 <div className="absolute inset-[0px] rounded-full bg-[#FFB800]">
@@ -100,8 +101,8 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
 
                         <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 right-4 sm:right-8 md:right-16 text-[#FF7657] text-3xl sm:text-4xl md:text-6xl font-mono" style={{ fontFamily: 'var(--font-game)' }}>
                             SIMPLIFY.
-                        </div>
-
+                        </div> */}
+                        <HomeRIve></HomeRIve>
                         <div className="absolute top-2 sm:top-3 md:top-4 left-1/2 transform -translate-x-1/2 text-white text-base sm:text-xl md:text-2xl">
                             Sponsor Information Here
                         </div>
