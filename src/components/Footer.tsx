@@ -69,28 +69,56 @@ export default function Footer() {
             </div>
           )}
 
-          <div className="text-2xl drop-shadow-lg md:ml-12 text-center md:text-left">
+          <div className="text-2xl md:ml-12 text-center md:text-left">
             <div className="pb-8">
-              <Link href={"#about"}>ABOUT</Link>
+              <Link
+                href={"#about"}
+                className="drop-shadow-md hover:drop-shadow-lg transition-all duration-100"
+              >
+                ABOUT
+              </Link>
             </div>
             <div className="pb-8">
-              <Link href={"#timeline"}>TIMELINE</Link>
+              <Link
+                href={"#timeline"}
+                className="drop-shadow-md hover:drop-shadow-lg transition-all duration-100"
+              >
+                TIMELINE
+              </Link>
             </div>
             <div className="pb-8">
-              <Link href={"#tracks"}>TRACKS</Link>
+              <Link
+                href={"#tracks"}
+                className="drop-shadow-md hover:drop-shadow-lg transition-all duration-100"
+              >
+                TRACKS
+              </Link>
             </div>
             <div className="pb-8">
-              <Link href={"#prizes"}>PRIZE</Link>
+              <Link
+                href={"#prizes"}
+                className="drop-shadow-md hover:drop-shadow-lg transition-all duration-100"
+              >
+                PRIZE
+              </Link>
             </div>
             <div className="pb-8 text-base">
-              <Link href={"#visitus"} className="rounded-lg bg-[#FC1D21] p-4">
+              <Link
+                href={"#visitus"}
+                className="rounded-lg bg-[#FC1D21] p-4 drop-shadow-md hover:drop-shadow-lg transition-all duration-100"
+              >
                 VISIT US
               </Link>
             </div>
           </div>
+
           <div className="flex justify-center items-start">
             <div className="grid grid-cols-3 md:grid-cols-2 grid-rows-1 md:grid-rows-3 gap-0 items-center">
-              <a href={"https://www.facebook.com/devsoccodechefvit/"} target="__value" className="m-3">
+              <Link
+                href={"https://www.facebook.com/devsoccodechefvit/"}
+                target="__value"
+                className="m-3 hover:drop-shadow-lg transition-all duration-200"
+              >
                 <Image
                   className=""
                   src={facebook}
@@ -98,8 +126,12 @@ export default function Footer() {
                   width={60}
                   alt="facebook"
                 />
-              </a>
-              <a href={"https://www.youtube.com/@CodeChefVIT"} target="__value" className="m-3">
+              </Link>
+              <Link
+                href={"https://www.youtube.com/@CodeChefVIT"}
+                target="__value"
+                className="m-3 hover:drop-shadow-lg transition-all duration-200"
+              >
                 <Image
                   className=""
                   src={yt}
@@ -107,8 +139,12 @@ export default function Footer() {
                   width={60}
                   alt="youtube"
                 />
-              </a>
-              <a href={"https://www.linkedin.com/company/codechefvit/"} target="__value" className="m-3">
+              </Link>
+              <Link
+                href={"https://www.linkedin.com/company/codechefvit/"}
+                target="__value"
+                className="m-3 hover:drop-shadow-lg transition-all duration-200"
+              >
                 <Image
                   className=""
                   src={linkedin}
@@ -116,8 +152,12 @@ export default function Footer() {
                   width={60}
                   alt="linkedin"
                 />
-              </a>
-              <a href={"https://www.x.com/codechefvit"} className="m-3" target="__value">
+              </Link>
+              <Link
+                href={"https://www.x.com/codechefvit"}
+                className="m-3 hover:drop-shadow-lg transition-all duration-200"
+                target="__value"
+              >
                 <Image
                   className=" "
                   src={twitter}
@@ -125,8 +165,12 @@ export default function Footer() {
                   width={60}
                   alt="twitter"
                 />
-              </a>
-              <a href={"https://www.instagram.com/codechefvit/"} className="m-3" target="__value">
+              </Link>
+              <Link
+                href={"https://www.instagram.com/codechefvit/"}
+                className="m-3 hover:drop-shadow-lg transition-all duration-200"
+                target="__value"
+              >
                 <Image
                   className=""
                   src={instagram}
@@ -134,8 +178,12 @@ export default function Footer() {
                   width={60}
                   alt="instagram"
                 />
-              </a>
-              <a href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"} className="m-3" target="__value">
+              </Link>
+              <Link
+                href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+                className="m-3 hover:drop-shadow-lg transition-all duration-200"
+                target="__value"
+              >
                 <Image
                   className=""
                   src={discord}
@@ -143,7 +191,7 @@ export default function Footer() {
                   width={60}
                   alt="discord"
                 />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
