@@ -68,7 +68,7 @@ const Tracks: React.FC = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "120vh", overflow: "hidden" }}>
+    <div style={{ position: "relative", width: "100%", height: "120vh", overflow: "hidden", backgroundColor: '#48634A', minHeight: '100vh', overflowX: 'hidden' }}>
       <Image
         src="/tracks.svg"
         alt="Tracks"

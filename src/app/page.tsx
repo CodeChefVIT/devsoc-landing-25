@@ -16,7 +16,7 @@ import peekImage from '../assets/images/Group 236.png';
 const CombinedPage: React.FC = () => {
   return (
     <LoaderScreen>
-      <div style={{ backgroundColor: '#48634A', minHeight: '100vh', overflowX: 'hidden' }}>
+      <div className='overflow-hidden bg-[#A85059]'>
         <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
         <SlantedBanner starsImageUrl={frameImage} />
         <About />

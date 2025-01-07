@@ -34,9 +34,8 @@ const Prizes = () => {
         PRIZES
       </h1>
       <div
-        className={`absolute top-52 flex flex-col items-center justify-center bg-[#F29F58] text-white text-xl font-bold rounded-full h-[60%] w-[35%] transition-all duration-1000 border-[5px] border-white z-20 ${
-          animate ? "" : ""
-        }`}
+        className={`absolute top-52 flex flex-col items-center justify-center bg-[#F29F58] text-white text-xl font-bold rounded-full h-[60%] w-[35%] transition-all duration-1000 border-[5px] border-white z-20 ${animate ? "" : ""
+          }`}
       >
         <h1 className="text-[2.5rem] font-bold tracking-wide">WINNER</h1>
         <p className="mt-56 text-[2rem] font-semibold text-[#5E1D24]">
@@ -91,9 +90,8 @@ const SquareCard = ({
 }) => {
   return (
     <div
-      className={`absolute ${bgColor}  text-center text-sm font-semibold rounded-3xl h-56 w-64 flex flex-col items-center justify-center transition-all duration-1000 border-[5px] border-white ${
-        animate ? positionEnd : positionStart
-      }`}
+      className={`absolute ${bgColor}  text-center text-sm font-semibold rounded-3xl h-56 w-64 flex flex-col items-center justify-center transition-all duration-1000 border-[5px] border-white ${animate ? positionEnd : positionStart
+        }`}
     >
       <p className={`text-[1.25rem] font-bold tracking-wide text-white`}>
         First
@@ -102,9 +100,8 @@ const SquareCard = ({
         Runner Up
       </p>
       <p
-        className={`mt-24 text-[1rem] font-semibold ${
-          reverse ? "text-[#A85059]" : "text-[#2C2847]"
-        }`}
+        className={`mt-24 text-[1rem] font-semibold ${reverse ? "text-[#A85059]" : "text-[#2C2847]"
+          }`}
       >
         INR 1,00,000
       </p>
