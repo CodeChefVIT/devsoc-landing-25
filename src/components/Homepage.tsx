@@ -26,7 +26,7 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                 {/* Header Section */}
                 <div className="w-full">
                     <div className="w-full h-1 bg-white" />
-                    
+
                     <div className="w-full bg-[#2682A6] py-3 sm:py-4 md:py-6">
                        {/* Responsive Header Container */}
                         <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-around items-center">
@@ -55,9 +55,9 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                                         }
                                     </span>
                                 </span>
-                                <span 
+                                <span
                                     className="font-bold text-sm sm:text-base md:text-xl text-[#FF6B6B] font-mono ml-1 sm:ml-2"
-                                    style={{ 
+                                    style={{
                                         writingMode: 'vertical-rl',
                                         textOrientation: 'mixed',
                                         transform: 'rotate(360deg)'
@@ -67,15 +67,15 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                                 </span>
                             </div>
 
-                            <AnimatedButton 
-                                text="Register" 
+                            <AnimatedButton
+                                text="Register"
                                 mascotImage={mascotPeekImage}
                                 className="w-24 sm:w-32 md:w-40 mb-2 sm:mb-0" // add margin
                                 icon={devsoc}
                             />
                         </div>
                     </div>
-                    
+
                     <div className="w-full h-1 bg-white" />
                 </div>
 

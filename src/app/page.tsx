@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import LoaderScreen from '@/components/LoaderScreen';
 import Tracks from '@/components/tracks';
+import Sponsors from '@/components/Sponsors';
 import Prizes from '@/components/Prizes';
 import About from '@/components/About';
 import Faq from '@/components/Faq';
@@ -31,12 +32,13 @@ const CombinedPage: React.FC = () => {
 
   return (
     <LoaderScreen>
-      <div style={{ backgroundColor: '#48634A', minHeight: '100vh', overflowX: 'hidden' }}>
+      <div className='overflow-hidden bg-[#A85059]'>
         <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
         <SlantedBanner starsImageUrl={frameImage} />
         <About />
         {isMobile ? <Timeline /> : <AnimatedTimeline />}
         <Tracks />
+        <Sponsors />
         <Prizes />
         <Faq />
         <Footer />
