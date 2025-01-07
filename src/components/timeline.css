@@ -1,0 +1,88 @@
+/* timeline.css */
+.vertical-timeline-element--icon {
+    border: 2px solid black !important;
+    box-shadow: none !important;
+  }
+  
+  .vertical-timeline-element-icon {
+    box-shadow: none !important;
+  }
+  
+  /* timeline.css */
+  
+  .vertical-timeline-element--icon:before,
+  .vertical-timeline-element--icon:after {
+    content: none !important;
+  }
+  .timeline-container {
+    position: relative;
+  }
+  .timeline-line {
+    position: absolute;
+    width: 5px;
+    background: black;
+  }
+  .vertical-timeline-element-content {
+    transform: translateY(-70%) !important;
+    transition: transform 0.3s ease-in-out !important;
+    width: fit-content !important; /* Added for auto-width */
+    max-width: 80% !important;
+    
+  }
+  .timeline-line {
+    position: absolute;
+    width: 2px;
+    z-index: -1;
+  }
+  
+  .vertical-timeline {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  
+  .vertical-timeline::before {
+    display: none !important;
+  }
+  
+  .vertical-timeline-element {
+    margin: 2em 0 !important;
+    min-height: 0 !important;
+  }
+  
+  .vertical-timeline-element-icon {
+    position: absolute !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    transform: translateX(0) !important;
+  }
+  
+  .vertical-timeline-element-content {
+    margin-left: 40px !important;
+    min-width: 250px !important;
+    padding: 1em !important;
+    bottom:15px;
+
+  }
+  
+  .vertical-timeline-element-content .vertical-timeline-element-date {
+    display: none !important;
+  }
+  
+  /* Ensure dots are properly centered */
+  .vertical-timeline-element-icon {
+    width: 25px !important;
+    height: 25px !important;
+    margin-top: -12px !important;
+  }
+  
+  /* Fix content alignment */
+  .vertical-timeline-element-content {
+    transform: translateY(-35%) !important;
+  }
+  
+  /* Ensure container has proper positioning */
+  .timeline-container {
+    position: relative !important;
+    padding-left: 25px !important;
+  }
