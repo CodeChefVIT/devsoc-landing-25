@@ -26,15 +26,15 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                 {/* Header Section */}
                 <div className="w-full">
                     <div className="w-full h-1 bg-white" />
-                    
+
                     <div className="w-full bg-[#2682A6] py-3 sm:py-4 md:py-6">
                         <div className="max-w-7xl mx-auto px-4 flex justify-around items-center">
-                            <AnimatedButton 
-                                text="Discord" 
+                            <AnimatedButton
+                                text="Discord"
                                 mascotImage={mascotPeekImage}
                                 className="w-24 sm:w-32 md:w-40"
                             />
-                            
+
                             <div className="flex items-center">
                                 <span className="text-9xl mt-2 sm:text-4xl md:text-6xl text-[#FF7657] font-yerk tracking-wider relative">
                                     {/* Splitting the text into individual letters */}
@@ -54,9 +54,9 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                                         }
                                     </span>
                                 </span>
-                                <span 
+                                <span
                                     className="font-bold text-sm sm:text-base md:text-xl text-[#FF6B6B] font-mono ml-1 sm:ml-2"
-                                    style={{ 
+                                    style={{
                                         writingMode: 'vertical-rl',
                                         textOrientation: 'mixed',
                                         transform: 'rotate(360deg)'
@@ -66,15 +66,15 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                                 </span>
                             </div>
 
-                            <AnimatedButton 
-                                text="Register" 
+                            <AnimatedButton
+                                text="Register"
                                 mascotImage={mascotPeekImage}
                                 className="w-24 sm:w-32 md:w-40"
                                 icon={devsoc}
                             />
                         </div>
                     </div>
-                    
+
                     <div className="w-full h-1 bg-white" />
                 </div>
 
@@ -114,36 +114,36 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
 };
 
 
-const CircularText = () => {
-    const text = ". DEVSOC'25 . DEVSOC'25 ";
-    const characters = text.split('');
-    
-    return (
-        <div className="absolute inset-[6px] rounded-full">
-            {characters.map((char, i) => {
-                const radius = window.innerWidth < 640 ? 120 : window.innerWidth < 768 ? 150 : 180;
-                const angle = (i * (360 / characters.length) - 90) * (Math.PI / 180);
-                const x = radius + radius * Math.cos(angle);
-                const y = radius + radius * Math.sin(angle);
-                
-                return (
-                    <div
-                        key={i}
-                        className="absolute text-black font-bold text-2xl ml-8 mt-8 sm:text-3xl md:text-5xl transform -translate-x-1/2 -translate-y-1/2"
-                        style={{
-                            left: `${x}px`,
-                            top: `${y}px`,
-                            transform: `translate(-50%, -50%) rotate(${angle * (180 / Math.PI) + 90}deg)`,
-                            fontFamily: 'var(--font-game)'
-                        }}
-                    >
-                        {char}
-                    </div>
-                );
-            })}
-        </div>
-    );
-};
+// const CircularText = () => {
+//     const text = ". DEVSOC'25 . DEVSOC'25 ";
+//     const characters = text.split('');
+
+//     return (
+//         <div className="absolute inset-[6px] rounded-full">
+//             {characters.map((char, i) => {
+//                 const radius = window.innerWidth < 640 ? 120 : window.innerWidth < 768 ? 150 : 180;
+//                 const angle = (i * (360 / characters.length) - 90) * (Math.PI / 180);
+//                 const x = radius + radius * Math.cos(angle);
+//                 const y = radius + radius * Math.sin(angle);
+
+//                 return (
+//                     <div
+//                         key={i}
+//                         className="absolute text-black font-bold text-2xl ml-8 mt-8 sm:text-3xl md:text-5xl transform -translate-x-1/2 -translate-y-1/2"
+//                         style={{
+//                             left: `${x}px`,
+//                             top: `${y}px`,
+//                             transform: `translate(-50%, -50%) rotate(${angle * (180 / Math.PI) + 90}deg)`,
+//                             fontFamily: 'var(--font-game)'
+//                         }}
+//                     >
+//                         {char}
+//                     </div>
+//                 );
+//             })}
+//         </div>
+//     );
+// };
 
 interface AnimatedButtonProps {
     text: string;
