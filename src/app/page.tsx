@@ -2,6 +2,7 @@ import React from 'react';
 import LoaderScreen from '@/components/LoaderScreen';
 
 import Tracks from '@/components/tracks';
+import Sponsors from '@/components/Sponsors';
 import Prizes from '@/components/Prizes';
 import About from '@/components/About';
 import Faq from '@/components/Faq';
@@ -15,13 +16,14 @@ import peekImage from '../assets/images/Group 236.png';
 const CombinedPage: React.FC = () => {
   return (
     <LoaderScreen>
-      <div style={{ backgroundColor: '#48634A', minHeight: '100vh', overflowX: 'hidden' }}>
+      <div className='overflow-hidden bg-[#A85059]'>
         <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
         <SlantedBanner starsImageUrl={frameImage} />
         <About />
         <Tracks />
+        <Sponsors />
         <Prizes />
-        <Faq/>
+        <Faq />
         <Footer></Footer>
       </div>
     </LoaderScreen>

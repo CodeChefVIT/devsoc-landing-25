@@ -3,10 +3,23 @@ import { useEffect, useState, useRef } from "react";
 
 const Prizes = () => {
   const [animate, setAnimate] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.innerWidth >= 640) {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth >= 768) {
       const observer = new IntersectionObserver(
         (entries) => {
           const entry = entries[0];
@@ -16,16 +29,20 @@ const Prizes = () => {
         },
         { threshold: 0.5 }
       );
-      if (sectionRef.current) {
-        observer.observe(sectionRef.current);
+
+      const currentSectionRef = sectionRef.current;
+
+      if (currentSectionRef) {
+        observer.observe(currentSectionRef);
       }
+
       return () => {
-        if (sectionRef.current) {
-          observer.unobserve(sectionRef.current);
+        if (currentSectionRef) {
+          observer.unobserve(currentSectionRef);
         }
       };
     }
-  }, []);
+  }, [windowWidth]);
 
   return (
     <div
@@ -37,15 +54,13 @@ const Prizes = () => {
         PRIZES
       </h1>
       <div
-        className={`absolute top-20 sm:top-48 flex flex-col items-center justify-between bg-[#F29F58] text-white font-bold rounded-full border-[5px] border-white transition-all duration-1000 lg:z-20 aspect-square w-[60%] sm:w-[35%] p-6 sm:p-8 ${
-          window.innerWidth < 640 ? "top-[15%] mt-10" : "top-20 sm:top-48"
-        }`}
+        className={`absolute ${
+          windowWidth <= 768 ? "top-[10%] mt-10" : "top-20 sm:top-48"
+        } flex flex-col items-center justify-between bg-[#F29F58] text-white font-bold rounded-full border-[5px] border-white transition-all duration-1000 lg:z-20 aspect-square w-[60%] sm:w-[35%] p-6 sm:p-8`}
       >
         <h1
           className={` font-bold tracking-wide mt-5 ${
-            window.innerWidth < 640
-              ? "text-[1rem] "
-              : "text-[2rem] sm:text-[3rem]"
+            windowWidth <= 768 ? "text-[1rem]" : "text-[2rem] sm:text-[3rem]"
           }`}
         >
           WINNER
@@ -53,17 +68,15 @@ const Prizes = () => {
 
         <p
           className={` font-semibold text-[#5E1D24] mb-5 ${
-            window.innerWidth < 640
-              ? "text-[0.8rem]"
-              : "text-[1.2rem] sm:text-[2rem]"
+            windowWidth <= 768 ? "text-[0.8rem]" : "text-[1.2rem] sm:text-[2rem]"
           }`}
         >
           INR 1,00,000
         </p>
       </div>
 
-      {window.innerWidth < 640 ? (
-        <div className="absolute bottom-8 sm:bottom-16 grid grid-cols-2 gap-4 w-[80%]">
+      {windowWidth <= 768 ? (
+        <div className="absolute bottom-8 grid grid-cols-2 gap-4 w-[90%]">
           <SquareCard bgColor="bg-[#1B1833]" reverse={true} />
           <SquareCard bgColor="bg-[#AB4459]" reverse={false} />
           <SquareCard bgColor="bg-[#AB4459]" reverse={false} />
@@ -72,39 +85,43 @@ const Prizes = () => {
       ) : (
         <>
           <SquareCard
-            positionStart="top-[20%] left-[10%] sm:top-[25%] sm:left-[25%] sm:z-0"
-            positionEnd="top-48 left-8 sm:top-48 sm:left-36"
-            bgColor="bg-[#1B1833]"
-            animate={animate && window.innerWidth >= 640}
-            reverse={true}
-          />
-          <SquareCard
-            positionStart="top-[20%] right-[10%] sm:top-[25%] sm:right-[25%] sm:z-0"
-            positionEnd="top-48 right-8 sm:top-48 sm:right-36"
-            bgColor="bg-[#AB4459]"
-            animate={animate && window.innerWidth >= 640}
-            reverse={false}
-          />
-          <SquareCard
-            positionStart="bottom-[15%] left-[10%] sm:bottom-[20%] sm:left-[25%] sm:z-0"
-            positionEnd="bottom-28 left-8 sm:bottom-28 sm:left-36"
-            bgColor="bg-[#AB4459]"
-            animate={animate && window.innerWidth >= 640}
-            reverse={false}
-          />
-          <SquareCard
-            positionStart="bottom-[15%] right-[10%] sm:bottom-[20%] sm:right-[25%] sm:z-0"
-            positionEnd="bottom-28 right-8 sm:bottom-28 sm:right-36"
-            bgColor="bg-[#1B1833]"
-            animate={animate && window.innerWidth >= 640}
-            reverse={true}
-          />
+  positionStart="top-[30%] left-[10%] sm:top-[25%] sm:left-[25%]"
+  positionEnd="top-48 left-8 sm:top-48 sm:left-36"
+  bgColor="bg-[#1B1833]"
+  animate={animate && windowWidth >= 768}
+  reverse={true}
+/>
+<SquareCard
+  positionStart="top-[20%] right-[10%] sm:top-[25%] sm:right-[25%]"
+  positionEnd="top-48 right-8 sm:top-48 sm:right-36"
+  bgColor="bg-[#AB4459]"
+  animate={animate && windowWidth >= 768}
+  reverse={false}
+/>
+<SquareCard
+  positionStart="bottom-[25%] left-[10%] sm:bottom-[30%] sm:left-[25%]"
+  positionEnd="bottom-14 left-8 sm:bottom-14 sm:left-36"
+  bgColor="bg-[#AB4459]"
+  animate={animate && windowWidth >= 768}
+  reverse={false}
+/>
+<SquareCard
+  positionStart="bottom-[25%] right-[10%] sm:bottom-[30%] sm:right-[25%]"
+  positionEnd="bottom-14 right-8 sm:bottom-14 sm:right-36"
+  bgColor="bg-[#1B1833]"
+  animate={animate && windowWidth >= 768}
+  reverse={true}
+/>
+
+
         </>
       )}
     </div>
   );
 };
+
 export default Prizes;
+
 
 const SquareCard = ({
   positionStart,
@@ -122,18 +139,18 @@ const SquareCard = ({
   return (
     <div
       className={`absolute ${bgColor} text-center text-xs sm:text-sm font-semibold rounded-2xl sm:rounded-3xl ${
-        window.innerWidth < 640 ? "h-28 w-32" : "h-44 w-48 sm:h-56 sm:w-64"
+        window.innerWidth <= 768 ? "h-28 w-32" : "h-44 w-48 sm:h-56 sm:w-64"
       } flex flex-col items-center justify-center transition-all duration-1000 border-[5px] border-white ${
         animate ? positionEnd : positionStart
       } ${
-        window.innerWidth < 640
+        window.innerWidth <= 768
           ? "relative mx-auto my-4 top-[unset] left-[unset]"
           : ""
       }`}
     >
       <p
         className={` font-semibold text-white  ${
-          window.innerWidth < 640
+          window.innerWidth <= 768
             ? "text-[0.7rem]"
             : "text-[1.2rem] sm:text-[1.5rem] mb-4"
         }`}
@@ -142,7 +159,7 @@ const SquareCard = ({
       </p>
       <p
         className={` font-semibold text-white ${
-          window.innerWidth < 640
+          window.innerWidth <= 768
             ? "text-[0.7rem]"
             : "text-[1.2rem] sm:text-[1.5rem]"
         }`}
@@ -154,7 +171,7 @@ const SquareCard = ({
           reverse ? "text-[#A85059]" : "text-[#2C2847]"
         }
         ${
-          window.innerWidth < 640
+          window.innerWidth <= 768
             ? "text-[0.7rem]"
             : "text-[1.2rem] sm:text-[1.5rem]"
         }`}
