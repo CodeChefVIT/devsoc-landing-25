@@ -55,10 +55,12 @@ const AnimatedTimeline = () => {
   );
 
   const [cloudDudeY, setCloudDudeY] = useState(0);
-  const [lastActiveIndex, setLastActiveIndex] = useState<number | null>(null);
+
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentFrame, setCurrentFrame] = useState(0);
-  const [animationDirection, setAnimationDirection] = useState<'up' | 'down'>('up');
+  const [animationDirection, setAnimationDirection] = useState<"up" | "down">(
+    "up"
+  );
   const [lastDotPosition, setLastDotPosition] = useState<number | null>(null);
 
   const JUMP_TRIGGER_ZONE = 30;
@@ -73,7 +75,7 @@ const AnimatedTimeline = () => {
     let newActiveIndex = null;
     let lastPassedIndex = 0;
     let shouldTriggerJump = false;
-    let jumpDirection: 'up' | 'down' = 'up';
+    let jumpDirection: "up" | "down" = "up";
 
     dots.forEach((dot, index) => {
       const dotRect = dot.getBoundingClientRect();
@@ -84,7 +86,7 @@ const AnimatedTimeline = () => {
       if (Math.abs(distanceFromCloud) <= JUMP_TRIGGER_ZONE) {
         if (lastDotPosition === null || dotCenterX !== lastDotPosition) {
           shouldTriggerJump = true;
-          jumpDirection = distanceFromCloud > 0 ? 'up' : 'down';
+          jumpDirection = distanceFromCloud > 0 ? "up" : "down";
           setLastDotPosition(dotCenterX);
         }
       }
@@ -107,7 +109,9 @@ const AnimatedTimeline = () => {
     }
 
     setActiveCircle(newActiveIndex);
-    if (lastPassedIndex !== events.findIndex((e) => e.time === currentEvent.time)) {
+    if (
+      lastPassedIndex !== events.findIndex((e) => e.time === currentEvent.time)
+    ) {
       setCurrentEvent(events[lastPassedIndex]);
     }
   };
@@ -123,28 +127,25 @@ const AnimatedTimeline = () => {
     if (currentFrame < totalFrames) {
       const timeout = setTimeout(() => {
         const progress = (currentFrame + 1) / totalFrames;
-        
-        if (animationDirection === 'up') {
+
+        if (animationDirection === "up") {
           setCloudDudeY(targetY * progress);
         } else {
           setCloudDudeY(targetY * (1 - progress));
         }
-        
+
         setCurrentFrame(currentFrame + 1);
       }, animationDuration);
 
       return () => clearTimeout(timeout);
     } else {
       setIsAnimating(false);
-      if (animationDirection === 'down') {
+      if (animationDirection === "down") {
         setCloudDudeY(0);
         setLastDotPosition(null); // Reset last dot position after animation completes
       }
     }
   }, [isAnimating, currentFrame, animationDirection]);
-
-
-  const handleScroll = () => { };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -192,7 +193,7 @@ const AnimatedTimeline = () => {
   const isNightTime = (time: string): boolean => {
     const match = time.match(/(\d+):(\d+)\s?(am|pm)/i);
     if (!match) return false;
-    const [_, hourStr, minuteStr, modifier] = match;
+    const [hourStr, modifier] = match;
     let hour = parseInt(hourStr, 10);
     if (modifier.toLowerCase() === "pm" && hour !== 12) hour += 12;
     if (modifier.toLowerCase() === "am" && hour === 12) hour = 0;
@@ -226,8 +227,9 @@ const AnimatedTimeline = () => {
         }}
       >
         <motion.div
-          className={`w-full h-full flex flex-col items-center ${nightMode ? "bg-[#1E1E1E] " : "bg-gray-100 "
-            }`}
+          className={`w-full h-full flex flex-col items-center ${
+            nightMode ? "bg-[#1E1E1E] " : "bg-gray-100 "
+          }`}
           style={{
             transition: "background-color 0.5s ease-in-out",
           }}
@@ -262,14 +264,16 @@ const AnimatedTimeline = () => {
           {/* Title Section */}
           <div className="mb-16 mt-10 z-10 relative w-full pl-12 text-left">
             <h1
-              className={`text-7xl font-bold mb-10 font-yerk ${nightMode ? "text-[#FF9737] " : "text-[#242323] "
-                }`}
+              className={`text-7xl font-bold mb-10 font-yerk ${
+                nightMode ? "text-[#FF9737] " : "text-[#242323] "
+              }`}
             >
               TIMELINE
             </h1>
             <p
-              className={`text-5xl  font-yerk ml-2 ${nightMode ? "text-[#FFFFFF] " : "text-black "
-                }`}
+              className={`text-5xl  font-yerk ml-2 ${
+                nightMode ? "text-[#FFFFFF] " : "text-black "
+              }`}
             >
               Day 2
             </p>
@@ -278,10 +282,11 @@ const AnimatedTimeline = () => {
           {/* Current Event Display */}
           <div className="relative flex  mt-16  mb-20">
             <div
-              className={`font-mono rounded-[50px] p-12 shadow-xl text-center border-8 ${nightMode
-                ? "bg-white/70 text-black border-white"
-                : "bg-white text-black border-black"
-                } w-[500px]`}
+              className={`font-mono rounded-[50px] p-12 shadow-xl text-center border-8 ${
+                nightMode
+                  ? "bg-white/70 text-black border-white"
+                  : "bg-white text-black border-black"
+              } w-[500px]`}
             >
               <p className="text-5xl">{currentEvent.time}</p>
               <p className="text-5xl whitespace-nowrap  text-ellipsis">
@@ -298,23 +303,24 @@ const AnimatedTimeline = () => {
 
             {/* Base Line */}
             <div
-              className={`absolute top-1/2 w-[100%] h-1 ${nightMode ? "bg-white" : "bg-black"
-                }`}
+              className={`absolute top-1/2 w-[100%] h-1 ${
+                nightMode ? "bg-white" : "bg-black"
+              }`}
             />
             {/* CloudDude */}
             <motion.div
-                ref={clouddudeRef}
-                className="absolute ml-60 -translate-x-1/2 z-30"
-                style={{
-                    y: cloudDudeY - 20,
-                    backgroundImage: `url(${clouddudeImageUrl})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "contain",
-                    transition: "y 0.3s ease-in-out",
-                    width: "150px",
-                    height: "150px", 
-                    transform: `translate(-50%, -50%) scale(1.5)`,
-                }}
+              ref={clouddudeRef}
+              className="absolute ml-60 -translate-x-1/2 z-30"
+              style={{
+                y: cloudDudeY - 20,
+                backgroundImage: `url(${clouddudeImageUrl})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "contain",
+                transition: "y 0.3s ease-in-out",
+                width: "150px",
+                height: "150px",
+                transform: `translate(-50%, -50%) scale(1.5)`,
+              }}
             />
 
             {/* Moving Timeline */}
@@ -336,20 +342,22 @@ const AnimatedTimeline = () => {
                   }}
                 >
                   <div
-                    className={`timeline-dot w-6 h-6 rounded-full border-4 transition-colors duration-300 ${nightMode
-                      ? activeCircle === index
-                        ? "bg-white border-white"
-                        : "bg-[#1E1E1E] border-white"
-                      : activeCircle === index
+                    className={`timeline-dot w-6 h-6 rounded-full border-4 transition-colors duration-300 ${
+                      nightMode
+                        ? activeCircle === index
+                          ? "bg-white border-white"
+                          : "bg-[#1E1E1E] border-white"
+                        : activeCircle === index
                         ? "bg-black border-black"
                         : "bg-white border-black"
-                      }`}
+                    }`}
                   />
                   {/* Label */}
                   <div className="mt-2 text-center font-mono whitespace-nowrap mb-2 ">
                     <p
-                      className={`text-4xl font-medium  ml-3 ${nightMode ? "text-white " : "text-black "
-                        }`}
+                      className={`text-4xl font-medium  ml-3 ${
+                        nightMode ? "text-white " : "text-black "
+                      }`}
                     >
                       {event.time}
                     </p>

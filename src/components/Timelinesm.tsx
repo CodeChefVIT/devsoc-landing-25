@@ -20,31 +20,17 @@ const events = [
 ];
 
 function Timeline() {
-  const [isMobile, setIsMobile] = useState(false);
   const [isNightMode, setIsNightMode] = useState(false);
   const [lineHeight, setLineHeight] = useState("100%");
   const timelineRef = useRef<HTMLDivElement>(null);
   const [lineTopOffset, setLineTopOffset] = useState("0px");
   const [lineLeftOffset, setLineLeftOffset] = useState("0px");
 
-  useEffect(() => {
-    const checkWindowWidth = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkWindowWidth();
-    window.addEventListener("resize", checkWindowWidth);
-
-    return () => {
-      window.removeEventListener("resize", checkWindowWidth);
-    };
-  }, []);
-
   const isNightTime = (time: string): boolean => {
     const match = time.match(/(\d+):(\d+)\s?(am|pm)/i);
     if (!match) return false;
 
-    const [_, hourStr, minuteStr, modifier] = match;
+    const [hourStr, modifier] = match;
     let hour = parseInt(hourStr, 10);
 
     if (modifier.toLowerCase() === "pm" && hour !== 12) hour += 12;
@@ -112,7 +98,9 @@ function Timeline() {
       });
 
       if (topMostElement) {
-        const timeElement = (topMostElement as HTMLElement).querySelector(".content-title");
+        const timeElement = (topMostElement as HTMLElement).querySelector(
+          ".content-title"
+        );
         if (timeElement) {
           const time = timeElement.textContent || "";
           setIsNightMode(isNightTime(time));

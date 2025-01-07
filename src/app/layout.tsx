@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
+
 import Script from "next/script"; // Import the Script component
 
 const geistSans = Geist({
@@ -35,7 +35,7 @@ export default function RootLayout({
           {`window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XK2D8J0C4L');`}// Replace with your Google Analytics ID
+            gtag('config', 'G-XK2D8J0C4L');`}
         </Script>
       </head>
       <body
