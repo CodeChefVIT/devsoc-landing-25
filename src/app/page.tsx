@@ -1,6 +1,6 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import LoaderScreen from '@/components/LoaderScreen';
-
 import Tracks from '@/components/tracks';
 import Prizes from '@/components/Prizes';
 import About from '@/components/About';
@@ -11,18 +11,35 @@ import Footer from '@/components/Footer';
 import frameImage from '../assets/images/Frame 34.png';
 import bgHomeImage from '../assets/images/Frame 53.png';
 import peekImage from '../assets/images/Group 236.png';
+import AnimatedTimeline from '@/components/Timeline';
+import Timeline from '@/components/Timelinesm';
+
 
 const CombinedPage: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+    };
+
+    handleResize(); // Initial check on mount
+    window.addEventListener('resize', handleResize); // Check on resize
+
+    return () => window.removeEventListener('resize', handleResize); // Cleanup
+  }, []);
+
   return (
     <LoaderScreen>
       <div style={{ backgroundColor: '#48634A', minHeight: '100vh', overflowX: 'hidden' }}>
         <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
         <SlantedBanner starsImageUrl={frameImage} />
         <About />
+        {isMobile ? <Timeline /> : <AnimatedTimeline />}
         <Tracks />
         <Prizes />
-        <Faq/>
-        <Footer></Footer>
+        <Faq />
+        <Footer />
       </div>
     </LoaderScreen>
   );

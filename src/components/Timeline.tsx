@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 
 interface TimelineEvent {
   time: string;
@@ -21,8 +20,9 @@ const AnimatedTimeline = () => {
   const [currentEvent, setCurrentEvent] = useState<TimelineEvent>(events[0]);
   const [activeCircle, setActiveCircle] = useState<number | null>(null);
   const [isPinned, setIsPinned] = useState(false);
-  const cloudRef = useRef<HTMLImageElement>(null);
-
+  const cloudRef = useRef<HTMLDivElement>(null);
+  const starMoonRef = useRef<HTMLDivElement>(null);
+  const clouddudeRef = useRef<HTMLDivElement>(null); //ref for the CloudDude
   const HIGHLIGHT_ZONE = 20;
 
   const timelineWidth =
@@ -42,20 +42,54 @@ const AnimatedTimeline = () => {
     [0, -((events.length - 1) * dotSpacing + extraScrollSpace)]
   );
 
+  const cloudTranslateX = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -((events.length - 1) * dotSpacing * 0.4 + extraScrollSpace * 0.4)]
+  );
+
+  const starMoonTranslateX = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -((events.length - 1) * dotSpacing * 0.2 + extraScrollSpace * 0.2)]
+  );
+
+  const [cloudDudeY, setCloudDudeY] = useState(0);
+  const [lastActiveIndex, setLastActiveIndex] = useState<number | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [currentFrame, setCurrentFrame] = useState(0);
+  const [animationDirection, setAnimationDirection] = useState<'up' | 'down'>('up');
+  const [lastDotPosition, setLastDotPosition] = useState<number | null>(null);
+
+  const JUMP_TRIGGER_ZONE = 30;
+
   const determineActiveEvent = () => {
     if (!timelineRef.current) return;
 
-    const timelineRect = timelineRef.current.getBoundingClientRect();
     const markerX = window.innerWidth * 0.2;
+    const cloudDudeX = markerX + 60; // Cloud dude's actual X position
     const dots = timelineRef.current.querySelectorAll(".timeline-dot");
 
     let newActiveIndex = null;
     let lastPassedIndex = 0;
+    let shouldTriggerJump = false;
+    let jumpDirection: 'up' | 'down' = 'up';
 
     dots.forEach((dot, index) => {
       const dotRect = dot.getBoundingClientRect();
       const dotCenterX = dotRect.left + dotRect.width / 2;
+      const distanceFromCloud = dotCenterX - cloudDudeX;
 
+      // Check if we're in the jumping zone
+      if (Math.abs(distanceFromCloud) <= JUMP_TRIGGER_ZONE) {
+        if (lastDotPosition === null || dotCenterX !== lastDotPosition) {
+          shouldTriggerJump = true;
+          jumpDirection = distanceFromCloud > 0 ? 'up' : 'down';
+          setLastDotPosition(dotCenterX);
+        }
+      }
+
+      // Handle active circle and current event
       if (Math.abs(dotCenterX - markerX) <= HIGHLIGHT_ZONE) {
         newActiveIndex = index;
       }
@@ -65,15 +99,52 @@ const AnimatedTimeline = () => {
       }
     });
 
-    setActiveCircle(newActiveIndex);
+    // Only trigger animation if we're entering/exiting a jump zone
+    if (shouldTriggerJump && !isAnimating) {
+      setIsAnimating(true);
+      setAnimationDirection(jumpDirection);
+      setCurrentFrame(0);
+    }
 
-    if (
-      lastPassedIndex !== events.findIndex((e) => e.time === currentEvent.time)
-    ) {
+    setActiveCircle(newActiveIndex);
+    if (lastPassedIndex !== events.findIndex((e) => e.time === currentEvent.time)) {
       setCurrentEvent(events[lastPassedIndex]);
     }
   };
-  const handleScroll = () => {};
+
+  useEffect(() => {
+    if (!isAnimating) return;
+
+    const frameIncrement = 2;
+    const targetY = -30;
+    const totalFrames = Math.abs(targetY / frameIncrement);
+    const animationDuration = 30;
+
+    if (currentFrame < totalFrames) {
+      const timeout = setTimeout(() => {
+        const progress = (currentFrame + 1) / totalFrames;
+        
+        if (animationDirection === 'up') {
+          setCloudDudeY(targetY * progress);
+        } else {
+          setCloudDudeY(targetY * (1 - progress));
+        }
+        
+        setCurrentFrame(currentFrame + 1);
+      }, animationDuration);
+
+      return () => clearTimeout(timeout);
+    } else {
+      setIsAnimating(false);
+      if (animationDirection === 'down') {
+        setCloudDudeY(0);
+        setLastDotPosition(null); // Reset last dot position after animation completes
+      }
+    }
+  }, [isAnimating, currentFrame, animationDirection]);
+
+
+  const handleScroll = () => { };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -104,6 +175,13 @@ const AnimatedTimeline = () => {
           percentage / 100
         ).toString();
       }
+      // Update starmoon opacity
+      if (starMoonRef.current) {
+        starMoonRef.current.style.opacity = Math.min(
+          1,
+          percentage / 100
+        ).toString();
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -122,6 +200,11 @@ const AnimatedTimeline = () => {
   };
 
   const nightMode = isNightTime(currentEvent.time);
+  const cloudImageUrl = nightMode
+    ? "/assets/Cloudsblack.svg"
+    : "/assets/clouds.svg";
+  const starMoonImageUrl = "/assets/Starmoon.svg";
+  const clouddudeImageUrl = "/assets/CloudDude.svg";
 
   return (
     <div
@@ -143,47 +226,62 @@ const AnimatedTimeline = () => {
         }}
       >
         <motion.div
-          className={`w-full h-full flex flex-col items-center ${
-            nightMode ? "bg-[#1E1E1E] " : "bg-gray-100 "
-          }`}
+          className={`w-full h-full flex flex-col items-center ${nightMode ? "bg-[#1E1E1E] " : "bg-gray-100 "
+            }`}
           style={{
             transition: "background-color 0.5s ease-in-out",
           }}
         >
-          <Image
+          <motion.div
             ref={cloudRef}
-            src={nightMode ? "/assets/Cloudsblack.svg" : "/assets/clouds.svg"} // Conditional source for cloud image
-            alt="Clouds"
-            layout="fill" // Ensure it covers the full container
-            className="absolute top-0 left-0 w-full h-full opacity-0 overscroll-none transition-opacity duration-500 ease-in-out pointer-events-none"
+            className="absolute top-0 left-0 w-[400%] h-full pointer-events-none"
+            style={{
+              x: cloudTranslateX,
+              backgroundImage: `url(${cloudImageUrl})`,
+              backgroundRepeat: "repeat-x",
+              backgroundSize: "25% 100%",
+              opacity: 0,
+              transition: "opacity 0.5s ease-in-out",
+              height: "100%",
+            }}
           />
+          {/* Star Moon */}
+          {nightMode && (
+            <motion.div
+              ref={starMoonRef}
+              className="absolute bottom-1/ left-1/4 w-[400%] h-full pointer-events-none"
+              style={{
+                x: starMoonTranslateX,
+                backgroundImage: `url(${starMoonImageUrl})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "17% 100%", // Adjust size as needed
+              }}
+            />
+          )}
 
           {/* Title Section */}
           <div className="mb-16 mt-10 z-10 relative w-full pl-12 text-left">
             <h1
-              className={`text-7xl font-bold mb-10 font-yerk ${
-                nightMode ? "text-[#FF9737] " : "text-[#242323] "
-              }`}
+              className={`text-7xl font-bold mb-10 font-yerk ${nightMode ? "text-[#FF9737] " : "text-[#242323] "
+                }`}
             >
               TIMELINE
             </h1>
             <p
-              className={`text-5xl  font-yerk ml-2 ${
-                nightMode ? "text-[#FFFFFF] " : "text-black "
-              }`}
+              className={`text-5xl  font-yerk ml-2 ${nightMode ? "text-[#FFFFFF] " : "text-black "
+                }`}
             >
               Day 2
             </p>
           </div>
 
           {/* Current Event Display */}
-          <div className="relative flex  mt-16  mb-28">
+          <div className="relative flex  mt-16  mb-20">
             <div
-              className={`font-mono rounded-[50px] p-12 shadow-xl text-center border-8 ${
-                nightMode
-                  ? "bg-white/70 text-black border-white"
-                  : "bg-white text-black border-black"
-              } w-[500px]`} // Enforcing a max width to keep it constant
+              className={`font-mono rounded-[50px] p-12 shadow-xl text-center border-8 ${nightMode
+                ? "bg-white/70 text-black border-white"
+                : "bg-white text-black border-black"
+                } w-[500px]`}
             >
               <p className="text-5xl">{currentEvent.time}</p>
               <p className="text-5xl whitespace-nowrap  text-ellipsis">
@@ -200,9 +298,23 @@ const AnimatedTimeline = () => {
 
             {/* Base Line */}
             <div
-              className={`absolute top-1/2 w-[100%] h-1 ${
-                nightMode ? "bg-white" : "bg-black"
-              }`}
+              className={`absolute top-1/2 w-[100%] h-1 ${nightMode ? "bg-white" : "bg-black"
+                }`}
+            />
+            {/* CloudDude */}
+            <motion.div
+                ref={clouddudeRef}
+                className="absolute ml-60 -translate-x-1/2 z-30"
+                style={{
+                    y: cloudDudeY - 20,
+                    backgroundImage: `url(${clouddudeImageUrl})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "contain",
+                    transition: "y 0.3s ease-in-out",
+                    width: "150px",
+                    height: "150px", 
+                    transform: `translate(-50%, -50%) scale(1.5)`,
+                }}
             />
 
             {/* Moving Timeline */}
@@ -217,33 +329,31 @@ const AnimatedTimeline = () => {
               {events.map((event, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center -translate-y-7"
+                  className="flex flex-col items-center translate-y-7"
                   style={{
                     position: "absolute",
                     left: `${index * dotSpacing}px`,
                   }}
                 >
+                  <div
+                    className={`timeline-dot w-6 h-6 rounded-full border-4 transition-colors duration-300 ${nightMode
+                      ? activeCircle === index
+                        ? "bg-white border-white"
+                        : "bg-[#1E1E1E] border-white"
+                      : activeCircle === index
+                        ? "bg-black border-black"
+                        : "bg-white border-black"
+                      }`}
+                  />
                   {/* Label */}
                   <div className="mt-2 text-center font-mono whitespace-nowrap mb-2 ">
                     <p
-                      className={`text-4xl font-medium  ml-3 ${
-                        nightMode ? "text-white " : "text-black "
-                      }`}
+                      className={`text-4xl font-medium  ml-3 ${nightMode ? "text-white " : "text-black "
+                        }`}
                     >
                       {event.time}
                     </p>
                   </div>
-                  <div
-                    className={`timeline-dot w-6 h-6 rounded-full border-4 transition-colors duration-300 ${
-                      nightMode
-                        ? activeCircle === index
-                          ? "bg-white border-white"
-                          : "bg-[#1E1E1E] border-white"
-                        : activeCircle === index
-                        ? "bg-black border-black"
-                        : "bg-white border-black"
-                    }`}
-                  />
                 </div>
               ))}
             </motion.div>

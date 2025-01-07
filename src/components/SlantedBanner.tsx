@@ -52,20 +52,26 @@ const SlantedBanner: React.FC<SlantedBannerProps> = ({ starsImageUrl, className 
             <div className="absolute w-full top-[30%] border-t-2 border-dashed border-orange-400 opacity-70" />
 
             {/* DEVSOC text layer */}
-            <div className="absolute inset-0 flex items-center">
+           <div className="absolute inset-0 flex items-center">
                 <motion.div
                     className="flex whitespace-nowrap"
                     style={{ x: devsocX, width: '800%' }}
                 >
                     <span className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-wider inline-block text-[#FF6B6B]">
-                        {fullText.split(" ").map((text, index) => (
+                         {fullText.split(" ").map((text, index) => (
                             <React.Fragment key={index}>
-                                <span className="inline-block">
-                                    {text === "DEVSOC" ? text :
+                                <span className="inline-block relative">
+                                    {text === "DEVSOC" ? (
+                                        <span className="font-yerk">{text}</span>
+                                    ) : text === "2K25" ? (
+                                        <span className="font-yerk text- sm:text-2xl md:text-3xl  relative -top-2 sm:-top-2 md:-top-3">
+                                            {text}
+                                        </span>
+                                    ) : (
                                         <span className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider align-middle ml-1 sm:ml-2 md:ml-4">
                                             {text}
                                         </span>
-                                    }
+                                    )}
                                     {index !== fullText.split(" ").length - 1 && ' '}
                                 </span>
                             </React.Fragment>
@@ -83,7 +89,7 @@ const SlantedBanner: React.FC<SlantedBannerProps> = ({ starsImageUrl, className 
                     style={{ x: sponsorX, width: '800%' }}
                 >
                     <span className="text-sm sm:text-base md:text-xl font-medium tracking-wide inline-block w-full text-[#FF6B6B]">
-                        {sponsorText}
+                        <span className="font-mono">{sponsorText}</span>
                     </span>
                 </motion.div>
             </div>
