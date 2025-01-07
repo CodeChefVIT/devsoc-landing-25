@@ -13,7 +13,7 @@ export default function HomeRIve() {
         stateMachines={["State Machine 1"]}
         artboard="Main"
         layout={new Layout({
-          fit: Fit.Fill,
+          fit: Fit.Cover,
           alignment: Alignment.Center,
         })}
       />
