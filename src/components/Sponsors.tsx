@@ -23,7 +23,7 @@ export default function Sponsors() {
                 {sponsors.map((sponsor, index) => (
                     <div
                         key={index}
-                        className="w-[50%] flex justify-center sm:w-[32%]"
+                        className="w-[50%] flex justify-center sm:w-[32%] mb-8"
                     >
                         <Card name={sponsor.name} image={sponsor.image} />
                     </div>
