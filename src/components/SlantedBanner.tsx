@@ -21,7 +21,7 @@ const SlantedBanner: React.FC<SlantedBannerProps> = ({ starsImageUrl, className 
 
     return (
         <div
-            className={`relative z-10 w-[140%] h-[180px] sm:h-[220px] md:h-[280px] overflow-hidden ${className}`}
+            className={`relative z-10 w-[150%] h-[180px] sm:h-[220px] md:h-[340px] overflow-hidden ${className}`}
             style={{
                 transform: 'rotate(8deg) scale(1.4)',
                 backgroundColor: '#E9DECF',
