@@ -36,12 +36,21 @@ const CombinedPage: React.FC = () => {
         <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
         <SlantedBanner starsImageUrl={frameImage} />
         <About />
-        {isMobile ? <Timeline /> : <AnimatedTimeline />}
-        <Tracks />
-        <Sponsors />
-        <Prizes />
-        <Faq />
-        <Footer />
+        <div className="relative">
+          {isMobile ? <Timeline /> : <AnimatedTimeline />}
+          <div 
+            className="relative" 
+            style={{ 
+              marginTop: isMobile ? '0' : '-110vh'
+            }}
+          >
+            <Tracks />
+            <Sponsors />
+            <Prizes />
+            <Faq />
+            <Footer />
+          </div>
+        </div>
       </div>
     </LoaderScreen>
   );
