@@ -1,10 +1,11 @@
-'use client'
+'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion } from 'framer-motion';
 import devsoc from '../assets/images/DEVSOC.png';
 import HomeRIve from './HomeRIve';
+import MobileRive from './MobileRive';
 
 interface HomePageProps {
     backgroundImage: StaticImageData;
@@ -12,6 +13,21 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage }) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+        };
+
+        handleResize(); // Set initial state
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <div className="relative w-full min-h-screen bg-[#1B4965] overflow-hidden">
             <Image
@@ -28,39 +44,34 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                     <div className="w-full h-1 bg-white" />
 
                     <div className="w-full bg-[#2682A6] py-3 sm:py-4 md:py-6">
-                       {/* Responsive Header Container */}
+                        {/* Responsive Header Container */}
                         <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-around items-center">
-                            <AnimatedButton 
-                                text="Discord" 
+                            <AnimatedButton
+                                text="Discord"
                                 mascotImage={mascotPeekImage}
-                                className="w-24 sm:w-32 md:w-40 mb-2 sm:mb-0" // add margin
+                                className="w-24 sm:w-32 md:w-40 mb-2 sm:mb-0"
                             />
-                            
-                            <div className="flex items-center my-2 sm:my-0"> {/* Add margin for spacing */}
-                                <span className="text-6xl sm:text-4xl md:text-6xl text-[#FF7657] font-yerk tracking-wider relative"> {/* Adjusted font size for better responsiveness */}
-                                    {/* Splitting the text into individual letters */}
-                                    <span className="letter-shadow-wrapper">
-                                        {
-                                            "DEVSOC".split("").map((letter, index) => (
-                                                <span
-                                                    key={index}
-                                                    className="inline-block relative"
-                                                    style={{
-                                                        textShadow: `2px 2px 4px rgba(0,0,0,0.5)`,
-                                                    }}
-                                                >
-                                                    {letter}
-                                                </span>
-                                            ))
-                                        }
-                                    </span>
+
+                            <div className="flex items-center my-2 sm:my-0">
+                                <span className="text-6xl sm:text-4xl md:text-6xl text-[#FF7657] font-yerk tracking-wider relative">
+                                    {"DEVSOC".split("").map((letter, index) => (
+                                        <span
+                                            key={index}
+                                            className="inline-block relative"
+                                            style={{
+                                                textShadow: `2px 2px 4px rgba(0,0,0,0.5)`,
+                                            }}
+                                        >
+                                            {letter}
+                                        </span>
+                                    ))}
                                 </span>
                                 <span
                                     className="font-bold text-sm sm:text-base md:text-xl text-[#FF6B6B] font-mono ml-1 sm:ml-2"
                                     style={{
                                         writingMode: 'vertical-rl',
                                         textOrientation: 'mixed',
-                                        transform: 'rotate(360deg)'
+                                        transform: 'rotate(360deg)',
                                     }}
                                 >
                                     2k25
@@ -70,7 +81,7 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                             <AnimatedButton
                                 text="Register"
                                 mascotImage={mascotPeekImage}
-                                className="w-24 sm:w-32 md:w-40 mb-2 sm:mb-0" // add margin
+                                className="w-24 sm:w-32 md:w-40 mb-2 sm:mb-0"
                                 icon={devsoc}
                             />
                         </div>
@@ -82,7 +93,7 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
                 {/* Main Content */}
                 <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6 md:py-8">
                     <div className="flex flex-col items-center justify-center min-h-[600px] sm:min-h-[700px] md:min-h-[800px] relative">
-                        <HomeRIve></HomeRIve>
+                        {isMobile ? <MobileRive /> : <HomeRIve />}
                         {/* <div className="absolute top-2 sm:top-3 md:top-4 left-1/2 transform -translate-x-1/2 text-white text-base sm:text-xl md:text-2xl">
                             Sponsor Information Here
                         </div> */}
@@ -92,9 +103,6 @@ const HomePage: React.FC<HomePageProps> = ({ backgroundImage, mascotPeekImage })
         </div>
     );
 };
-
-
-
 
 interface AnimatedButtonProps {
     text: string;
@@ -124,7 +132,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
             >
                 <motion.div
                     className="flex items-center justify-center relative z-10 overflow-hidden"
-                    style={{ height: "1.5rem" }}
+                    style={{ height: '1.5rem' }}
                     variants={{
                         initial: { y: 0, fontSize: '0.875rem' },
                         hover: { y: -14, fontSize: '0.7rem', marginBottom: '0.8px' },
@@ -140,7 +148,11 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
                             className="mr-1 sm:mr-2 w-3 sm:w-4 md:w-5"
                         />
                     )}
-                    <span className={`text-white font-mono sm:text-base md:text-lg ${text === 'discord' ? 'lowercase' : ''}`}>
+                    <span
+                        className={`text-white font-mono sm:text-base md:text-lg ${
+                            text === 'discord' ? 'lowercase' : ''
+                        }`}
+                    >
                         {text}
                     </span>
                 </motion.div>
@@ -149,7 +161,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
                     className="absolute left-0 right-0 bottom-0 overflow-hidden"
                     style={{ height: 'calc(2rem + 1px)' }}
                     variants={{
-                        initial: { y: "calc(100% - 1px)", scale: 0.6, opacity: 1 },
+                        initial: { y: 'calc(100% - 1px)', scale: 0.6, opacity: 1 },
                         hover: { y: 0, scale: 0.9, opacity: 1 },
                     }}
                     transition={{ duration: 0.2 }}
