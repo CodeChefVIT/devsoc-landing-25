@@ -107,7 +107,7 @@ const Tracks: React.FC = () => {
           height: "10000px",
           flexShrink: 0,
           top: "-5000px",
-          left: "400px",
+          left: "300px",
           zIndex: 1,
           ...(isInView ? animatedTrackStyle : initialTrackStyle),
         }}
