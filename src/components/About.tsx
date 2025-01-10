@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import placehold from '@/assets/images/placeholder.svg';
+import about from '@/assets/about.png'
 
 const About = () => {
     return (
@@ -17,16 +17,16 @@ const About = () => {
                             that scream revolution. Join the fray as we smash barriers and redefine what&apos;s possible.
                         </p>
                     </div>
-                    <div className="flex justify-center lg:w-1/3">
-                        <div className="p-4 rounded-md shadow-lg pt-7">
-                            <Image
-                                src={placehold}
-                                height={400}
-                                width={500}
-                                alt="placeholder"
-                                className="rounded-md"
-                            />
-                        </div>
+                    {/* <div className="flex justify-center lg:w-1/3"> */}
+                    <div className="p-4 pt-12">
+                        <Image
+                            src={about}
+                            height={500}
+                            width={600}
+                            alt="placeholder"
+                            className="shadow-lg"
+                        />
+                        {/* </div> */}
                     </div>
                 </div>
             </div>
