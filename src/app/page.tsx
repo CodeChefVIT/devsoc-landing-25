@@ -37,7 +37,7 @@ const CombinedPage: React.FC = () => {
     <LoaderScreen>
       <div className='overflow-hidden bg-[#A85059]'>
         <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
-        <SlantedBanner starsImageUrl={frameImage} />
+        <SlantedBanner  sign='+' starsImageUrl={frameImage} />
         <About />
         <div className="relative">
           {isMobile ? <Timeline /> : <AnimatedTimeline />}
@@ -51,6 +51,7 @@ const CombinedPage: React.FC = () => {
                 <Sponsors />
                 <Prizes />
                 <Faq />
+                <SlantedBanner  sign='-'  starsImageUrl={frameImage} />
                 <Footer />
            </div>
         </div>

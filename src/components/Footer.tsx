@@ -37,7 +37,7 @@ export default function Footer() {
     <div>
       <div
         style={footerStyle}
-        className=" grid grid-rows-[80%_20%] font-yerk items-baseline"
+        className="pt-[140px] md:pt-[300px] grid grid-rows-[80%_20%] font-yerk items-baseline"
       >
         {/* pt-[20%] is just some extra space for the moving text, can always remove it and edit the bg */}
         <div className="grid grid-rows-3 md:grid-rows-1 md:grid-cols-4  md:py-16 h-fit">
