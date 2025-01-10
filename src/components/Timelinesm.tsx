@@ -28,11 +28,11 @@ function Timeline() {
   const [lineLeftOffset, setLineLeftOffset] = useState("0px");
 
   const isNightTime = (time: string): boolean => {
-    const match = time.match(/(\d+):(\d+)\s?(am|pm)/i);
+    const match = time.match(/(\d{1,2}):(\d{2})\s?(am|pm)/i);
     if (!match) return false;
 
-    const [, hourStr, , modifier] = match;
-    let hour = parseInt(hourStr, 10);
+    let hour = parseInt(match[1]);
+    const modifier = match[3];
 
     if (modifier.toLowerCase() === "pm" && hour !== 12) hour += 12;
     if (modifier.toLowerCase() === "am" && hour === 12) hour = 0;
@@ -56,7 +56,6 @@ function Timeline() {
           const lastDotRect = lastDotElement.getBoundingClientRect();
           const containerRect = timelineRef.current.getBoundingClientRect();
 
-          // Calculate height from top of first dot to center of last dot
           const height =
             lastDotRect.top + lastDotRect.height / 2 - firstDotRect.top;
 
@@ -79,37 +78,49 @@ function Timeline() {
   }, [events.length]);
 
   useEffect(() => {
+    let lastPos = 0;
     const handleScroll = () => {
       if (!timelineRef.current) return;
-
-      const timelineElements = Array.from(
+      const curretnScrollPos = window.scrollY ;
+      const allevents = Array.from(
         timelineRef.current.querySelectorAll(".vertical-timeline-element")
       );
+      const isScrollingDown = curretnScrollPos > lastPos;
+      lastPos = curretnScrollPos;
+      if(isScrollingDown){
 
-      let topMostElement: Element | null = null;
-      let minDistance = Infinity;
-
-      timelineElements.forEach((element) => {
-        const rect = element.getBoundingClientRect();
-        const distance = Math.abs(rect.top);
-        if (distance < minDistance) {
-          minDistance = distance;
-          topMostElement = element;
+        for (let i = allevents.length - 1; i >= 0; i--) {
+          const element = allevents[i];
+          const elRect = element.getBoundingClientRect();
+          
+          if (elRect.top >= 0 && elRect.top <= window.innerHeight) {
+            // console.log(element)
+            const theEvent = element.querySelector(".content-title");
+            if (theEvent) {
+              const time = theEvent.textContent || "";
+              setIsNightMode(isNightTime(time)); 
+            }
+            break; 
+          }
         }
-      });
-
-      if (topMostElement) {
-        const timeElement = (topMostElement as HTMLElement).querySelector(
-          ".content-title"
-        );
-        if (timeElement) {
-          const time = timeElement.textContent || "";
-          setIsNightMode(isNightTime(time));
+      }else{
+        for (let i = allevents.length - 1; i >= 0; i--) {
+          const element = allevents[i];
+          const elRect = element.getBoundingClientRect();
+    
+          if (elRect.top >= 0 && elRect.top <= window.innerHeight) {
+            // console.log(element);
+            const theEvent = element.querySelector(".content-title");
+            if (theEvent) {
+              const time = theEvent.textContent || "";
+              setIsNightMode(isNightTime(time));
+            }
+            break;
+          }
         }
       }
     };
 
-    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
