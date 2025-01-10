@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from 'framer-motion';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -30,7 +31,7 @@ function Timeline() {
     const match = time.match(/(\d+):(\d+)\s?(am|pm)/i);
     if (!match) return false;
 
-    const [hourStr, modifier] = match;
+    const [, hourStr, , modifier] = match;
     let hour = parseInt(hourStr, 10);
 
     if (modifier.toLowerCase() === "pm" && hour !== 12) hour += 12;
@@ -126,11 +127,14 @@ function Timeline() {
 
   return (
     <>
-      <div
+      <motion.div
         id="timeline"
         className={`p-4 px-8 relative ${
           isNightMode ? "bg-[#1E1E1E]" : "bg-white"
         }`}
+         style={{
+           transition: 'background-color 0.5s ease-in-out',
+          }}
       >
         <div className="absolute inset-0 opacity-100 z-0 top-32">
           <Image
@@ -150,20 +154,26 @@ function Timeline() {
             />
           </div>
         )}
-        <div
+        <motion.div
           className={`pt-20 pb-7 relative z-10 text-4xl font-yerk font-bold ${
             isNightMode ? "text-[#FF9737]" : "text-[#242323]"
           }`}
+           style={{
+                transition: "color 0.5s ease-in-out",
+             }}
         >
           Timeline
-        </div>
-        <div
+        </motion.div>
+        <motion.div
           className={`mb-20 ml-2 relative z-10 text-3xl font-yerk font-bold ${
             isNightMode ? "text-white" : "text-[#242323]"
           }`}
+           style={{
+                transition: "color 0.5s ease-in-out",
+           }}
         >
           Day 2
-        </div>
+        </motion.div>
 
         <div className="timeline-container relative z-10" ref={timelineRef}>
           <div
@@ -173,6 +183,7 @@ function Timeline() {
               height: lineHeight,
               top: lineTopOffset,
               left: lineLeftOffset,
+                 transition: 'background-color 0.5s ease-in-out',
             }}
           />
           <VerticalTimeline lineColor="transparent">
@@ -181,41 +192,49 @@ function Timeline() {
                 key={index}
                 className="vertical-timeline-element--work"
                 style={{ marginBottom: "80px" }}
-                contentStyle={{
-                  background: isNightMode ? "rgba(255,255,255,0.7)" : "white",
-                  color: isNightMode ? "black" : "black",
-                  border: `4px solid ${isNightMode ? "white" : "black"}`,
-                  boxShadow: "none",
-                  borderRadius: "25px",
-                  height: "100px",
-                  minWidth: "300px",
-                }}
-                contentArrowStyle={{
-                  borderRight: `7px solid ${isNightMode ? "white" : "black"}`,
-                  top: "50%",
-                  marginTop: "-7px",
-                }}
+                 contentStyle={{
+                     background: isNightMode ? "rgba(255,255,255,0.7)" : "white",
+                   color: isNightMode ? "black" : "black",
+                     border: `4px solid ${isNightMode ? "white" : "black"}`,
+                   boxShadow: "none",
+                    borderRadius: "25px",
+                    height: "100px",
+                    minWidth: "300px",
+                    transition: 'background-color 0.5s ease-in-out, border-color 0.5s ease-in-out',
+                   }}
+                  contentArrowStyle={{
+                    borderRight: `7px solid ${isNightMode ? "white" : "black"}`,
+                    top: "50%",
+                      marginTop: "-7px",
+                      transition: 'border-color 0.5s ease-in-out',
+                   }}
                 iconStyle={{ ...defaultIconStyle }}
               >
-                <h3
-                  className={`vertical-timeline-element-title font-mono pl-3 text-2xl content-title ${
-                    isNightMode ? "text-black" : "text-black"
-                  }`}
-                >
+                <motion.h3
+                 className={`vertical-timeline-element-title font-mono pl-3 text-2xl content-title ${
+                   isNightMode ? "text-black" : "text-black"
+                 }`}
+                  style={{
+                    transition: 'color 0.5s ease-in-out',
+                    }}
+                  >
                   {event.time}
-                </h3>
-                <h3
-                  className={`vertical-timeline-element-subtitle font-mono text-2xl pl-3 content-subtitle whitespace-nowrap ${
-                    isNightMode ? "text-black" : "text-black"
-                  }`}
+                </motion.h3>
+                 <motion.h3
+                   className={`vertical-timeline-element-subtitle font-mono text-2xl pl-3 content-subtitle whitespace-nowrap ${
+                      isNightMode ? "text-black" : "text-black"
+                    }`}
+                      style={{
+                        transition: 'color 0.5s ease-in-out',
+                     }}
                 >
                   {event.event}
-                </h3>
+                </motion.h3>
               </VerticalTimelineElement>
             ))}
           </VerticalTimeline>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }
