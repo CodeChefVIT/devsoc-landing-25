@@ -1,4 +1,3 @@
-// CombinedPage.tsx
 "use client";
 import React, { useState, useEffect } from 'react';
 import LoaderScreen from '@/components/LoaderScreen';

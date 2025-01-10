@@ -56,19 +56,35 @@ const Prizes = () => {
       <div
         className={`absolute ${
           windowWidth <= 768 ? "top-[10%] mt-10" : "top-20 sm:top-48"
-        } flex flex-col items-center justify-between bg-[#F29F58] text-white font-bold rounded-full border-[5px] border-white transition-all duration-1000 lg:z-20 aspect-square w-[60%] sm:w-[35%] p-6 sm:p-8`}
+        } flex flex-col items-center justify-between bg-[#F29F58] text-white font-bold rounded-full border-[5px] border-white transition-all duration-1000 lg:z-20 aspect-square`}
+        style={{
+          width: windowWidth <= 768 ? "70%" : "35%",
+          height: windowWidth <= 768 ? "35%" : "60%",
+          padding: windowWidth <= 768 ? "1.5rem" : "2rem",
+        }}
       >
         <h1
-          className={` font-bold tracking-wide mt-5 ${
+          className={`font-bold tracking-wide mt-5 ${
             windowWidth <= 768 ? "text-[1rem]" : "text-[2rem] sm:text-[3rem]"
           }`}
         >
           WINNER
         </h1>
-
         <p
-          className={` font-semibold text-[#5E1D24] mb-5 ${
-            windowWidth <= 768 ? "text-[0.8rem]" : "text-[1.2rem] sm:text-[2rem]"
+          className={`font-semibold text-white mb-5 font-mono text-center ${
+            windowWidth <= 768
+              ? "text-[0.7rem]"
+              : "text-[1rem] sm:text-[1.8rem]"
+          }`}
+        >
+          Snag the top spot and claim ultimate bragging rights along with the
+          grand prize - because champions don't just win, they wow!
+        </p>
+        <p
+          className={`font-semibold text-[#5E1D24] mb-5 ${
+            windowWidth <= 768
+              ? "text-[0.8rem]"
+              : "text-[1.2rem] sm:text-[2rem]"
           }`}
         >
           INR 1,00,000
@@ -85,35 +101,33 @@ const Prizes = () => {
       ) : (
         <>
           <SquareCard
-  positionStart="top-[30%] left-[10%] sm:top-[25%] sm:left-[25%]"
-  positionEnd="top-48 left-8 sm:top-48 sm:left-36"
-  bgColor="bg-[#1B1833]"
-  animate={animate && windowWidth >= 768}
-  reverse={true}
-/>
-<SquareCard
-  positionStart="top-[20%] right-[10%] sm:top-[25%] sm:right-[25%]"
-  positionEnd="top-48 right-8 sm:top-48 sm:right-36"
-  bgColor="bg-[#AB4459]"
-  animate={animate && windowWidth >= 768}
-  reverse={false}
-/>
-<SquareCard
-  positionStart="bottom-[25%] left-[10%] sm:bottom-[30%] sm:left-[25%]"
-  positionEnd="bottom-14 left-8 sm:bottom-14 sm:left-36"
-  bgColor="bg-[#AB4459]"
-  animate={animate && windowWidth >= 768}
-  reverse={false}
-/>
-<SquareCard
-  positionStart="bottom-[25%] right-[10%] sm:bottom-[30%] sm:right-[25%]"
-  positionEnd="bottom-14 right-8 sm:bottom-14 sm:right-36"
-  bgColor="bg-[#1B1833]"
-  animate={animate && windowWidth >= 768}
-  reverse={true}
-/>
-
-
+            positionStart="top-[30%] left-[10%] sm:top-[25%] sm:left-[25%]"
+            positionEnd="top-48 left-8 sm:top-48 sm:left-36"
+            bgColor="bg-[#1B1833]"
+            animate={animate && windowWidth >= 768}
+            reverse={true}
+          />
+          <SquareCard
+            positionStart="top-[20%] right-[10%] sm:top-[25%] sm:right-[25%]"
+            positionEnd="top-48 right-8 sm:top-48 sm:right-36"
+            bgColor="bg-[#AB4459]"
+            animate={animate && windowWidth >= 768}
+            reverse={false}
+          />
+          <SquareCard
+            positionStart="bottom-[25%] left-[10%] sm:bottom-[30%] sm:left-[25%]"
+            positionEnd="bottom-14 left-8 sm:bottom-14 sm:left-36"
+            bgColor="bg-[#AB4459]"
+            animate={animate && windowWidth >= 768}
+            reverse={false}
+          />
+          <SquareCard
+            positionStart="bottom-[25%] right-[10%] sm:bottom-[30%] sm:right-[25%]"
+            positionEnd="bottom-14 right-8 sm:bottom-14 sm:right-36"
+            bgColor="bg-[#1B1833]"
+            animate={animate && windowWidth >= 768}
+            reverse={true}
+          />
         </>
       )}
     </div>
@@ -121,7 +135,6 @@ const Prizes = () => {
 };
 
 export default Prizes;
-
 
 const SquareCard = ({
   positionStart,
