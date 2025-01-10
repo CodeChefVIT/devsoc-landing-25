@@ -1,3 +1,4 @@
+// CombinedPage.tsx
 "use client";
 import React, { useState, useEffect } from 'react';
 import LoaderScreen from '@/components/LoaderScreen';
@@ -14,6 +15,8 @@ import bgHomeImage from '../assets/images/Frame 53.png';
 import peekImage from '../assets/images/Group 236.png';
 import AnimatedTimeline from '@/components/Timeline';
 import Timeline from '@/components/Timelinesm';
+import TracksMobile from '@/components/Trackssm';
+
 
 
 const CombinedPage: React.FC = () => {
@@ -38,18 +41,18 @@ const CombinedPage: React.FC = () => {
         <About />
         <div className="relative">
           {isMobile ? <Timeline /> : <AnimatedTimeline />}
-          <div 
-            className="relative" 
-            style={{ 
-              marginTop: isMobile ? '0' : '-110vh'
-            }}
-          >
-            <Tracks />
-            <Sponsors />
-            <Prizes />
-            <Faq />
-            <Footer />
-          </div>
+           <div
+              className="relative"
+                style={{
+                  marginTop: isMobile ? '0' : '-110vh'
+               }}
+            >
+                {isMobile ? <TracksMobile /> : <Tracks />}
+                <Sponsors />
+                <Prizes />
+                <Faq />
+                <Footer />
+           </div>
         </div>
       </div>
     </LoaderScreen>
