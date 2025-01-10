@@ -17,7 +17,6 @@ const About = () => {
                             that scream revolution. Join the fray as we smash barriers and redefine what&apos;s possible.
                         </p>
                     </div>
-                    {/* <div className="flex justify-center lg:w-1/3"> */}
                     <div className="p-4 pt-12">
                         <Image
                             src={about}
@@ -26,7 +25,6 @@ const About = () => {
                             alt="placeholder"
                             className="shadow-lg"
                         />
-                        {/* </div> */}
                     </div>
                 </div>
             </div>
