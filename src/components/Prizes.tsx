@@ -45,83 +45,93 @@ const Prizes = () => {
   }, [windowWidth]);
 
   return (
-    <div
-      id="prizes"
-      ref={sectionRef}
-      className="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#fbead5] overflow-hidden font-yerk"
-    >
-      <h1 className="absolute top-8 left-8 sm:top-16 sm:left-32 text-4xl sm:text-7xl font-bold tracking-wider text-black">
-        PRIZES
-      </h1>
+    <div className="flex justify-center bg-[#fbead5] min-h-[800px] w-full">
       <div
-        className={`absolute ${
-          windowWidth <= 768 ? "top-[10%] mt-10" : "top-20 sm:top-48"
-        } flex flex-col items-center justify-between bg-[#F29F58] text-white font-bold rounded-full border-[5px] border-white transition-all duration-1000 lg:z-20 aspect-square w-[60%] sm:w-[35%] p-6 sm:p-8`}
+        id="prizes"
+        ref={sectionRef}
+        className="relative max-w-[1400px] w-full flex flex-col items-center justify-center bg-[#fbead5] overflow-hidden font-yerk"
       >
-        <h1
-          className={` font-bold tracking-wide mt-5 ${
-            windowWidth <= 768 ? "text-[1rem]" : "text-[2rem] sm:text-[3rem]"
-          }`}
-        >
-          WINNER
+        <h1 className="absolute top-8 left-8 sm:top-16 sm:left-32 text-4xl sm:text-7xl font-bold tracking-wider text-black">
+          PRIZES
         </h1>
-
-        <p
-          className={` font-semibold text-[#5E1D24] mb-5 ${
-            windowWidth <= 768 ? "text-[0.8rem]" : "text-[1.2rem] sm:text-[2rem]"
-          }`}
+        <div
+          className={`absolute ${
+            windowWidth <= 768 ? "top-[8%] mt-10" : "top-20 sm:top-48"
+          } flex flex-col items-center justify-center bg-[#F29F58] text-white font-bold rounded-full border-[5px] border-white transition-all duration-1000 lg:z-20 aspect-square`}
+          style={{
+            width: windowWidth <= 768 ? "70%" : "35%",
+            padding: windowWidth <= 768 ? "1.5rem" : "2rem",
+          }}
         >
-          INR 1,00,000
-        </p>
-      </div>
-
-      {windowWidth <= 768 ? (
-        <div className="absolute bottom-8 grid grid-cols-2 gap-4 w-[90%]">
-          <SquareCard bgColor="bg-[#1B1833]" reverse={true} />
-          <SquareCard bgColor="bg-[#AB4459]" reverse={false} />
-          <SquareCard bgColor="bg-[#AB4459]" reverse={false} />
-          <SquareCard bgColor="bg-[#1B1833]" reverse={true} />
+          <h1
+            className={`font-bold tracking-wide mt-5 ${
+              windowWidth <= 768 ? "text-[1rem]" : "text-[2rem] sm:text-[3rem]"
+            }`}
+          >
+            WINNER
+          </h1>
+          <p
+            className={`font-semibold text-white mb-5 font-mono text-center ${
+              windowWidth <= 768 ? "text-[0.7rem]" : "text-[1rem] sm:text-[1.8rem]"
+            }`}
+          >
+            Snag the top spot and claim ultimate bragging rights along with the
+            grand prize - because champions don't just win, they wow!
+          </p>
+          <p
+            className={`font-semibold text-[#5E1D24] mb-5 ${
+              windowWidth <= 768 ? "text-[0.8rem]" : "text-[1.2rem] sm:text-[2rem]"
+            }`}
+          >
+            INR 1,00,000
+          </p>
         </div>
-      ) : (
-        <>
-          <SquareCard
-  positionStart="top-[30%] left-[10%] sm:top-[25%] sm:left-[25%]"
-  positionEnd="top-48 left-8 sm:top-48 sm:left-36"
-  bgColor="bg-[#1B1833]"
-  animate={animate && windowWidth >= 768}
-  reverse={true}
-/>
-<SquareCard
-  positionStart="top-[20%] right-[10%] sm:top-[25%] sm:right-[25%]"
-  positionEnd="top-48 right-8 sm:top-48 sm:right-36"
-  bgColor="bg-[#AB4459]"
-  animate={animate && windowWidth >= 768}
-  reverse={false}
-/>
-<SquareCard
-  positionStart="bottom-[25%] left-[10%] sm:bottom-[30%] sm:left-[25%]"
-  positionEnd="bottom-14 left-8 sm:bottom-14 sm:left-36"
-  bgColor="bg-[#AB4459]"
-  animate={animate && windowWidth >= 768}
-  reverse={false}
-/>
-<SquareCard
-  positionStart="bottom-[25%] right-[10%] sm:bottom-[30%] sm:right-[25%]"
-  positionEnd="bottom-14 right-8 sm:bottom-14 sm:right-36"
-  bgColor="bg-[#1B1833]"
-  animate={animate && windowWidth >= 768}
-  reverse={true}
-/>
 
-
-        </>
-      )}
+        {windowWidth <= 768 ? (
+          <div className="absolute bottom-8 grid grid-cols-2 gap-4 w-[90%]">
+            <SquareCard bgColor="bg-[#1B1833]" reverse={true} />
+            <SquareCard bgColor="bg-[#AB4459]" reverse={false} />
+            <SquareCard bgColor="bg-[#AB4459]" reverse={false} />
+            <SquareCard bgColor="bg-[#1B1833]" reverse={true} />
+          </div>
+        ) : (
+          <>
+            <SquareCard
+              positionStart="top-[30%] left-[10%] sm:top-[25%] sm:left-[25%]"
+              positionEnd="top-48 left-8 sm:top-48 sm:left-36"
+              bgColor="bg-[#1B1833]"
+              animate={animate && windowWidth >= 768}
+              reverse={true}
+            />
+            <SquareCard
+              positionStart="top-[20%] right-[10%] sm:top-[25%] sm:right-[25%]"
+              positionEnd="top-48 right-8 sm:top-48 sm:right-36"
+              bgColor="bg-[#AB4459]"
+              animate={animate && windowWidth >= 768}
+              reverse={false}
+            />
+            <SquareCard
+              positionStart="bottom-[25%] left-[10%] sm:bottom-[30%] sm:left-[25%]"
+              positionEnd="bottom-14 left-8 sm:bottom-14 sm:left-36"
+              bgColor="bg-[#AB4459]"
+              animate={animate && windowWidth >= 768}
+              reverse={false}
+            />
+            <SquareCard
+              positionStart="bottom-[25%] right-[10%] sm:bottom-[30%] sm:right-[25%]"
+              positionEnd="bottom-14 right-8 sm:bottom-14 sm:right-36"
+              bgColor="bg-[#1B1833]"
+              animate={animate && windowWidth >= 768}
+              reverse={true}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 };
 
 export default Prizes;
-
 
 const SquareCard = ({
   positionStart,
