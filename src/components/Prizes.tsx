@@ -76,7 +76,7 @@ const Prizes = () => {
             }`}
           >
             Snag the top spot and claim ultimate bragging rights along with the
-            grand prize - because champions don't just win, they wow!
+            grand prize - because champions don&apos;t just win, they wow!
           </p>
           <p
             className={`font-semibold text-[#5E1D24] mb-5 ${
