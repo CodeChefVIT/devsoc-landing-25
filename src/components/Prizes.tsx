@@ -49,14 +49,16 @@ const Prizes = () => {
       <div
         id="prizes"
         ref={sectionRef}
-        className="relative max-w-[1400px] w-full flex flex-col items-center justify-center bg-[#fbead5] overflow-hidden font-yerk"
+        className="relative max-w-[1400px] w-full flex flex-col items-center justify-center bg-[#fbead5] overflow-hidden font-yerk "
       >
-        <h1 className="absolute top-8 left-8 sm:top-16 sm:left-32 text-4xl sm:text-7xl font-bold tracking-wider text-black">
+        <h1 className={`absolute top-8 left-8 sm:top-16 sm:left-32 text-4xl sm:text-7xl font-bold tracking-wider text-black${
+            windowWidth <= 768 ? "top-[2%] mt-10" : ""
+          }`}>
           PRIZES
         </h1>
         <div
           className={`absolute ${
-            windowWidth <= 768 ? "top-[8%] mt-10" : "top-20 sm:top-48"
+            windowWidth <= 768 ? "top-[15%] mt-10" : "top-20 sm:top-48"
           } flex flex-col items-center justify-center bg-[#F29F58] text-white font-bold rounded-full border-[5px] border-white transition-all duration-1000 lg:z-20 aspect-square`}
           style={{
             width: windowWidth <= 768 ? "70%" : "35%",
