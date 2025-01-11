@@ -35,6 +35,9 @@ export default function Footer() {
   };
   return (
     <div>
+      <div className="font-yerk text-4xl text-center text-black bg-white py-6 h-fit "> 
+        LMAO   {/*just keeping it*/ }
+      </div> 
       <div
         style={footerStyle}
         className="pt-[140px] md:pt-[300px] grid grid-rows-[80%_20%] font-yerk items-baseline"
@@ -201,9 +204,6 @@ export default function Footer() {
             <p>2025 CODECHEF</p>
           </div>
         </div>
-      </div>
-      <div className="font-yerk text-4xl text-center text-black bg-white py-6 h-fit ">
-        LMAO
       </div>
     </div>
   );
