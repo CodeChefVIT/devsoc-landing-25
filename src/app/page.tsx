@@ -1,5 +1,6 @@
-"use client";
-import React, { useState, useEffect } from 'react';
+'use client';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import LoaderScreen from '@/components/LoaderScreen';
 import Tracks from '@/components/tracks';
 import Sponsors from '@/components/Sponsors';
@@ -16,44 +17,94 @@ import AnimatedTimeline from '@/components/Timeline';
 import Timeline from '@/components/Timelinesm';
 import TracksMobile from '@/components/Trackssm';
 
-
-
 const CombinedPage: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const initialSectionsRef = useRef<HTMLDivElement>(null);
+  const postTimelineRef = useRef<HTMLDivElement>(null);
+  const [timelineComplete, setTimelineComplete] = useState(false);
+
+  // Scroll progress for initial sections (before Timeline)
+  const { scrollYProgress: initialProgress } = useScroll({
+    target: initialSectionsRef,
+    offset: ["start start", "end end"]
+  });
+
+  // Separate scroll tracking for post-Timeline sections
+  const { scrollYProgress: postTimelineProgress } = useScroll({
+    target: postTimelineRef,
+    offset: ["start start", "end end"]
+  });
+
+  // Initial sections color transition
+  const initialBackgroundColor = useTransform(
+    initialProgress,
+    [0, 0.5, 1],
+    ["#1B4965", "#A85059", "#A85059"]
+  );
+
+  // Post-Timeline color transition
+  const postTimelineBackgroundColor = useTransform(
+    postTimelineProgress,
+    [0, 0.3, 0.6, 0.8, 1],
+    ["#48634A", "#60A2BB", "#fbead5", "#125A76", "#125A76"]
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!postTimelineRef.current) return;
+      const rect = postTimelineRef.current.getBoundingClientRect();
+      const isInView = rect.top <= window.innerHeight;
+      if (isInView !== timelineComplete) {
+        setTimelineComplete(isInView);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [timelineComplete]);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.matchMedia('(max-width: 768px)').matches);
     };
 
-    handleResize(); // Initial check on mount
-    window.addEventListener('resize', handleResize); // Check on resize
-
-    return () => window.removeEventListener('resize', handleResize); // Cleanup
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
     <LoaderScreen>
-      <div className='overflow-hidden bg-[#A85059]'>
-        <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
-        <SlantedBanner  sign='+' starsImageUrl={frameImage} />
-        <About />
+      <div className="overflow-hidden">
+        <motion.div 
+          ref={initialSectionsRef}
+          style={{ backgroundColor: initialBackgroundColor }}
+        >
+          <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
+          <SlantedBanner sign='+' starsImageUrl={frameImage} />
+          <About />
+        </motion.div>
+
+        {/* Timeline section with its own background handling */}
         <div className="relative">
           {isMobile ? <Timeline /> : <AnimatedTimeline />}
-           <div
-              className="relative"
-                style={{
-                  marginTop: isMobile ? '0' : '-110vh'
-               }}
-            >
-                {isMobile ? <TracksMobile /> : <Tracks />}
-                <Sponsors />
-                <Prizes />
-                <Faq />
-                <SlantedBanner  sign='-'  starsImageUrl={frameImage} />
-                <Footer />
-           </div>
         </div>
+
+        {/* Post-Timeline sections */}
+        <motion.div
+          ref={postTimelineRef}
+          style={{
+            backgroundColor: postTimelineBackgroundColor,
+            marginTop: isMobile ? '0' : '-110vh'
+          }}
+        >
+          {isMobile ? <TracksMobile /> : <Tracks />}
+          <Sponsors />
+          <Prizes />
+          <Faq />
+          <SlantedBanner sign='-' starsImageUrl={frameImage} />
+          <Footer />
+        </motion.div>
       </div>
     </LoaderScreen>
   );

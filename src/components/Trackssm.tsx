@@ -69,7 +69,15 @@ const TracksMobile: React.FC = () => {
     };
 
     return (
-        <div style={{ position: "relative", width: "100%", minHeight: "100vh", overflow: "hidden", backgroundColor: '#48634A', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            minHeight: "100vh", 
+            overflow: "hidden", 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center' 
+        }}>
            <div
                 style={{
                     position: 'absolute',
