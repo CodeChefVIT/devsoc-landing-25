@@ -1,4 +1,3 @@
-// TracksMobile.tsx
 'use client';
 
 import React, { useState, useEffect, useRef } from "react";
@@ -121,7 +120,7 @@ const TracksMobile: React.FC = () => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '10px',
+                        gap: '30px',
                         justifyContent: 'center',
                         marginTop: '20px',
                         paddingLeft: '20px',
@@ -129,6 +128,7 @@ const TracksMobile: React.FC = () => {
                         width: '100%',
                     }}
                 >
+                    
                     {Object.keys(buttonContent).map((buttonText, index) => (
                         <button
                             key={index}
@@ -189,12 +189,14 @@ const TracksMobile: React.FC = () => {
                         zIndex: 1000,
                     }}
                 >
+                    
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: isClosing ? 0 : 1, scale: isClosing ? 0.5 : 1 }}
                         transition={{ duration: 0.3 }}
                         style={{ position: 'relative', width: '100%', height: '100%' }}
                     >
+                                   
                         <div style={{
                             position: "absolute",
                             top: "10px",
@@ -204,15 +206,39 @@ const TracksMobile: React.FC = () => {
                             borderRadius: "50%",
                             backgroundColor: "#fff"
                         }} />
-                        <div style={{
-                            position: "absolute",
-                            top: "10px",
-                            right: "10px",
-                            width: "10px",
-                            height: "10px",
-                            borderRadius: "50%",
-                            backgroundColor: "#fff"
-                        }} />
+                       
+<button
+                onClick={handleClose}
+                style={{
+                    position: 'absolute',
+                    top: '5px',
+                    right:'10px',
+                    transform: 'translateX(-50%)',
+                    width: '10px',
+                    height: '10px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'right',
+                    border: 'none',
+                    borderRadius: '50%',
+                    color: '#FFF',
+                    cursor: 'pointer',
+                    fontSize: '18px',
+                    fontWeight: 'bold',
+                    zIndex: 1100,
+                    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)',
+                    transition: 'all 0.3s ease-in-out',
+                }}
+                onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#D9534F'; 
+                }}
+                onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#994952'; 
+                }}
+            >
+                ×
+            </button>
+
                         <div style={{
                             position: "absolute",
                             bottom: "10px",

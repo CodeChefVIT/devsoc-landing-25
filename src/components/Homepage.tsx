@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import devsoc from "../assets/images/DEVSOC.png";
+import discord from "../assets/images/discord.svg";
+
 import HomeRIve from "./HomeRIve";
 import MobileRive from "./MobileRive";
 
@@ -17,6 +19,9 @@ const HomePage: React.FC<HomePageProps> = ({
   mascotPeekImage,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isClickeddis, setIsClickeddis] = useState(false);
+  const [isHeld, setIsHeld] = useState(false);
+  const [isClickedreg, setIsClickedreg] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,53 +46,69 @@ const HomePage: React.FC<HomePageProps> = ({
           priority
         />
 
-      <div className="relative z-10 w-full mx-auto top-4 sm:top-6 md:top-10">
+      <div className="relative z-10 w-full   ">
         {/* Header Section */}
         <div className="w-full">
           <div className="w-full h-1 bg-white" />
 
-          <div className="w-full bg-[#2682A6] py-3 sm:py-4 md:py-6">
+          <div className="w-full bg-[#2682A6] py-3 pb-6 sm:py-4 md:pb-6">
             {/* Responsive Header Container */}
-            <div className="max-w-7xl mx-auto px-4  flex flex-col lg:flex-row sm:justify-between justify-center items-center space-y-4 sm:space-y-3 sm:space-x-3">
+            <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row sm:justify-between justify-center items-center space-y-4 sm:space-y-3 sm:space-x-3">
+              {/* Button Container Left  - Visible on large screens*/}
               <div
-                className="rounded-lg"
+                onClick={() => setIsClickeddis(!isClickeddis)}
+                className={`hidden lg:block rounded-lg transition-all  ease-in-out mt-3  ${
+                  isClickeddis ? "translate-x-[4px] translate-y-[4px]" : ""
+                }`}
                 style={{
-                  boxShadow: "4px 4px 0px rgba(0, 0, 0, 0.4)", // Rounded shadow with reduced opacity
+                  boxShadow: isClickeddis
+                    ? "none"
+                    : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                 }}
               >
                 <AnimatedButton
                   text="Discord"
                   mascotImage={mascotPeekImage}
-                  className="w-20 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
+                  className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
+                  icon={discord}
                 />
               </div>
 
-              <div className="flex  items-center sm:items-start sm:my-0 my-2">
-                <span
-                  className="text-[46px] sm:text-7xl md:text-[72px] text-[#FF7657] font-yerk tracking-wider relative"
-                  style={{
-                    textShadow: "4px 4px 0px #1B4965",
-                  }}
-                >
-                  DEVSOC
-                </span>
-                <span
-                  className=" font-yerk text-[8px] mt-1 md:mt-2 sm:mt-2 sm:text-[14px] md:text-[14px]  text-[#FF6B6B]  ml-[2px] sm:ml-2"
-                  style={{
-                    writingMode: "vertical-rl",
-                    textOrientation: "mixed",
-                    transform: "rotate(360deg)",
-                  }}
-                >
-                  <span className="text-[#FF7657]">2k</span>
-                  <span className="text-[#FF9737]">25</span>
-                </span>
+              {/* Text Section - Always on top on small screens*/}
+              <div className="flex flex-col items-center lg:items-center w-full lg:w-auto">
+                <div className="flex items-center  sm:items-start  md:my-2  lg:my-0">
+                  <span
+                    className="text-[46px] sm:text-7xl  md:text-[72px] text-[#FF7657] font-yerk tracking-wider relative"
+                    style={{
+                      textShadow: "4px 4px 0px #1B4965",
+                    }}
+                  >
+                    DEVSOC
+                  </span>
+                  <span
+                    className=" font-yerk text-[8px] mt-1 md:mt-2 sm:mt-2 sm:text-[14px] md:text-[14px]  text-[#FF6B6B]  ml-[2px] sm:ml-2"
+                    style={{
+                      writingMode: "vertical-rl",
+                      textOrientation: "mixed",
+                      transform: "rotate(360deg)",
+                    }}
+                  >
+                    <span className="text-[#FF7657]">2k</span>
+                    <span className="text-[#FF9737]">25</span>
+                  </span>
+                </div>
               </div>
 
+              {/* Button Container Right - Visible on large screens*/}
               <div
-                className="rounded-lg"
+                onClick={() => setIsClickedreg(!isClickedreg)}
+                className={`hidden lg:block rounded-lg transition-all duration-300 ease-in-out   ${
+                  isClickedreg ? "translate-x-[4px] translate-y-[4px]" : ""
+                }`}
                 style={{
-                  boxShadow: "4px 4px 0px rgba(0, 0, 0, 0.4)", // Rounded shadow with reduced opacity
+                  boxShadow: isClickedreg
+                    ? "none"
+                    : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                 }}
               >
                 <AnimatedButton
@@ -97,6 +118,47 @@ const HomePage: React.FC<HomePageProps> = ({
                   icon={devsoc}
                 />
               </div>
+
+              {/* Buttons Section - On bottom on small screens, in a line*/}
+              <div className="lg:hidden flex items-center justify-center space-x-5 w-full">
+                <div
+                  onClick={() => setIsClickeddis(!isClickeddis)}
+                  className={`rounded-lg transition-all  ease-in-out   ${
+                    isClickeddis ? "translate-x-[4px] translate-y-[4px]" : ""
+                  }`}
+                  style={{
+                    boxShadow: isClickeddis
+                      ? "none"
+                      : "4px 4px 0px rgba(0, 0, 0, 0.4)", // Toggle shadow
+                  }}
+                >
+                  <AnimatedButton
+                    text="Discord"
+                    mascotImage={mascotPeekImage}
+                    className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
+                    icon={discord}
+                  />
+                </div>
+
+                <div
+                  onClick={() => setIsClickedreg(!isClickedreg)}
+                  className={`rounded-lg transition-all duration-300 ease-in-out  ${
+                    isClickedreg ? "translate-x-[4px] translate-y-[4px]" : ""
+                  }`}
+                  style={{
+                    boxShadow: isClickedreg
+                      ? "none"
+                      : "4px 4px 0px rgba(0, 0, 0, 0.4)", // Toggle shadow
+                  }}
+                >
+                  <AnimatedButton
+                    text="Register"
+                    mascotImage={mascotPeekImage}
+                    className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
+                    icon={devsoc}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -105,7 +167,7 @@ const HomePage: React.FC<HomePageProps> = ({
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6 md:py-8">
-          <div className="flex flex-col items-center justify-center min-h-[600px] sm:min-h-[700px] md:min-h-[800px] relative">
+          <div className="flex flex-col items-center justify-center mb-44 relative">
             {isMobile ? <MobileRive /> : <HomeRIve />}
             {/* <div className="absolute top-2 sm:top-3 md:top-4 left-1/2 transform -translate-x-1/2 text-white text-base sm:text-xl md:text-2xl">
                             Sponsor Information Here
@@ -137,9 +199,10 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
       initial="initial"
     >
       <motion.div
-        className="bg-[#FF7657] px-1 py-2 sm:py-3 md:py-4 rounded transition-all duration-200"
-        initial={{ y: 0, filter: "drop-shadow(4px 4px 0px #000000)" }}
-        whileHover={{ y: 2, filter: "drop-shadow(0px 0px 0px #000000)" }}
+        className="bg-[#FF7657] px-1 py-2 sm:py-3 md:py-4 rounded transition-all duration-200 "
+        style={{ boxShadow: "4px 4px 0px rgba(0, 0, 0, 0.4)" }}
+        initial={{ y: 0 }}
+        whileHover={{ y: 2 }}
       >
         <motion.div
           className="flex items-center justify-center relative z-10 overflow-hidden"
@@ -154,9 +217,11 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
             <Image
               src={icon}
               alt="Button Icon"
-              width={12}
-              height={12}
-              className="mr-1 sm:mr-2 w-3 sm:w-4 md:w-5"
+              width={12} // Adjust width
+              height={12} // Adjust height
+              className={`mr-1 sm:mr-2 
+      ${text === "Discord" ? "w-3 sm:w-4 md:w-6 " : "w-3 sm:w-4 md:w-6"}
+    `}
             />
           )}
           <span

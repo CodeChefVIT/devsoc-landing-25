@@ -45,8 +45,8 @@ const CombinedPage: React.FC = () => {
   // Post-Timeline color transition
   const postTimelineBackgroundColor = useTransform(
     postTimelineProgress,
-    [0, 0.3, 0.6, 0.8, 1],
-    ["#48634A", "#60A2BB", "#fbead5", "#125A76", "#125A76"]
+    [0, 0.5, 0.6, 0.7, 0.8, 1],
+    ["#000000","#48634A", "#60A2BB", "#fbead5", "#125A76", "#125A76"]
   );
 
   useEffect(() => {

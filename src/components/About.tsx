@@ -4,7 +4,7 @@ import about from '@/assets/about.png'
 
 const About = () => {
     return (
-        <div id='about' className="relative z-0 bg-[url('/assets/about-bg.svg')] bg-center bg-cover bg-no-repeat min-h-screen w-full -mt-12">
+        <div id='about' className="pt-[10em] md:pt-[15em] relative z-0 bg-[url('/assets/about-bg.svg')] bg-center bg-cover bg-no-repeat min-h-screen w-full -mt-12">
             <div className="absolute inset-0 bg-opacity-20 z-10"></div>
             <div className="relative z-10 flex flex-col min-h-screen px-6 lg:px-16 pt-24">
                 <h1 className="lg:text-[75px] text-[45px] text-[#FF9737] text-center lg:text-left font-yerk mb-7">About</h1>

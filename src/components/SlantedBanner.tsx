@@ -63,7 +63,7 @@ const SlantedBanner: React.FC<SlantedBannerProps> = ({
   const sponsorText = Array(40).fill("Sponsored by SPONSOR").join(" • ");
 
   return (
-    <div className="h-0 relative flex items-center ">
+    <div className="h-0 relative flex items-center mt-16">
       <div
         ref={bruceBanner}
         className={`absolute  z-10 w-[150%] h-[180px] sm:h-[220px] md:h-[340px] overflow-hidden ${className}`}
