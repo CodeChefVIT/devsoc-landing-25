@@ -7,7 +7,7 @@ export default function MovileRive() {
 
 
   return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
+    <div style={{ width: '100vw', height: '70vh', overflow: 'hidden', position: 'relative' }}>
       <Rive
         src="/litecloud.riv"
         stateMachines={["State Machine 1"]}
