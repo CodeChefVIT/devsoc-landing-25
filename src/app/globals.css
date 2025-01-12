@@ -36,3 +36,43 @@ body {
 }
 
 
+.custom-shape-divider-top-1736700184 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1736700184 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 85px;
+}
+
+.custom-shape-divider-top-1736700184 .shape-fill {
+  fill: #FFFFFF;
+}
+
+.custom-shape-divider-bottom-1736700813 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1736700813 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 85px;
+}
+
+.custom-shape-divider-bottom-1736700813 .shape-fill {
+  fill: #FFFFFF;
+}
