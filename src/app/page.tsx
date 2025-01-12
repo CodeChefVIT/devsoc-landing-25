@@ -15,6 +15,7 @@ import peekImage from '../assets/images/Group 236.png';
 import AnimatedTimeline from '@/components/Timeline';
 import Timeline from '@/components/Timelinesm';
 import TracksMobile from '@/components/Trackssm';
+import Gallery from '@/components/Gallery';
 
 
 
@@ -38,6 +39,7 @@ const CombinedPage: React.FC = () => {
         <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
         <SlantedBanner  sign='+' starsImageUrl={frameImage} />
         <About />
+        <Gallery/>
         <div className="relative">
           {isMobile ? <Timeline /> : <AnimatedTimeline />}
            <div
