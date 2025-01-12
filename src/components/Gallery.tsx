@@ -10,6 +10,7 @@ import image4 from "../assets/images/img4.png";
 import image6 from "../assets/images/img6.png";
 import image8 from "../assets/images/img8.png";
 import image10 from "../assets/images/img10.png";
+import Image from "next/image";
 
 const Gallery = () => {
   const images = [
@@ -95,10 +96,11 @@ const Gallery = () => {
                 transform: `scaleX(${scale}) rotateY(${rotate}deg)`,
               }}
             >
-              <img
-                src={image.src instanceof Object ? image.src.src : image.src}
-                className="w-full h-full object-cover"
-              />
+              <Image
+  src={image.src}
+  alt={"Image"}
+  className="w-full h-full object-cover "
+/>
             </div>
           );
         })}
