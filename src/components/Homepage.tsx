@@ -167,7 +167,7 @@ const HomePage: React.FC<HomePageProps> = ({
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6 md:py-8">
-          <div className="flex flex-col items-center justify-center min-h-[600px] sm:min-h-[700px] md:min-h-[800px] relative">
+          <div className="flex flex-col items-center justify-center mb-44 xl:mb-32 relative">
             {isMobile ? <MobileRive /> : <HomeRIve />}
             {/* <div className="absolute top-2 sm:top-3 md:top-4 left-1/2 transform -translate-x-1/2 text-white text-base sm:text-xl md:text-2xl">
                             Sponsor Information Here
