@@ -91,16 +91,16 @@ const Tracks: React.FC = () => {
       overflowX: 'hidden' 
     }}>
       <Image
-        src="/tracks.svg"
+        src="/tracksnew.svg"
         alt="Tracks"
-        width={300}
+        width={400}
         height={100}
         style={{
           position: 'absolute',
           flexShrink: 0,
           borderRadius: '12px',
-          opacity: 0.7,
-          left: '565px',
+          opacity: 2,
+          left: '505px',
           top: '380px',
           zIndex: 1,
         }}
@@ -126,7 +126,7 @@ const Tracks: React.FC = () => {
         <h1
           style={{
             display: 'flex',
-            width: '570px',
+            width: '688px',
              maxWidth: '90%',
             height: '170px',
             flexDirection: 'column',
