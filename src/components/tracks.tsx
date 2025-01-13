@@ -114,7 +114,7 @@ const Tracks: React.FC = () => {
           height: "10000px",
           flexShrink: 0,
           top: "-5000px",
-          left: "300px",
+          left: "350px",
           zIndex: 1,
           ...(isInView ? animatedTrackStyle : initialTrackStyle),
         }}
@@ -128,7 +128,7 @@ const Tracks: React.FC = () => {
             display: 'flex',
             width: '570px',
              maxWidth: '90%',
-            height: '192px',
+            height: '170px',
             flexDirection: 'column',
             justifyContent: 'center',
             color: '#FFF',
@@ -149,9 +149,9 @@ const Tracks: React.FC = () => {
           style={{
             display: 'flex',
             flexDirection: 'column',
-             gap: '40px',
+             gap: '35px',
             justifyContent: 'center',
-           marginTop: '20px',
+           marginTop: '10px',
            marginLeft: '150px',
           }}
         >
