@@ -20,7 +20,6 @@ const HomePage: React.FC<HomePageProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isClickeddis, setIsClickeddis] = useState(false);
-  const [isHeld, setIsHeld] = useState(false);
   const [isClickedreg, setIsClickedreg] = useState(false);
 
   useEffect(() => {
@@ -86,7 +85,7 @@ const HomePage: React.FC<HomePageProps> = ({
                     DEVSOC
                   </span>
                   <span
-                    className=" font-yerk text-[8px] mt-1 md:mt-2 sm:mt-2 sm:text-[14px] md:text-[14px]  text-[#FF6B6B]  ml-[2px] sm:ml-2"
+                    className=" font-yerk text-[8px] -mt-1 sm:mt-1 2xl:mt-2 sm:text-[14px] md:text-[14px]  text-[#FF6B6B]  ml-[2px] sm:ml-2"
                     style={{
                       writingMode: "vertical-rl",
                       textOrientation: "mixed",
@@ -167,7 +166,7 @@ const HomePage: React.FC<HomePageProps> = ({
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6 md:py-8">
-          <div className="flex flex-col items-center justify-center mb-44 relative">
+          <div className="flex flex-col items-center justify-center mb-44 xl:mb-32 relative">
             {isMobile ? <MobileRive /> : <HomeRIve />}
             {/* <div className="absolute top-2 sm:top-3 md:top-4 left-1/2 transform -translate-x-1/2 text-white text-base sm:text-xl md:text-2xl">
                             Sponsor Information Here

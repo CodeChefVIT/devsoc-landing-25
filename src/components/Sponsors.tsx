@@ -15,15 +15,15 @@ export default function Sponsors() {
     ]);
 
     return (
-            <div className="bg-cover bg-no-repeat min-h-screen">
-            <h1 className="font-yerk text-[35px] sm:text-[75px] lg:text-left p-10 text-black text-center">
+        <div className=" bg-cover bg-no-repeat min-h-screen">
+            <h1 className="font-yerk text-[35px] sm:text-[75px] lg:text-left p-10 pb-3 pt-4 text-black text-center">
                 Sponsors
             </h1>
-            <div className="flex flex-wrap justify-center gap-10">
+            <div className="flex flex-wrap justify-center gap-10 pb-8">
                 {sponsors.map((sponsor, index) => (
                     <div
                         key={index}
-                        className="w-[50%] flex justify-center sm:w-[32%] mb-8"
+                        className="w-[50%] flex justify-center sm:w-[32%] "
                     >
                         <Card name={sponsor.name} image={sponsor.image} />
                     </div>
