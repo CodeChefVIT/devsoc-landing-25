@@ -15,7 +15,7 @@ export default function Sponsors() {
     ]);
 
     return (
-        <div className=" bg-cover bg-no-repeat min-h-screen">
+        <div className="mt-8 bg-cover bg-no-repeat min-h-screen">
             <h1 className="font-yerk text-[35px] sm:text-[75px] lg:text-left p-14 pb-3 pt-4 text-black text-center">
                 Sponsors
             </h1>
