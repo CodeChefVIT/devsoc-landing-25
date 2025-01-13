@@ -85,7 +85,7 @@ const HomePage: React.FC<HomePageProps> = ({
                     DEVSOC
                   </span>
                   <span
-                    className=" font-yerk text-[8px] mt-1 md:mt-2 sm:mt-2 sm:text-[14px] md:text-[14px]  text-[#FF6B6B]  ml-[2px] sm:ml-2"
+                    className=" font-yerk text-[8px] -mt-1 sm:mt-1 2xl:mt-2 sm:text-[14px] md:text-[14px]  text-[#FF6B6B]  ml-[2px] sm:ml-2"
                     style={{
                       writingMode: "vertical-rl",
                       textOrientation: "mixed",
