@@ -10,14 +10,37 @@ import "react-vertical-timeline-component/style.min.css";
 import "./timeline.css";
 
 const events = [
-  { time: "11:00 am", event: "Hacking Starts" },
-  { time: "2:30 pm", event: "Round 2" },
-  { time: "6:00 pm", event: "Break" },
-  { time: "8:30 pm", event: "Debugging Session" },
-  { time: "11:00 am", event: "Hacking Starts" },
-  { time: "2:30 pm", event: "Round 2" },
-  { time: "6:00 pm", event: "Break" },
-  { time: "8:30 pm", event: "Debugging Session" },
+  // Day 1 - 03.02.2025
+  { time: "9:00 am - 3/2/25", event: "Doors open and check-in" },
+  { time: "10:00 am", event: "Opening Ceremony" },
+  { time: "11:00 am", event: "Hacking Session" },
+  { time: "1:00 pm", event: "Lunch Break" },
+  { time: "2:00 pm", event: "Hacking Session" },
+  { time: "3:30 pm", event: "Informative Tech Session - 1" },
+  { time: "4:30 pm", event: "Hacking Session" },
+  { time: "7:00 pm", event: "Dinner Break" },
+  { time: "9:00 pm", event: "Hacking Session" },
+  { time: "10:00 pm", event: "Engagement Activity" },
+  { time: "11:30 pm", event: "Review 1" },
+
+  // Day 2 - 04.02.2025
+  { time: "2:30 am - 4/2/25", event: "Hacking Session" },
+  { time: "6:00 am", event: "Breakfast Break" },
+  { time: "9:00 am", event: "Hacking Session" },
+  { time: "12:00 pm", event: "Lunch Break" },
+  { time: "2:00 pm", event: "Hacking Session" },
+  { time: "4:00 pm", event: "Informative Tech Session - 2" },
+  { time: "5:30 pm", event: "Hacking Session" },
+  { time: "7:00 pm", event: "Dinner Break" },
+  { time: "9:00 pm", event: "Hacking Session" },
+
+  // Day 3 - 05.02.2025
+  { time: "12:00 am - 5/2/25", event: "Review 2" },
+  { time: "3:00 am", event: "Hacking Session" },
+  { time: "5:30 am", event: "Final Submission" },
+  { time: "6:00 am", event: "Breakfast Break" },
+  { time: "9:00 am", event: "Final Pitches" },
+  { time: "11:00 am", event: "Prize Distribution and Closing Ceremony" },
 ];
 
 function Timeline() {
@@ -175,7 +198,7 @@ function Timeline() {
         >
           Timeline
         </motion.div>
-        <motion.div
+        {/* <motion.div
           className={`mb-20 ml-2 relative z-10 text-3xl font-yerk font-bold ${
             isNightMode ? "text-white" : "text-[#242323]"
           }`}
@@ -184,9 +207,9 @@ function Timeline() {
            }}
         >
           Day 2
-        </motion.div>
+        </motion.div> */}
 
-        <div className="timeline-container relative z-10" ref={timelineRef}>
+        <div className="timeline-container relative z-10 mt-6" ref={timelineRef}>
           <div
             className="timeline-line"
             style={{
@@ -209,7 +232,7 @@ function Timeline() {
                      border: `4px solid ${isNightMode ? "white" : "black"}`,
                    boxShadow: "none",
                     borderRadius: "25px",
-                    height: "100px",
+                    height: "fit-content",
                     minWidth: "300px",
                     transition: 'background-color 0.5s ease-in-out, border-color 0.5s ease-in-out',
                    }}
@@ -232,7 +255,7 @@ function Timeline() {
                   {event.time}
                 </motion.h3>
                  <motion.h3
-                   className={`vertical-timeline-element-subtitle font-mono text-2xl pl-3 content-subtitle whitespace-nowrap ${
+                   className={`vertical-timeline-element-subtitle font-mono text-2xl pl-3 content-subtitle ${
                       isNightMode ? "text-black" : "text-black"
                     }`}
                       style={{
