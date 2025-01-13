@@ -11,8 +11,8 @@ const About = () => {
                 <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between w-full gap-8">
                     <div className="font-mono text-center lg:text-left text-[#FF9737] text-[24px] lg:text-[40px] lg:w-2/3">
                         <p>
-                            DEVSOC'25 ignites the tech scene with a blaze of innovation, where yesterday&apos;s hurdles are today&apos;s playground.
-                            In its fourth edition, this boundary-pushing hackathon transcends limits, merging AI and the metaverse to
+                            DEVSOC&apos;25 ignites the tech scene with a blaze of innovation, where yesterday&apos;s hurdles are today&apos;s playground.
+                            In its sixth edition, this boundary-pushing hackathon transcends limits, merging AI and the metaverse to
                             confront real-world chaos head-on. With diverse minds colliding, we&apos;re not just coding; we&apos;re crafting solutions
                             that scream revolution. Join the fray as we smash barriers and redefine what&apos;s possible.
                         </p>

@@ -45,13 +45,13 @@ const Prizes = () => {
   }, [windowWidth]);
 
   return (
-    <div className="flex justify-center min-h-[800px] w-full">
+    <div className="flex justify-center min-h-[800px] min-[1700px]:h-screen w-full">
       <div
           id="prizes"
           ref={sectionRef}
-          className="relative max-w-[1400px] w-full flex flex-col items-center justify-center overflow-hidden font-yerk"
+          className="relative w-full flex flex-col items-center justify-center overflow-hidden font-yerk"
       >
-        <h1 className={`absolute top-8 left-8 sm:top-16 sm:left-32 text-4xl sm:text-7xl font-bold tracking-wider text-black${
+        <h1 className={`absolute top-8 left-8 sm:top-16 sm:left-14 text-4xl sm:text-7xl font-bold tracking-wider text-black${
             windowWidth <= 768 ? "top-[2%] mt-10" : ""
           }`}>
           PRIZES

@@ -56,18 +56,18 @@ const Gallery = () => {
 
   return (
     <div
-      className="relative h-[119vh] bg-cover bg-center"
+      className="flex flex-col h-[119vh] 2xl:h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${background.src})` }}
     >
       {/* <div className="absolute inset-0 bg-beige/90 z-10" /> */}
-      <div className="flex justify-center md:justify-start lg:pl-12 pt-8">
+      <div className="flex justify-center md:justify-start lg:pl-8 absolute left-0 right-0 pt-8">
         <div className="bg-[#FFE6D4] w-fit">
           <h1 className="text-4xl md:text-7xl font-bold text-black font-yerk p-4">
             GALLERY
           </h1>
         </div>
       </div>
-      <div className="flex items-center pt-12 md:pt-5 2xl:pt-24 justify-center text-black">
+      <div className="text-black my-auto">
         <div className="relative flex items-center justify-center w-full">
         <div className="custom-shape-divider-top-1736700184 z-30">
             <svg

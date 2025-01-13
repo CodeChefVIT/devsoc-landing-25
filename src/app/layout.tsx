@@ -16,28 +16,28 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.devsoc.codechefvit.com/"),
-  title: "DEVSOC&apos;25",
+  title: "DEVSOC'25",
   description:
     "DEVSOC-25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
   icons: [{ rel: "icon", url: "/DEVSOC.png" }],
   openGraph: {
-    title: "DEVSOC&apos;25",
+    title: "DEVSOC'25",
     images: [{ url: "/devsoc_portal.png" }],
     url: "https://www.devsoc.codechefvit.com/",
     type: "website",
     description:
       "DEVSOC-25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
-    siteName: "DEVSOC&apos;25",
+    siteName: "DEVSOC'25",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DEVSOC&apos;25",
+    title: "DEVSOC'25",
     description:
       "DEVSOC-25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
     images: [{ url: "/DEVSOC.png" }],
   },
   keywords: [
-    "DEVSOC’25 official website",
+    "DEVSOC'25 official website",
     "CodeChef-VIT DEVSOC hackathon",
     "DEVSOC 2025 VIT",
     "VIT DEVSOC programming challenge",

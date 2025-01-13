@@ -126,7 +126,7 @@ const Tracks: React.FC = () => {
         <h1
           style={{
             display: 'flex',
-            width: '688px',
+            width: '570px',
              maxWidth: '90%',
             height: '192px',
             flexDirection: 'column',
