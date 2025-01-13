@@ -93,7 +93,7 @@ const Tracks: React.FC = () => {
       <Image
         src="/tracksnew.svg"
         alt="Tracks"
-        width={400}
+        width={470}
         height={100}
         style={{
           position: 'absolute',
@@ -101,7 +101,7 @@ const Tracks: React.FC = () => {
           borderRadius: '12px',
           opacity: 2,
           left: '505px',
-          top: '380px',
+          top: '300px',
           zIndex: 1,
         }}
       />
