@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import "tailwindcss/tailwind.css";
 import background from "../assets/images/gallery.svg";
@@ -56,14 +56,18 @@ const Gallery = () => {
 
   return (
     <div
-      className="relative h-screen bg-cover bg-center"
+      className="relative h-[119vh] bg-cover bg-center"
       style={{ backgroundImage: `url(${background.src})` }}
     >
-      <div className="absolute inset-0 bg-beige/90 z-10" />
-      <div className="absolute top-[35px] left-20 bg-[#FFE6D4] h-[99px]">
-        <h1 className="text-7xl font-bold text-black font-yerk p-4">GALLERY</h1>
+      {/* <div className="absolute inset-0 bg-beige/90 z-10" /> */}
+      <div className="flex justify-center md:justify-start lg:pl-12 pt-8">
+        <div className="bg-[#FFE6D4] w-fit">
+          <h1 className="text-4xl md:text-7xl font-bold text-black font-yerk p-4">
+            GALLERY
+          </h1>
+        </div>
       </div>
-      <div className="relative z-20 flex flex-col items-center justify-center text-black h-full">
+      <div className="flex items-center pt-12 md:pt-5 2xl:pt-24 justify-center text-black">
         <div className="relative flex items-center justify-center w-full">
         <div className="custom-shape-divider-top-1736700184 z-30">
             <svg
@@ -80,7 +84,7 @@ const Gallery = () => {
           </div>
           <motion.div
             ref={scrollRef}
-            className="flex overflow-x-scroll gap-8 snap-x snap-mandatory px-4 bg-[#FFE6D4] w-full h-full border-[2px] border-white"
+            className="flex overflow-x-scroll gap-8 snap-x snap-mandatory px-4 bg-[#FFE6D4] w-full h-full border-[2px] border-white 2xl:py-4"
           >
             {infiniteImages.map((image, index) => (
               <div

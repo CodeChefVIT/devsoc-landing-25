@@ -166,7 +166,7 @@ function Timeline() {
           </div>
         )}
         <motion.div
-          className={`pt-20 pb-7 relative z-10 text-4xl font-yerk font-bold ${
+          className={`pt-20 flex justify-center pb-7 relative z-10 text-4xl font-yerk font-bold ${
             isNightMode ? "text-[#FF9737]" : "text-[#242323]"
           }`}
            style={{
