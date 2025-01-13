@@ -20,7 +20,6 @@ const HomePage: React.FC<HomePageProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isClickeddis, setIsClickeddis] = useState(false);
-  const [isHeld, setIsHeld] = useState(false);
   const [isClickedreg, setIsClickedreg] = useState(false);
 
   useEffect(() => {
