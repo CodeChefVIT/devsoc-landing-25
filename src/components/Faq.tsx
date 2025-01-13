@@ -148,7 +148,7 @@ const Faq = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   return (
-    <div className='h-full bg-[#125A76] relative flex flex-col justify-center pb-[140px] md:pb-[230px]'>
+    <div className='h-full relative flex flex-col justify-center pb-[140px] md:pb-[230px]'>
 
 <h1 className='text-center lg:text-start lg:text-[5rem] text-[4rem] text-[#FF9737] font-bold z-10 lg:mx-16 xl:mx-24 relative font-yerk my-6 lg:my-0 lg:pt-12'>
         FAQs

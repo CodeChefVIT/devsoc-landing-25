@@ -36,14 +36,14 @@ const HomePage: React.FC<HomePageProps> = ({
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#1B4965] overflow-hidden pb-[120px] md:pb-[180px]">
-      <Image
-        src={backgroundImage}
-        alt="Background pattern"
-        layout="fill"
-        className="object-cover opacity-30"
-        priority
-      />
+      <div className="relative w-full min-h-screen overflow-hidden pb-[120px] md:pb-[180px]">
+        <Image
+          src={backgroundImage}
+          alt="Background pattern"
+          layout="fill"
+          className="object-cover opacity-30"
+          priority
+        />
 
       <div className="relative z-10 w-full   ">
         {/* Header Section */}
