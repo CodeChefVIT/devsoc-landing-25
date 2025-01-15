@@ -5,6 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import devsoc from "../assets/images/DEVSOC.png";
 import discord from "../assets/images/discord.svg";
+import dev2k25 from "../assets/images/Devlogoheader.svg"; // Import the SVG
 
 import HomeRIve from "./HomeRIve";
 import MobileRive from "./MobileRive";
@@ -19,8 +20,8 @@ const HomePage: React.FC<HomePageProps> = ({
   mascotPeekImage,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
-  const [isClickeddis, setIsClickeddis] = useState(false);
-  const [isClickedreg, setIsClickedreg] = useState(false);
+
+  const [isHeld, setIsHeld] = useState<"discord" | "register" | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,15 +36,28 @@ const HomePage: React.FC<HomePageProps> = ({
     };
   }, []);
 
+  const handleButtonMouseDown = (buttonType: "discord" | "register") => {
+    setIsHeld(buttonType);
+  };
+
+  const handleButtonMouseUp = () => {
+    setIsHeld(null);
+  };
+
+  const handleButtonMouseLeave = () => {
+      setIsHeld(null)
+  }
+
+
   return (
-      <div className="relative w-full min-h-screen overflow-hidden pb-[120px] md:pb-[180px]">
-        <Image
-          src={backgroundImage}
-          alt="Background pattern"
-          layout="fill"
-          className="object-cover opacity-30"
-          priority
-        />
+    <div className="relative w-full min-h-screen overflow-hidden pb-[120px] md:pb-[180px]">
+      <Image
+        src={backgroundImage}
+        alt="Background pattern"
+        layout="fill"
+        className="object-cover opacity-30"
+        priority
+      />
 
       <div className="relative z-10 w-full   ">
         {/* Header Section */}
@@ -52,109 +66,121 @@ const HomePage: React.FC<HomePageProps> = ({
 
           <div className="w-full bg-[#2682A6] py-3 pb-6 sm:py-4 md:pb-6">
             {/* Responsive Header Container */}
-            <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row sm:justify-between justify-center items-center space-y-4 sm:space-y-3 sm:space-x-3">
+            <div className="max-w-7xl mx-auto px-3 flex flex-col lg:flex-row sm:justify-between justify-center items-center   ">
               {/* Button Container Left  - Visible on large screens*/}
               <div
-                onClick={() => setIsClickeddis(!isClickeddis)}
-                className={`hidden lg:block rounded-lg transition-all  ease-in-out mt-3  ${
-                  isClickeddis ? "translate-x-[4px] translate-y-[4px]" : ""
-                }`}
+                onMouseDown={() => handleButtonMouseDown("discord")}
+                onMouseUp={handleButtonMouseUp}
+                  onMouseLeave={handleButtonMouseLeave}
+                className={`hidden lg:block rounded-lg transition  mt-3 
+                  ${
+                    isHeld === "discord" ? "translate-x-[4px] translate-y-[4px]" : ""
+                  }`
+                  
+                }
                 style={{
-                  boxShadow: isClickeddis
+                  boxShadow: isHeld === "discord"
                     ? "none"
                     : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                 }}
+                
               >
                 <AnimatedButton
                   text="Discord"
                   mascotImage={mascotPeekImage}
                   className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                   icon={discord}
+                  
                 />
               </div>
 
-              {/* Text Section - Always on top on small screens*/}
+              {/* Logo Section - Always on top on small screens*/}
               <div className="flex flex-col items-center lg:items-center w-full lg:w-auto">
-                <div className="flex items-center  sm:items-start  md:my-2  lg:my-0">
-                  <span
-                    className="text-[46px] sm:text-7xl  md:text-[72px] text-[#FF7657] font-yerk tracking-wider relative"
-                    style={{
-                      textShadow: "4px 4px 0px #1B4965",
-                    }}
-                  >
-                    DEVSOC
-                  </span>
-                  <span
-                    className=" font-yerk text-[8px] -mt-1 sm:mt-1 2xl:mt-2 sm:text-[14px] md:text-[14px]  text-[#FF6B6B]  ml-[2px] sm:ml-2"
-                    style={{
-                      writingMode: "vertical-rl",
-                      textOrientation: "mixed",
-                      transform: "rotate(360deg)",
-                    }}
-                  >
-                    <span className="text-[#FF7657]">2k</span>
-                    <span className="text-[#FF9737]">25</span>
-                  </span>
+               <div className="w-[290px] h-[70px] sm:w-[400px] sm:h-[100px] md:w-[500px] md:h-[100px] lg:w-[550px] lg:h-[130px] top-1 relative">
+                  <Image
+                    src={dev2k25}
+                    alt="Devsoc 2k25 logo"
+                    layout="fill"
+                    objectFit="contain"
+                    className="relative z-10"
+                    priority
+                  />
+                  
                 </div>
               </div>
 
               {/* Button Container Right - Visible on large screens*/}
               <div
-                onClick={() => setIsClickedreg(!isClickedreg)}
-                className={`hidden lg:block rounded-lg transition-all duration-300 ease-in-out   ${
-                  isClickedreg ? "translate-x-[4px] translate-y-[4px]" : ""
+                 onMouseDown={() => handleButtonMouseDown("register")}
+                 onMouseUp={handleButtonMouseUp}
+                  onMouseLeave={handleButtonMouseLeave}
+                className={`hidden lg:block rounded-lg transition  mt-3 ${
+                  isHeld === "register" ? " translate-x-[4px] translate-y-[4px] " : ""
                 }`}
                 style={{
-                  boxShadow: isClickedreg
+                  boxShadow: isHeld === "register"
                     ? "none"
                     : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                 }}
+                
               >
                 <AnimatedButton
                   text="Register"
                   mascotImage={mascotPeekImage}
                   className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                   icon={devsoc}
+                 
                 />
               </div>
 
               {/* Buttons Section - On bottom on small screens, in a line*/}
               <div className="lg:hidden flex items-center justify-center space-x-5 w-full">
-                <div
-                  onClick={() => setIsClickeddis(!isClickeddis)}
-                  className={`rounded-lg transition-all  ease-in-out   ${
-                    isClickeddis ? "translate-x-[4px] translate-y-[4px]" : ""
-                  }`}
-                  style={{
-                    boxShadow: isClickeddis
-                      ? "none"
-                      : "4px 4px 0px rgba(0, 0, 0, 0.4)", // Toggle shadow
-                  }}
-                >
+              <div
+                onMouseDown={() => handleButtonMouseDown("discord")}
+                onMouseUp={handleButtonMouseUp}
+                  onMouseLeave={handleButtonMouseLeave}
+                className={`rounded-lg transition  mt-3
+                  ${
+                    isHeld === "discord" ? "translate-x-[4px] translate-y-[4px]" : ""
+                  }`
+                  
+                }
+                style={{
+                  boxShadow: isHeld === "discord"
+                    ? "none"
+                    : "4px 4px 0px rgba(0, 0, 0, 0.4)",
+                }}
+                
+              >
                   <AnimatedButton
                     text="Discord"
                     mascotImage={mascotPeekImage}
                     className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                     icon={discord}
+                    
                   />
                 </div>
 
                 <div
-                  onClick={() => setIsClickedreg(!isClickedreg)}
-                  className={`rounded-lg transition-all duration-300 ease-in-out  ${
-                    isClickedreg ? "translate-x-[4px] translate-y-[4px]" : ""
-                  }`}
-                  style={{
-                    boxShadow: isClickedreg
-                      ? "none"
-                      : "4px 4px 0px rgba(0, 0, 0, 0.4)", // Toggle shadow
-                  }}
-                >
+                 onMouseDown={() => handleButtonMouseDown("register")}
+                 onMouseUp={handleButtonMouseUp}
+                  onMouseLeave={handleButtonMouseLeave}
+                className={`rounded-lg transition  mt-3 ${
+                  isHeld === "register" ? " translate-x-[4px] translate-y-[4px] " : ""
+                }`}
+                style={{
+                  boxShadow: isHeld === "register"
+                    ? "none"
+                    : "4px 4px 0px rgba(0, 0, 0, 0.4)",
+                }}
+                
+              >
                   <AnimatedButton
                     text="Register"
                     mascotImage={mascotPeekImage}
                     className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                     icon={devsoc}
+                   
                   />
                 </div>
               </div>
@@ -177,7 +203,6 @@ const HomePage: React.FC<HomePageProps> = ({
     </div>
   );
 };
-
 interface AnimatedButtonProps {
   text: string;
   mascotImage: StaticImageData;
