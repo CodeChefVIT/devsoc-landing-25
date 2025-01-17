@@ -34,16 +34,6 @@ const CombinedPage: React.FC = () => {
       faq: null as unknown as HTMLDivElement
   });
 
-  const { scrollYProgress: initialProgress } = useScroll({
-    target: initialSectionsRef,
-    offset: ["start start", "end end"]
-  });
-
-  const { scrollYProgress: postTimelineProgress } = useScroll({
-    target: postTimelineRef,
-    offset: ["start start", "end end"]
-  });
-
   // Calculate which section is currently in view and its progress
   const [currentBackground, setCurrentBackground] = useState("#1B4965");
     
