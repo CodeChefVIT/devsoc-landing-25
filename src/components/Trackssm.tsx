@@ -10,30 +10,12 @@ const TracksMobile: React.FC = () => {
     const popupRef = useRef<HTMLDivElement>(null);
 
     const buttonContent: { [key: string]: { title: string; description: string } } = {
-        'Track 1': {
-            title: 'Open Innovation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        },
-        'Track 2': {
-            title: 'Kuchbhi',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        },
-        'Track 3': {
-            title: 'Yaha',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        },
-        'Track 4': {
-            title: 'Daal',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        },
-        'Track 5': {
-            title: 'Do',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        },
-        'Track 6': {
-            title: 'yaha pe bhi',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        }
+        'Track 1': { title: 'Open Innovation', description: 'Lorem ipsum dolor sit amet...' },
+        'Track 2': { title: 'Kuchbhi', description: 'Lorem ipsum dolor sit amet...' },
+        'Track 3': { title: 'Yaha', description: 'Lorem ipsum dolor sit amet...' },
+        'Track 4': { title: 'Daal', description: 'Lorem ipsum dolor sit amet...' },
+        'Track 5': { title: 'Do', description: 'Lorem ipsum dolor sit amet...' },
+        'Track 6': { title: 'yaha pe bhi', description: 'Lorem ipsum dolor sit amet...' },
     };
 
     useEffect(() => {
@@ -68,91 +50,77 @@ const TracksMobile: React.FC = () => {
     };
 
     return (
-        <div style={{ 
-            position: "relative", 
-            width: "100%", 
-            minHeight: "100vh", 
-            overflow: "hidden", 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center' 
-        }}>
-           <div
+        <div
+            style={{
+                position: "relative",
+                width: "100%",
+                minHeight: "100vh",
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+            }}
+        >
+            <div
                 style={{
                     position: 'absolute',
                     top: 0,
-                   left: '-30%',
-                   width: '150%',
-                     height: '100%',
+                    left: '-30%',
+                    width: '150%',
+                    height: '100%',
                     opacity: 0.2,
-                     zIndex: 1,
+                    zIndex: 1,
                     backgroundImage: `url('/trackk.svg')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  filter: isPopupVisible ? 'blur(3px)' : 'none',
+                    backgroundRepeat: 'no-repeat',
+                    filter: isPopupVisible ? 'blur(3px)' : 'none',
                     transform: 'scale(1.5)',
-                   transition: 'all 0.3s ease-in-out'
+                    transition: 'all 0.3s ease-in-out',
                 }}
             />
 
-            <div style={{ zIndex: 2, position: "relative", marginTop: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ zIndex: 2, position: "relative", marginTop: '20px', textAlign: 'center' }}>
                 <h1
                     style={{
-                        display: 'flex',
-                        width: '100%',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
                         color: '#FFF',
-                        textAlign: 'center',
+                        width:'100%',
                         fontFamily: 'Yerk',
-                        fontSize: '60px',
+                        fontSize: 'calc(3rem + 1vw)', 
                         fontWeight: 400,
-                        borderRadius: '10px',
                         textShadow: '2px 2px 10px #994952',
                         filter: isPopupVisible ? 'blur(3px)' : 'none',
-                        transition: 'all 0.3s ease-in-out'
+                        transition: 'all 0.3s ease-in-out',
                     }}
                 >
                     Tracks
                 </h1>
+
                 <div
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '30px',
-                        justifyContent: 'center',
+                        gap: '20px',
                         marginTop: '20px',
-                        paddingLeft: '20px',
-                        paddingRight: '20px',
-                        width: '100%',
+                        padding: '0 10%',
                     }}
                 >
-                    
                     {Object.keys(buttonContent).map((buttonText, index) => (
                         <button
                             key={index}
                             onClick={() => handleButtonClick(buttonText)}
                             style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
                                 width: '100%',
-                                height: '57px',
-                                padding: '0',
+                                padding: '15px 20px',
                                 borderRadius: '12px',
                                 background: '#994952',
-                                boxShadow: '6px 6px 0px 0px #FFF',
                                 color: '#FFF',
                                 border: 'none',
                                 cursor: 'pointer',
                                 textAlign: 'center',
                                 fontFamily: '"Monomaniac One"',
-                                fontSize: '20px',
-                                letterSpacing: '0.5px',
-                                zIndex: 2,
-                                filter: isPopupVisible ? 'blur(3px)' : 'none',
-                                transition: 'all 0.3s ease-in-out'
+                                fontSize: 'clamp(20px, 2vw, 23px)', 
+                                transition: 'transform 0.3s ease-in-out',
                             }}
                             onMouseEnter={(e) => {
                                 if (!isPopupVisible) {
