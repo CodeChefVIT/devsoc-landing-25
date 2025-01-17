@@ -97,7 +97,7 @@ const CombinedPage: React.FC = () => {
           ref={postTimelineRef}
           style={{
             backgroundColor: postTimelineBackgroundColor,
-            marginTop: isMobile ? '0' : '-110vh'
+            marginTop: isMobile ? '0' : '-100vh'
           }}
         >
           {isMobile ? <TracksMobile /> : <Tracks />}
