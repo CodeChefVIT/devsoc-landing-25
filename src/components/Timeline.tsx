@@ -119,12 +119,6 @@ const AnimatedTimeline = () => {
 
 
   const [cloudDudeY, setCloudDudeY] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [currentFrame, setCurrentFrame] = useState(0);
-  const [animationDirection, setAnimationDirection] = useState<"up" | "down">(
-    "up"
-  );
-  const [lastDotPosition, setLastDotPosition] = useState<number | null>(null);
   const jumpHeight = -30;
   const PEAK_ZONE = 15;
 
@@ -137,103 +131,32 @@ const AnimatedTimeline = () => {
     let newActiveIndex = null;
     let lastPassedIndex = 0;
 
-    // Find the two closest dots
-    let prevDotX = -Infinity;
-    let nextDotX = Infinity;
-    let isExactlyOnDot = false;
-
     dots.forEach((dot, index) => {
       const dotRect = dot.getBoundingClientRect();
       const dotCenterX = dotRect.left + dotRect.width / 2;
 
-      // Check if we're exactly on a dot
       if (Math.abs(dotCenterX - cloudPosition) <= PEAK_ZONE) {
         setCloudDudeY(jumpHeight);
-        isExactlyOnDot = true;
       }
+       if (Math.abs(dotCenterX - markerX) <= HIGHLIGHT_ZONE + 5) {
+           newActiveIndex = index;
+       }
 
-      // Track previous and next dots
-      if (dotCenterX <= cloudPosition && dotCenterX > prevDotX) {
-        prevDotX = dotCenterX;
+       if (dotCenterX <= markerX + HIGHLIGHT_ZONE) {
+         lastPassedIndex = index;
       }
-      if (dotCenterX > cloudPosition && dotCenterX < nextDotX) {
-        nextDotX = dotCenterX;
-      }
-
-      if (Math.abs(dotCenterX - markerX) <= HIGHLIGHT_ZONE + 5) {
-        newActiveIndex = index;
-      }
-
-      if (dotCenterX <= markerX + HIGHLIGHT_ZONE) {
-        lastPassedIndex = index;
-      }
-    });
-
-    // If we're not exactly on a dot, calculate the position
-    if (!isExactlyOnDot && prevDotX !== -Infinity && nextDotX !== Infinity) {
-      const segmentLength = nextDotX - prevDotX;
-      const distanceFromPrev = cloudPosition - prevDotX;
-      const progress = distanceFromPrev / segmentLength;
-
-      // Calculate the height based on distance from midpoint
-      let heightProgress;
-      if (progress <= 0.5) {
-        // First half: rising from midpoint to dot
-        heightProgress = easeInOutQuint(progress * 2); // Convert 0-0.5 to 0-1
-      } else {
-        // Second half: falling from dot to midpoint
-        heightProgress = easeInOutQuint((1 - progress) * 2); // Convert 0.5-1 to 1-0
-      }
-
-      const newY = jumpHeight * heightProgress;
-      setCloudDudeY(newY);
-    }
+   });
 
     setActiveCircle(newActiveIndex);
-    if (lastPassedIndex !== events.findIndex((e) => e.time === currentEvent.time)) {
-      setCurrentEvent(events[lastPassedIndex]);
+      if (lastPassedIndex !== events.findIndex((e) => e.time === currentEvent.time)) {
+        setCurrentEvent(events[lastPassedIndex]);
     }
   };
 
-  // Easing function for smooth acceleration and deceleration
-  const easeInOutQuint = (t: number): number => {
-    return t < 0
-      ? 0
-      : t > 1
-      ? 1
-      : t < 0.5
-      ? 16 * t * t * t * t * t
-      : 1 + 16 * (--t) * t * t * t * t;
-  };
 
   useEffect(() => {
-    if (!isAnimating) return;
-    const frameIncrement = 2;
-    const targetY = -30;
-    const totalFrames = Math.abs(targetY / frameIncrement);
-    const animationDuration = 30;
-
-    if (currentFrame < totalFrames) {
-      const timeout = setTimeout(() => {
-        const progress = (currentFrame + 1) / totalFrames;
-
-        if (animationDirection === "up") {
-          setCloudDudeY(targetY * progress);
-        } else {
-          setCloudDudeY(targetY * (1 - progress));
-        }
-
-        setCurrentFrame(currentFrame + 1);
-      }, animationDuration);
-      return () => clearTimeout(timeout);
-    } else {
-      setIsAnimating(false);
-      if (animationDirection === "down") {
         setCloudDudeY(0);
-        setLastDotPosition(null);
-      }
-    }
-  }, [isAnimating, currentFrame, animationDirection]);
+  },[currentEvent.time])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -376,7 +299,8 @@ const AnimatedTimeline = () => {
                     type: "spring",
                     stiffness: 150,
                     damping: 15,
-                    mass: 1
+                    mass: 1,
+                    duration: 0.1,
                   }}
                   style={{
                     backgroundImage: `url(${clouddudeImageUrl})`,
