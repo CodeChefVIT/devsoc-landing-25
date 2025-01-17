@@ -24,9 +24,6 @@ const SlantedBanner: React.FC<SlantedBannerProps> = ({
     const handleScroll = () => {
       if (bruceBanner.current) {
         const bannerRect = bruceBanner.current.getBoundingClientRect();
-        // console.log("1 " + (bannerRect.top + window.scrollY))
-        // console.log("2 " + bannerRect.top)
-        // console.log("3 " + window.scrollY)
         setStartScroll(window.scrollY + bannerRect.top);
       }
     };
@@ -94,7 +91,7 @@ const SlantedBanner: React.FC<SlantedBannerProps> = ({
           </motion.div>
         </div>
 
-        <div className="absolute w-full top-[30%] border-t-2 border-dashed border-orange-400 opacity-70" />
+        <div className="absolute w-full top-[30%] border-t-2 border-dashed border-[#FF9737] opacity-70" />
 
         {/* DEVSOC text layer */}
         <div className="absolute inset-0 flex items-center">
@@ -102,30 +99,34 @@ const SlantedBanner: React.FC<SlantedBannerProps> = ({
             className="flex whitespace-nowrap"
             style={{ x: devsocX, width: "800%" }}
           >
-            <span className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-wider inline-block text-[#FF6B6B]">
+           <span className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-wider inline-block text-[#FF7657]">
               {fullText.split(" ").map((text, index) => (
                 <React.Fragment key={index}>
                   <span className="inline-block relative">
                     {text === "DEVSOC" ? (
                       <span className="font-yerk">{text}</span>
                     ) : text === "2K25" ? (
-                      <span className="font-yerk text-2xl md:text-3xl  relative  md:-top-3 -top-1">
-                        {text}
-                      </span>
+                       <span className="font-yerk text-2xl md:text-3xl  relative  md:-top-3 -top-1">
+                        {text.split("").map((char, i) => (
+                            <span key={i} style={{ color: char === "K" ? "#FF9737" : "#FF7657" }}>
+                                {char}
+                            </span>
+                        ))}
+                       </span>
                     ) : (
                       <span className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider align-middle ml-1 sm:ml-2 md:ml-4">
                         {text}
                       </span>
                     )}
-                    {index !== fullText.split(" ").length - 1 && " "}
-                  </span>
+                      {index !== fullText.split(" ").length - 1 && " "}
+                 </span>
                 </React.Fragment>
               ))}
             </span>
           </motion.div>
         </div>
 
-        <div className="absolute w-full bottom-[30%] border-t-2 border-dashed border-orange-400 opacity-70" />
+        <div className="absolute w-full bottom-[30%] border-t-2 border-dashed border-[#FF9737] opacity-70" />
 
         {/* Sponsor text layer */}
         <div className="absolute inset-0 flex items-center pt-32 sm:pt-40 md:pt-48">
@@ -133,7 +134,7 @@ const SlantedBanner: React.FC<SlantedBannerProps> = ({
             className="flex whitespace-nowrap"
             style={{ x: sponsorX, width: "800%" }}
           >
-            <span className="text-sm sm:text-base md:text-xl font-medium tracking-wide inline-block w-full text-[#FF6B6B]">
+            <span className="text-sm sm:text-base md:text-xl font-medium tracking-wide inline-block w-full text-[#FF7657]">
               <span className="font-mono">{sponsorText}</span>
             </span>
           </motion.div>
