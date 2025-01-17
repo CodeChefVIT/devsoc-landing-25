@@ -23,46 +23,66 @@ const CombinedPage: React.FC = () => {
   const initialSectionsRef = useRef<HTMLDivElement>(null);
   const postTimelineRef = useRef<HTMLDivElement>(null);
   const [timelineComplete, setTimelineComplete] = useState(false);
-
-  // Scroll progress for initial sections (before Timeline)
-  const { scrollYProgress: initialProgress } = useScroll({
-    target: initialSectionsRef,
-    offset: ["start start", "end end"]
+  const sectionRefs = useRef<{ [key: string]: HTMLDivElement }>({
+      home: null as unknown as HTMLDivElement,
+    about: null as unknown as HTMLDivElement,
+    gallery: null as unknown as HTMLDivElement,
+    timeline: null as unknown as HTMLDivElement,
+    tracks: null as unknown as HTMLDivElement,
+    sponsors: null as unknown as HTMLDivElement,
+    prizes: null as unknown as HTMLDivElement,
+      faq: null as unknown as HTMLDivElement
   });
 
-  // Separate scroll tracking for post-Timeline sections
-  const { scrollYProgress: postTimelineProgress } = useScroll({
-    target: postTimelineRef,
-    offset: ["start start", "end end"]
-  });
+  // Calculate which section is currently in view and its progress
+  const [currentBackground, setCurrentBackground] = useState("#1B4965");
+    
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = {
+                home: { color: "#24637B", ref: sectionRefs.current.home },
+                about: { color: "#A85059", ref: sectionRefs.current.about },
+                gallery: { color: "#FFE6D4", ref: sectionRefs.current.gallery },
+                timeline: { color: "#F6F5F5", ref: sectionRefs.current.timeline },
+                tracks: { color: "#48634A", ref: sectionRefs.current.tracks },
+                sponsors: { color: "#60A2BB", ref: sectionRefs.current.sponsors },
+                prizes: { color: "#FFE6D4", ref: sectionRefs.current.prizes },
+                faq: { color: "#125A76", ref: sectionRefs.current.faq },
+            };
 
-  // Initial sections color transition
-  const initialBackgroundColor = useTransform(
-    initialProgress,
-    [0, 0.5, 1],
-    ["#1B4965", "#A85059", "#A85059"]
-  );
+             let maxVisibleSection = { id: "home", visibility: 0 };
 
-  // Post-Timeline color transition
-  const postTimelineBackgroundColor = useTransform(
-    postTimelineProgress,
-    [0, 0.5, 0.6, 0.7, 0.8, 1],
-    ["#000000","#48634A", "#60A2BB", "#fbead5", "#125A76", "#125A76"]
-  );
+            Object.entries(sections).forEach(([id, { ref }]) => {
+                if (!ref) return;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!postTimelineRef.current) return;
-      const rect = postTimelineRef.current.getBoundingClientRect();
-      const isInView = rect.top <= window.innerHeight;
-      if (isInView !== timelineComplete) {
-        setTimelineComplete(isInView);
-      }
-    };
+                const rect = ref.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [timelineComplete]);
+             // Calculate how much of the section is in the viewport
+               const visibleHeight = Math.min(viewportHeight, rect.bottom) - Math.max(0, rect.top);
+              const visibility = visibleHeight / viewportHeight;
+
+                if (visibility > maxVisibleSection.visibility) {
+                    maxVisibleSection = { id, visibility };
+                }
+            });
+
+           // Set the background color based on the most visible section
+             setCurrentBackground(sections[maxVisibleSection.id as keyof typeof sections].color);
+
+            // Check timeline completion
+            if (postTimelineRef.current) {
+                const rect = postTimelineRef.current.getBoundingClientRect();
+                const isInView = rect.top <= window.innerHeight;
+                if (isInView !== timelineComplete) {
+                    setTimelineComplete(isInView);
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [timelineComplete]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -79,31 +99,47 @@ const CombinedPage: React.FC = () => {
       <div className="overflow-hidden">
         <motion.div 
           ref={initialSectionsRef}
-          style={{ backgroundColor: initialBackgroundColor }}
+          style={{ 
+            backgroundColor: currentBackground,
+            transition: 'background-color 0.5s ease-out'
+          }}
         >
-          <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
+          <div ref={el => { if(el) sectionRefs.current.home = el}}>
+            <HomePage backgroundImage={bgHomeImage} mascotPeekImage={peekImage} />
+          </div>
           <SlantedBanner sign='+' starsImageUrl={frameImage} />
-          <About />
-          <Gallery />
+          <div ref={el => { if(el) sectionRefs.current.about = el}}>
+            <About />
+          </div>
+           <div ref={el => { if(el) sectionRefs.current.gallery = el}}>
+            <Gallery />
+          </div>
         </motion.div>
 
-        {/* Timeline section with its own background handling */}
-        <div className="relative">
+        <div ref={el => { if(el) sectionRefs.current.timeline = el}} className="relative">
           {isMobile ? <Timeline /> : <AnimatedTimeline />}
         </div>
 
-        {/* Post-Timeline sections */}
         <motion.div
           ref={postTimelineRef}
           style={{
-            backgroundColor: postTimelineBackgroundColor,
-            marginTop: isMobile ? '0' : '-110vh'
+            backgroundColor: currentBackground,
+            transition: 'background-color 0.5s ease-out',
+            marginTop: isMobile ? '0' : '-100vh'
           }}
         >
-          {isMobile ? <TracksMobile /> : <Tracks />}
-          <Sponsors />
-          <Prizes />
-          <Faq />
+            <div ref={el => { if(el) sectionRefs.current.tracks = el}}>
+                {isMobile ? <TracksMobile /> : <Tracks />}
+            </div>
+          <div ref={el => { if(el) sectionRefs.current.sponsors = el}}>
+            <Sponsors />
+            </div>
+            <div ref={el => { if(el) sectionRefs.current.prizes = el}}>
+              <Prizes />
+             </div>
+          <div ref={el => { if(el) sectionRefs.current.faq = el}}>
+             <Faq />
+           </div>
           <SlantedBanner sign='-' starsImageUrl={frameImage} />
           <Footer />
         </motion.div>
