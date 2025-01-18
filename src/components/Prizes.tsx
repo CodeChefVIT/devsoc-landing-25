@@ -51,11 +51,16 @@ const Prizes = () => {
           ref={sectionRef}
           className="relative w-full flex flex-col items-center justify-center overflow-hidden font-yerk"
       >
-        <h1 className={`absolute top-8 left-8 sm:top-16 sm:left-14 text-4xl sm:text-7xl font-bold tracking-wider text-black${
+          <h1 className={`absolute top-8 left-8 sm:top-16 sm:left-14 text-4xl sm:text-7xl font-bold tracking-wider text-black ${
             windowWidth <= 768 ? "top-[2%] mt-10" : ""
-          }`}>
-          PRIZES
-        </h1>
+            }`}
+            style={{
+              left: windowWidth <= 768 ? "50%" : undefined,
+              transform: windowWidth <= 768 ? "translateX(-50%)" : undefined
+              }}
+          >
+            PRIZES
+          </h1>
         <div
           className={`absolute ${
             windowWidth <= 768 ? "top-[15%] mt-10" : "top-20 sm:top-48"
