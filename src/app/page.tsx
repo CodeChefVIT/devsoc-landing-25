@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import LoaderScreen from '@/components/LoaderScreen';
 import Tracks from '@/components/tracks';
 import Sponsors from '@/components/Sponsors';
@@ -23,16 +23,18 @@ const CombinedPage: React.FC = () => {
   const initialSectionsRef = useRef<HTMLDivElement>(null);
   const postTimelineRef = useRef<HTMLDivElement>(null);
   const [timelineComplete, setTimelineComplete] = useState(false);
-  const sectionRefs = useRef<{ [key: string]: HTMLDivElement }>({
+  const sectionRefs = useRef<{ [key: string]: HTMLDivElement }>(
+    {
       home: null as unknown as HTMLDivElement,
-    about: null as unknown as HTMLDivElement,
-    gallery: null as unknown as HTMLDivElement,
-    timeline: null as unknown as HTMLDivElement,
-    tracks: null as unknown as HTMLDivElement,
-    sponsors: null as unknown as HTMLDivElement,
-    prizes: null as unknown as HTMLDivElement,
-      faq: null as unknown as HTMLDivElement
-  });
+     about: null as unknown as HTMLDivElement,
+      gallery: null as unknown as HTMLDivElement,
+      timeline: null as unknown as HTMLDivElement,
+      tracks: null as unknown as HTMLDivElement,
+      sponsors: null as unknown as HTMLDivElement,
+      prizes: null as unknown as HTMLDivElement,
+     faq: null as unknown as HTMLDivElement,
+    } as  Record<string, HTMLDivElement>
+  );
 
   // Calculate which section is currently in view and its progress
   const [currentBackground, setCurrentBackground] = useState("#1B4965");
