@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface TimelineEvent {
@@ -122,7 +122,7 @@ const AnimatedTimeline = () => {
   const jumpHeight = -30;
   const PEAK_ZONE = 15;
 
-  const determineActiveEvent = () => {
+  const determineActiveEvent = useCallback(() => {
     if (!timelineRef.current || !timelineLineRef.current) return;
 
     const markerX = timelineLineRef.current.getBoundingClientRect().left;
@@ -151,7 +151,7 @@ const AnimatedTimeline = () => {
       if (lastPassedIndex !== events.findIndex((e) => e.time === currentEvent.time)) {
         setCurrentEvent(events[lastPassedIndex]);
     }
-  };
+  }, [timelineLineRef, timelineRef, PEAK_ZONE, HIGHLIGHT_ZONE, jumpHeight, setCloudDudeY, setActiveCircle, currentEvent,  setCurrentEvent])
 
 
   useEffect(() => {
@@ -188,7 +188,7 @@ const AnimatedTimeline = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [currentEvent.time]);
+  }, [currentEvent.time, determineActiveEvent]);
 
   return (
     <>

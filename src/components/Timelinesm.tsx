@@ -98,7 +98,7 @@ function Timeline() {
     window.addEventListener("resize", updateLineHeightAndOffset);
     return () =>
       window.removeEventListener("resize", updateLineHeightAndOffset);
-  }, [events.length]);
+  }, []);
 
   useEffect(() => {
     let lastPos = 0;
