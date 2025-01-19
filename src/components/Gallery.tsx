@@ -56,7 +56,7 @@ const Gallery = () => {
 
   return (
     <div
-      className="flex flex-col h-[119vh] 2xl:h-screen bg-cover bg-center"
+      className="flex flex-col h-[80vh] sm:h-[119vh]  2xl:h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${background.src})` }}
     >
       {/* <div className="absolute inset-0 bg-beige/90 z-10" /> */}
@@ -67,9 +67,9 @@ const Gallery = () => {
           </h1>
         </div>
       </div>
-      <div className="text-black my-auto">
+      <div className="text-black my-72 sm:my-auto">
         <div className="relative flex items-center justify-center w-full">
-        <div className="custom-shape-divider-top-1736700184 z-30">
+        <div className="hidden sm:block custom-shape-divider-top-1736700184 z-30">
             <svg
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
@@ -84,22 +84,22 @@ const Gallery = () => {
           </div>
           <motion.div
             ref={scrollRef}
-            className="flex overflow-x-scroll gap-8 snap-x snap-mandatory px-4 bg-[#FFE6D4] w-full h-full border-[2px] border-white 2xl:py-4"
+            className="flex overflow-x-scroll gap-8 snap-x snap-mandatory px-4 bg-[#FFE6D4] w-full h-full border-[2px] border-white 2xl:py-4 pt-4 sm:p-0 "
           >
             {infiniteImages.map((image, index) => (
               <div
                 key={index}
-                className="snap-start shrink-0 w-64 h-96 items-center justify-center"
+                className="snap-start shrink-0 w-64 h-64 sm:h-96 items-center justify-center rounded-lg overflow-hiddenc "
               >
                 <Image
                   src={image.src}
                   alt={`Gallery Image ${index}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-60 sm:h-full object-cover rounded-lg "
                 />
               </div>
             ))}
           </motion.div>
-          <div className="custom-shape-divider-bottom-1736700813">
+          <div className="hidden sm:block custom-shape-divider-bottom-1736700813">
             <svg
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"

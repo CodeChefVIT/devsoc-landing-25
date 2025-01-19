@@ -136,9 +136,10 @@ const CombinedPage: React.FC = () => {
           <div ref={el => { if(el) sectionRefs.current.sponsors = el}}>
             <Sponsors />
             </div>
-            <div ref={el => { if(el) sectionRefs.current.prizes = el}}>
+            
+            {/* <div ref={el => { if(el) sectionRefs.current.prizes = el}}>
               <Prizes />
-             </div>
+             </div> */}
           <div ref={el => { if(el) sectionRefs.current.faq = el}}>
              <Faq />
            </div>
