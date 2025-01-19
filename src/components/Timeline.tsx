@@ -83,13 +83,13 @@ const AnimatedTimeline = () => {
 
  const timelineProgress = useTransform(
    scrollYProgress,
-    [0, 0.85],
+    [0, 0.95],
     [0, 1]
  );
 
  const containerTransitionProgress = useTransform(
     scrollYProgress,
-    [0.85, 1],
+    [0.95, 1],
     [0, 1]
  );
 
