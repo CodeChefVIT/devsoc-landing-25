@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import LoaderScreen from '@/components/LoaderScreen';
 import Tracks from '@/components/tracks';
 import Sponsors from '@/components/Sponsors';
-import Prizes from '@/components/Prizes';
+// import Prizes from '@/components/Prizes';
 import About from '@/components/About';
 import Faq from '@/components/Faq';
 import HomePage from '@/components/Homepage';
@@ -31,7 +31,7 @@ const CombinedPage: React.FC = () => {
       timeline: null as unknown as HTMLDivElement,
       tracks: null as unknown as HTMLDivElement,
       sponsors: null as unknown as HTMLDivElement,
-      prizes: null as unknown as HTMLDivElement,
+      // prizes: null as unknown as HTMLDivElement,
      faq: null as unknown as HTMLDivElement,
     } as  Record<string, HTMLDivElement>
   );
@@ -48,7 +48,7 @@ const CombinedPage: React.FC = () => {
                 timeline: { color: "#F6F5F5", ref: sectionRefs.current.timeline },
                 tracks: { color: "#48634A", ref: sectionRefs.current.tracks },
                 sponsors: { color: "#60A2BB", ref: sectionRefs.current.sponsors },
-                prizes: { color: "#FFE6D4", ref: sectionRefs.current.prizes },
+                // prizes: { color: "#FFE6D4", ref: sectionRefs.current.prizes },
                 faq: { color: "#125A76", ref: sectionRefs.current.faq },
             };
 
