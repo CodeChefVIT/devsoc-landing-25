@@ -209,17 +209,18 @@ const Prizes = () => {
 
   return (
     <div
+    id="prizes"
       className=" w-full min-h-screen overflow-hidden flex  flex-col  items-center box-border overflow-x-hidden"
     >
-      <div className="w-full text-start pl-4 sm:pl-16 mt-10 ">
+      <div className="w-full text-start  sm:pl-16 mt-10 ">
         <h1
-          className="text-black font-yerk font-normal text-5xl md:text-6xl lg:text-7xl shadow-custom"
+          className="text-black font-yerk font-normal text-5xl md:text-6xl lg:text-7xl shadow-custom text-center md:text-left"
         >
           Prizes
         </h1>
       </div>
-
-      <div className="w-full flex items-center justify-center px-5  pt-12 py-8"> {/* Adjusted padding */}
+    
+      <div className="w-full flex flex-col md:flex-row items-center justify-center px-5  pt-12 py-8"> {/* Adjusted padding */}
         <div className=" flex justify-center items-center  pr-2"> {/* Adjusted max-width and padding */}
           <Image
             src="/tracksnew.svg"
@@ -232,7 +233,7 @@ const Prizes = () => {
 
         <div className=" flex items-center justify-start  pl-2"> {/* Adjusted max-width and padding */}
           <h1
-            className="text-black font-yerk font-normal text-5xl md:text-6xl lg:text-7xl shadow-custom "
+            className="text-black font-yerk font-normal text-5xl md:text-6xl  shadow-custom text-center md:text-left"
           >
             Coming Soon
           </h1>
