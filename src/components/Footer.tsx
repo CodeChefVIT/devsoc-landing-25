@@ -107,7 +107,8 @@ export default function Footer() {
             </div>
             <div className="pb-8 text-base">
               <Link
-                href={"#visitus"}
+              target="__blank"
+                href={"https://www.codechefvit.com/"}
                 className="rounded-lg bg-[#FC1D21] p-4 drop-shadow-md hover:drop-shadow-lg transition-all duration-100"
               >
                 VISIT US

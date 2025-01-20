@@ -68,7 +68,7 @@ const TracksMobile: React.FC = () => {
     };
 
     return (
-        <div className="relative w-full min-h-screen overflow-hidden flex flex-col items-center">
+        <div id="tracks" className="relative w-full min-h-screen overflow-hidden flex flex-col items-center">
 
             <div className={`absolute top-0 -left-1/3 w-[150%] h-full opacity-20 z-10 bg-cover bg-center bg-no-repeat scale-150 transition-all duration-300 ${isPopupVisible ? 'blur-sm' : ''}`}
                 style={{ backgroundImage: "url('/trackk.svg')" }} />

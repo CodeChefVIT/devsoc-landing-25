@@ -82,7 +82,7 @@ const Tracks: React.FC = () => {
   };
 
   return (
-    <div style={{
+    <div id="tracks" style={{
       position: "relative",
       width: "100%",
       height: "120vh",

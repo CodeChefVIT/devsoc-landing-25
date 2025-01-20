@@ -192,7 +192,7 @@ const AnimatedTimeline = () => {
 
   return (
     <>
-      <div ref={containerRef} className="relative w-full h-[1500vh]">
+      <div id="timeline" ref={containerRef} className="relative w-full h-[1500vh]">
         <motion.div
           style={{
             position: isPinned ? "fixed" : "absolute",
