@@ -10,12 +10,30 @@ const TracksMobile: React.FC = () => {
     const popupRef = useRef<HTMLDivElement>(null);
 
     const buttonContent: { [key: string]: { title: string; description: string } } = {
-        'Track 1': { title: 'Open Innovation', description: 'This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and CodeChef is the best innovative club in VIT.' },
-        'Track 2': { title: 'Kuchbhi', description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.' },
-        'Track 3': { title: 'Yaha', description: 'Lorem ipsum dolor sit amet...' },
-        'Track 4': { title: 'Daal', description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.' },
-        'Track 5': { title: 'Do', description: 'Lorem ipsum dolor sit amet...' },
-        'Track 6': { title: 'yaha pe bhi', description: 'Lorem ipsum dolor sit amet...' },
+        'Track 1': {
+      title: 'Media and Entertainment',
+      description: "Dive into the world of creativity and innovation in media and entertainment. Build solutions that redefine how content is created, consumed, and shared. Whether it's immersive AR/VR experiences, AI-generated content, personalized streaming platforms, or innovative storytelling tools, your ideas can reshape the future of entertainment."
+    },
+    'Track 2': {
+      title: "Finance and Fintech",
+      description: 'Empower the financial sector with groundbreaking solutions. Develop applications that revolutionize digital banking, payment systems, cryptocurrency, and financial literacy. Whether you’re enhancing security, promoting financial inclusion, or creating tools for investment and budgeting, this track is all about reshaping the future of money.'
+    },
+    'Track 3': {
+      title: 'Healthcare and Education',
+      description: 'Combine the power of technology with compassion and knowledge to create impactful solutions. In healthcare, innovate ways to improve patient care, diagnosis, and accessibility. In education, craft tools that enhance learning experiences, increase inclusivity, or gamify knowledge acquisition. Your solutions can bridge gaps and make essential services more accessible to everyone.'
+    },
+    'Track 4': {
+      title: 'Digital Security',
+      description: 'In an increasingly connected world, digital security is more critical than ever. Build tools and systems that protect sensitive data, combat cyber threats, and ensure privacy. From secure authentication methods to innovative threat detection, this track challenges you to safeguard the digital future.'
+    },
+    'Track 5': {
+      title: 'Environment and Sustainability',
+      description: 'Leverage technology to tackle environmental challenges and promote sustainability. Create solutions that reduce waste, optimize energy consumption, or monitor environmental impact. Whether it’s through smart agriculture, renewable energy innovations, or eco-conscious applications, your ideas can help pave the way for a greener future.'
+    },
+    'Track 6': {
+      title: 'Open Innovation',
+      description: 'Think outside the box and break free from predefined boundaries. This track encourages you to explore uncharted territories, bringing any unique, impactful idea to life. If you have an out-of-the-ordinary solution that doesn’t fit into the other tracks, this is your space to shine.'
+    },
     };
 
     useEffect(() => {
@@ -81,7 +99,7 @@ const TracksMobile: React.FC = () => {
                     <div className="fixed inset-0 bg-[#4B5862] bg-opacity-70 backdrop-blur-sm z-[999]" />
                     <div
                         ref={popupRef}
-                        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[342px] h-[492px] z-[1000]"
+                        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[342px] h-[700px] z-[1000]"
                     >
                         <motion.div
                             initial={{ opacity: 0, scale: 0.5 }}

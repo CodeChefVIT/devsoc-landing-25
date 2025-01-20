@@ -14,7 +14,7 @@ interface ButtonProps {
 
 const FaqButtons = ({ text, onClick }: ButtonProps) => {
     return (
-        <button onClick={onClick} className='bg-[#FF7657] text-white font-yerk py-4 px-8 rounded-[10px] w-[80vw] lg:w-[36vw] h-[12vh] max-[320px]:text-[0.7rem] text-[0.8rem]   lg:text-[0.9rem] xl:text-[1rem] flex items-center justify-center text-start shadow-[0_4px_6px_rgba(0,0,0,0.1),10px_10px_0px_#FF9737] active:translate-y-[10px] active:translate-x-[10px] active:shadow-[0_4px_6px_rgba(0,0,0,0.1)] transition'>
+        <button onClick={onClick} className='bg-[#FF7657] text-white font-mono py-4 px-8 rounded-[10px] w-[80vw] lg:w-[36vw] h-[12vh] max-[320px]:text-[0.7rem] text-[0.8rem]   lg:text-[1.2rem] xl:text-[1.2rem] flex items-center justify-center text-start shadow-[0_4px_6px_rgba(0,0,0,0.1),10px_10px_0px_#FF9737] active:translate-y-[10px] active:translate-x-[10px] active:shadow-[0_4px_6px_rgba(0,0,0,0.1)] transition'>
             {text}
         </button>
     )
@@ -113,21 +113,26 @@ const Laptop = ({ faqans }: LaptopProps) => {
 const Faq = () => {
     const faqs: { question: string; answer: string }[] = [
         {
-            question: 'This is the best event in South East Asia, as well as Karan is the best CP',
-            answer: '1 This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and CodeChef is the best innovative club in VIT.',
+            question: 'Is the hackathon free to attend?',
+            answer: "Yes! DevSOC'25 is completely free to attend thanks to our sponsors.",
         },
         {
-            question: 'Hola',
-            answer: '2 This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and CodeChef is the best innovative club in VIT.',
+            question: 'How many team members do I need to have?',
+            answer: 'This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills.',
         },
         {
-            question: 'JP',
-            answer: '3 This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and CodeChef is the best innovative club in VIT.',
+            question: "I don't have much experience with coding or tech events. Should I still participate?",
+            answer: "We evaluate participants based on various metrics, considering if you're a fresher and where you stand among peers. If you lack technical experience, this is a great chance to build a foundation, interact with seniors, and gain valuable guidance. If you're interested in tech, you're welcome to join!",
         },
         {
-            question: 'Okay',
-            answer: '4 This hackathon is a team competition where you can have 2-5 members in your team. Most teams aim to have a mix of people with both design and developer skills and CodeChef is the best innovative club in VIT.',
+            question: 'Will there be mentorship available during the hackathon?',
+            answer: 'Yes, mentors from various domains will be available throughout the event to guide you, provide feedback on your projects, and help you overcome any challenges you face during the hackathon.',
         },
+        {
+            question: 'Have any more queries?',
+            answer: 'If you have any further doubts, feel free to ask your doubts on our Discord server.',
+        },
+        
     ];
 
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
