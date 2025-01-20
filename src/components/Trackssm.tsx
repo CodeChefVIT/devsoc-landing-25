@@ -10,27 +10,27 @@ const TracksMobile: React.FC = () => {
     const popupRef = useRef<HTMLDivElement>(null);
 
     const buttonContent: { [key: string]: { title: string; description: string } } = {
-        'Track 1': {
+        'Media and Entertainment': {
       title: 'Media and Entertainment',
       description: "Dive into the world of creativity and innovation in media and entertainment. Build solutions that redefine how content is created, consumed, and shared. Whether it's immersive AR/VR experiences, AI-generated content, personalized streaming platforms, or innovative storytelling tools, your ideas can reshape the future of entertainment."
     },
-    'Track 2': {
+    'Finance and Fintech': {
       title: "Finance and Fintech",
       description: 'Empower the financial sector with groundbreaking solutions. Develop applications that revolutionize digital banking, payment systems, cryptocurrency, and financial literacy. Whether you’re enhancing security, promoting financial inclusion, or creating tools for investment and budgeting, this track is all about reshaping the future of money.'
     },
-    'Track 3': {
+    'Healthcare and Education': {
       title: 'Healthcare and Education',
       description: 'Combine the power of technology with compassion and knowledge to create impactful solutions. In healthcare, innovate ways to improve patient care, diagnosis, and accessibility. In education, craft tools that enhance learning experiences, increase inclusivity, or gamify knowledge acquisition. Your solutions can bridge gaps and make essential services more accessible to everyone.'
     },
-    'Track 4': {
+    'Digital Security': {
       title: 'Digital Security',
       description: 'In an increasingly connected world, digital security is more critical than ever. Build tools and systems that protect sensitive data, combat cyber threats, and ensure privacy. From secure authentication methods to innovative threat detection, this track challenges you to safeguard the digital future.'
     },
-    'Track 5': {
+    'Environment and Sustainability': {
       title: 'Environment and Sustainability',
       description: 'Leverage technology to tackle environmental challenges and promote sustainability. Create solutions that reduce waste, optimize energy consumption, or monitor environmental impact. Whether it’s through smart agriculture, renewable energy innovations, or eco-conscious applications, your ideas can help pave the way for a greener future.'
     },
-    'Track 6': {
+    'Open Innovation': {
       title: 'Open Innovation',
       description: 'Think outside the box and break free from predefined boundaries. This track encourages you to explore uncharted territories, bringing any unique, impactful idea to life. If you have an out-of-the-ordinary solution that doesn’t fit into the other tracks, this is your space to shine.'
     },
@@ -69,11 +69,10 @@ const TracksMobile: React.FC = () => {
 
     return (
         <div className="relative w-full min-h-screen overflow-hidden flex flex-col items-center">
-            {/* Background Image */}
+
             <div className={`absolute top-0 -left-1/3 w-[150%] h-full opacity-20 z-10 bg-cover bg-center bg-no-repeat scale-150 transition-all duration-300 ${isPopupVisible ? 'blur-sm' : ''}`}
                 style={{ backgroundImage: "url('/trackk.svg')" }} />
 
-            {/* Content */}
             <div className="z-20 relative mt-5 text-center">
                 <h1 className={`text-white font-yerk text-5xl font-normal shadow-red transition-all duration-300 ${isPopupVisible ? 'blur-sm' : ''}`}
                     style={{ textShadow: '2px 2px 10px #994952' }}>
@@ -93,7 +92,6 @@ const TracksMobile: React.FC = () => {
                 </div>
             </div>
 
-            {/* Popup */}
             {isPopupVisible && activeButton && (
                 <>
                     <div className="fixed inset-0 bg-[#4B5862] bg-opacity-70 backdrop-blur-sm z-[999]" />
@@ -107,14 +105,12 @@ const TracksMobile: React.FC = () => {
                             transition={{ duration: 0.3 }}
                             className="relative w-full h-full bg-[#4B5862] rounded-xl border-8 border-[#FFCE00] flex flex-col"
                         >
-                            {/* Corner Circles */}
                              <div className="absolute top-4 left-4 w-4 h-4 bg-[#ffffff] rounded-full" />
                             <div className="absolute top-4 right-4 w-4 h-4 bg-[#ffffff] rounded-full" />
                             <div className="absolute bottom-4 left-4 w-4 h-4 bg-[#ffffff] rounded-full" />
                             <div className="absolute bottom-4 right-4 w-4 h-4 bg-[#ffffff] rounded-full" />
 
 
-                            {/* Content */}
                             <div className="flex flex-col justify-center items-center h-full p-8">
                                 <div className="flex-1 flex flex-col justify-center items-center overflow-y-auto">
                                     <h2 className="text-white text-center font-yerk text-2xl font-normal mb-6">

@@ -22,27 +22,27 @@ const Tracks: React.FC = () => {
   const animatedTrackStyle = { x: trackX, y: trackY };
 
   const buttonContent: { [key: string]: { title: string; description: string } } = {
-    'Track 1': {
+    'Media and Entertainment': {
       title: 'Media and Entertainment',
       description: "Dive into the world of creativity and innovation in media and entertainment. Build solutions that redefine how content is created, consumed, and shared. Whether it's immersive AR/VR experiences, AI-generated content, personalized streaming platforms, or innovative storytelling tools, your ideas can reshape the future of entertainment."
     },
-    'Track 2': {
+    'Finance and Fintech': {
       title: 'Finance and Fintech',
       description: 'Empower the financial sector with groundbreaking solutions. Develop applications that revolutionize digital banking, payment systems, cryptocurrency, and financial literacy. Whether you’re enhancing security, promoting financial inclusion, or creating tools for investment and budgeting, this track is all about reshaping the future of money.'
     },
-    'Track 3': {
+    'Healthcare and Education': {
       title: 'Healthcare and Education',
       description: 'Combine the power of technology with compassion and knowledge to create impactful solutions. In healthcare, innovate ways to improve patient care, diagnosis, and accessibility. In education, craft tools that enhance learning experiences, increase inclusivity, or gamify knowledge acquisition. Your solutions can bridge gaps and make essential services more accessible to everyone.'
     },
-    'Track 4': {
+    'Digital Security': {
       title: 'Digital Security',
       description: 'In an increasingly connected world, digital security is more critical than ever. Build tools and systems that protect sensitive data, combat cyber threats, and ensure privacy. From secure authentication methods to innovative threat detection, this track challenges you to safeguard the digital future.'
     },
-    'Track 5': {
+    'Environment and Sustainability': {
       title: 'Environment and Sustainability',
       description: 'Leverage technology to tackle environmental challenges and promote sustainability. Create solutions that reduce waste, optimize energy consumption, or monitor environmental impact. Whether it’s through smart agriculture, renewable energy innovations, or eco-conscious applications, your ideas can help pave the way for a greener future.'
     },
-    'Track 6': {
+    'Open Innovation': {
       title: 'Open Innovation',
       description: 'Think outside the box and break free from predefined boundaries. This track encourages you to explore uncharted territories, bringing any unique, impactful idea to life. If you have an out-of-the-ordinary solution that doesn’t fit into the other tracks, this is your space to shine.'
     }
@@ -100,8 +100,8 @@ const Tracks: React.FC = () => {
           flexShrink: 0,
           borderRadius: '12px',
           opacity: 2,
-          left: '505px',
-          top: '300px',
+          left: '650px',
+          top: '400px',
           zIndex: 1,
         }}
       />
@@ -114,7 +114,7 @@ const Tracks: React.FC = () => {
           height: "10000px",
           flexShrink: 0,
           top: "-5000px",
-          left: "650px",
+          left: "300px",
           zIndex: 1,
           ...(isInView ? animatedTrackStyle : initialTrackStyle),
         }}
@@ -155,7 +155,7 @@ const Tracks: React.FC = () => {
            marginLeft: '150px',
           }}
         >
-          {['Track 1', 'Track 2', 'Track 3', 'Track 4', 'Track 5', 'Track 6'].map((buttonText, index) => (
+          {['Media and Entertainment', 'Finance and Fintech', 'Healthcare and Education', 'Digital Security', 'Environment and Sustainability', 'Open Innovation'].map((buttonText, index) => (
             <button
               key={index}
               onClick={() => handleButtonClick(buttonText)}
@@ -163,8 +163,8 @@ const Tracks: React.FC = () => {
                 display: 'flex',
                 justifyContent: 'center',
                alignItems: 'center',
-                width: '200px',
-                 height: '57px',
+                width: '350px',
+                 height: '80px',
                 padding: '0',
                 borderRadius: '12px',
                 background: '#994952',
@@ -279,3 +279,6 @@ const Tracks: React.FC = () => {
 };
 
 export default Tracks;
+
+
+
