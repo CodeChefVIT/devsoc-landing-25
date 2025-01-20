@@ -3,12 +3,12 @@ import React from 'react';
 import { StaticImageData } from 'next/image';
 
 interface CardProps {
-  name: string;
+
   image: string | StaticImageData;
   url: string;
 }
 
-const Card: React.FC<CardProps> = ({ name, image, url }) => {
+const Card: React.FC<CardProps> = ({ image, url }) => {
     const handleClick = () => {
     window.open(url, '_blank'); // Open link in a new tab
   };
