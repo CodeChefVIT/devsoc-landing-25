@@ -20,8 +20,8 @@ const HomePage: React.FC<HomePageProps> = ({
   mascotPeekImage,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
-
   const [isHeld, setIsHeld] = useState<"discord" | "register" | null>(null);
+  const [registerText, setRegisterText] = useState("Register"); // Added state for register button text
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,9 +45,17 @@ const HomePage: React.FC<HomePageProps> = ({
   };
 
   const handleButtonMouseLeave = () => {
-      setIsHeld(null)
-  }
+    setIsHeld(null);
+  };
 
+  const handleDiscordButtonClick = () => {
+    window.open("https://discord.gg/M8V6vxXnUq", "_blank");
+  };
+
+
+  useEffect(() => {
+      setRegisterText("Coming Soon")
+  }, [])
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden pb-[120px] md:pb-[180px]">
@@ -71,32 +79,30 @@ const HomePage: React.FC<HomePageProps> = ({
               <div
                 onMouseDown={() => handleButtonMouseDown("discord")}
                 onMouseUp={handleButtonMouseUp}
-                  onMouseLeave={handleButtonMouseLeave}
+                onMouseLeave={handleButtonMouseLeave}
+                onClick={handleDiscordButtonClick} 
                 className={`hidden lg:block rounded-lg transition  mt-3 
                   ${
                     isHeld === "discord" ? "translate-x-[4px] translate-y-[4px]" : ""
                   }`
-                  
                 }
                 style={{
                   boxShadow: isHeld === "discord"
                     ? "none"
                     : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                 }}
-                
               >
                 <AnimatedButton
                   text="Discord"
                   mascotImage={mascotPeekImage}
                   className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                   icon={discord}
-                  
                 />
               </div>
 
               {/* Logo Section - Always on top on small screens*/}
               <div className="flex flex-col items-center lg:items-center w-full lg:w-auto">
-               <div className="w-[290px] h-[70px] sm:w-[400px] sm:h-[100px] md:w-[500px] md:h-[100px] lg:w-[550px] lg:h-[130px] top-1 relative">
+                <div className="w-[290px] h-[70px] sm:w-[400px] sm:h-[100px] md:w-[500px] md:h-[100px] lg:w-[550px] lg:h-[130px] top-1 relative">
                   <Image
                     src={dev2k25}
                     alt="Devsoc 2k25 logo"
@@ -105,15 +111,14 @@ const HomePage: React.FC<HomePageProps> = ({
                     className="relative z-10"
                     priority
                   />
-                  
                 </div>
               </div>
 
               {/* Button Container Right - Visible on large screens*/}
               <div
-                 onMouseDown={() => handleButtonMouseDown("register")}
-                 onMouseUp={handleButtonMouseUp}
-                  onMouseLeave={handleButtonMouseLeave}
+                onMouseDown={() => handleButtonMouseDown("register")}
+                onMouseUp={handleButtonMouseUp}
+                onMouseLeave={handleButtonMouseLeave}
                 className={`hidden lg:block rounded-lg transition  mt-3 ${
                   isHeld === "register" ? " translate-x-[4px] translate-y-[4px] " : ""
                 }`}
@@ -122,65 +127,59 @@ const HomePage: React.FC<HomePageProps> = ({
                     ? "none"
                     : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                 }}
-                
               >
                 <AnimatedButton
-                  text="Register"
+                  text={registerText}
                   mascotImage={mascotPeekImage}
                   className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                   icon={devsoc}
-                 
                 />
               </div>
 
               {/* Buttons Section - On bottom on small screens, in a line*/}
               <div className="lg:hidden flex items-center justify-center space-x-5 w-full">
-              <div
-                onMouseDown={() => handleButtonMouseDown("discord")}
-                onMouseUp={handleButtonMouseUp}
+                <div
+                  onMouseDown={() => handleButtonMouseDown("discord")}
+                  onMouseUp={handleButtonMouseUp}
                   onMouseLeave={handleButtonMouseLeave}
-                className={`rounded-lg transition  mt-3
+                   onClick={handleDiscordButtonClick}
+                  className={`rounded-lg transition  mt-3
                   ${
                     isHeld === "discord" ? "translate-x-[4px] translate-y-[4px]" : ""
                   }`
-                  
                 }
-                style={{
+                  style={{
                   boxShadow: isHeld === "discord"
                     ? "none"
                     : "4px 4px 0px rgba(0, 0, 0, 0.4)",
-                }}
-                
-              >
+                  }}
+                >
                   <AnimatedButton
                     text="Discord"
                     mascotImage={mascotPeekImage}
                     className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                     icon={discord}
-                    
                   />
                 </div>
 
                 <div
-                 onMouseDown={() => handleButtonMouseDown("register")}
-                 onMouseUp={handleButtonMouseUp}
+                  onMouseDown={() => handleButtonMouseDown("register")}
+                  onMouseUp={handleButtonMouseUp}
                   onMouseLeave={handleButtonMouseLeave}
-                className={`rounded-lg transition  mt-3 ${
-                  isHeld === "register" ? " translate-x-[4px] translate-y-[4px] " : ""
-                }`}
-                style={{
-                  boxShadow: isHeld === "register"
-                    ? "none"
-                    : "4px 4px 0px rgba(0, 0, 0, 0.4)",
-                }}
-                
-              >
+                  className={`rounded-lg transition  mt-3 ${
+                    isHeld === "register" ? " translate-x-[4px] translate-y-[4px] " : ""
+                  }`}
+                  style={{
+                    boxShadow: isHeld === "register"
+                      ? "none"
+                      : "4px 4px 0px rgba(0, 0, 0, 0.4)",
+                  }}
+                >
                   <AnimatedButton
-                    text="Register"
+                    text={registerText}
                     mascotImage={mascotPeekImage}
                     className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                     icon={devsoc}
-                   
                   />
                 </div>
               </div>
@@ -195,14 +194,15 @@ const HomePage: React.FC<HomePageProps> = ({
           <div className="flex flex-col items-center justify-center mb-44 xl:mb-32 relative">
             {isMobile ? <MobileRive /> : <HomeRIve />}
             {/* <div className="absolute top-2 sm:top-3 md:top-4 left-1/2 transform -translate-x-1/2 text-white text-base sm:text-xl md:text-2xl">
-                            Sponsor Information Here
-                        </div> */}
+              Sponsor Information Here
+            </div> */}
           </div>
         </div>
       </div>
     </div>
   );
 };
+
 interface AnimatedButtonProps {
   text: string;
   mascotImage: StaticImageData;

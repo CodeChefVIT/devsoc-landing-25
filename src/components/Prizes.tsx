@@ -219,7 +219,7 @@ const Prizes = () => {
         </h1>
       </div>
 
-      <div className="w-full flex items-center justify-center px-5  pt-60 py-8"> {/* Adjusted padding */}
+      <div className="w-full flex items-center justify-center px-5  pt-40 py-8"> {/* Adjusted padding */}
         <div className=" flex justify-center items-center  pr-2"> {/* Adjusted max-width and padding */}
           <Image
             src="/tracksnew.svg"

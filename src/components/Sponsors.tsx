@@ -8,21 +8,21 @@ import beyosImage from "@/assets/images/beyos.png";
 import { StaticImageData } from "next/image";
 
 interface Sponsor {
-    name: string;
+
     image: StaticImageData | string;
     url: string;
 }
 
 export default function Sponsors() {
     const [sponsors,] = useState<Sponsor[]>([
-        { name: "Orkes", image: orkesImage, url: "https://www.orkes.io/" },
-        { name: "TalentRecruit", image: talentImage, url: "https://www.talentrecruit.com/" },
-        { name: "Beyond Sustainability", image: beyosImage, url: "https://beyondsustainability.in/" },
+        { image: orkesImage, url: "https://www.orkes.io/" },
+        { image: talentImage, url: "https://www.talentrecruit.com/" },
+        {  image: beyosImage, url: "https://beyondsustainability.in/" },
     ]);
 
     return (
         <div className="mt-8 bg-cover bg-no-repeat min-h-screen">
-            <h1 className="font-yerk text-[35px] sm:text-[75px] lg:text-left sm:p-14 pb-3 pt-4 text-black text-center">
+            <h1 className="font-yerk text-[35px] sm:text-[75px] lg:text-left sm:p-14 pb-12 pt-4 text-black text-center">
                 Sponsors
             </h1>
             <div className="flex flex-wrap justify-center gap-10 pb-8">
@@ -31,7 +31,7 @@ export default function Sponsors() {
                         key={index}
                         className="w-[50%] flex justify-center sm:w-[32%] "
                     >
-                        <Card name={sponsor.name} image={sponsor.image} url={sponsor.url} />
+                        <Card  image={sponsor.image} url={sponsor.url} />
                     </div>
                 ))}
             </div>
