@@ -2,14 +2,14 @@ import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import "tailwindcss/tailwind.css";
 import background from "../assets/images/gallery.svg";
-import image1 from "../assets/images/img3.png";
-import image2 from "../assets/images/img2.png";
-import image3 from "../assets/images/img1.png";
-import image5 from "../assets/images/img5.png";
-import image4 from "../assets/images/img4.png";
-import image6 from "../assets/images/img6.png";
-import image8 from "../assets/images/img8.png";
-import image10 from "../assets/images/img10.png";
+import image1 from "../assets/images/img3.webp";
+import image2 from "../assets/images/img2.webp";
+import image3 from "../assets/images/img1.webp";
+import image5 from "../assets/images/img5.webp";
+import image4 from "../assets/images/img4.webp";
+import image6 from "../assets/images/img6.webp";
+import image8 from "../assets/images/img8.webp";
+import image10 from "../assets/images/img10.webp";
 import Image from "next/image";
 
 const Gallery = () => {
