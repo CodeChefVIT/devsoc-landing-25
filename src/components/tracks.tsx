@@ -100,8 +100,8 @@ const Tracks: React.FC = () => {
           flexShrink: 0,
           borderRadius: '12px',
           opacity: 2,
-          left: '560px',
-          top: '300px',
+          left: '650px',
+          top: '400px',
           zIndex: 1,
         }}
       />
@@ -279,4 +279,6 @@ const Tracks: React.FC = () => {
 };
 
 export default Tracks;
+
+
 
