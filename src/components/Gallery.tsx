@@ -56,13 +56,13 @@ const Gallery = () => {
 
   return (
     <div
-      className="flex flex-col h-[80vh] sm:h-[119vh]  2xl:h-screen bg-cover bg-center"
+      className="flex flex-col bg-cover bg-center"
       style={{ backgroundImage: `url(${background.src})` }}
     >
       {/* <div className="absolute inset-0 bg-beige/90 z-10" /> */}
       <div className="flex justify-center md:justify-start lg:pl-8 absolute left-0 right-0 pt-8">
         <div className="bg-[#FFE6D4] w-fit">
-          <h1 className="text-4xl md:text-7xl font-bold text-black font-yerk p-4">
+          <h1 className="text-5xl md:text-7xl font-bold text-black font-yerk p-4">
             GALLERY
           </h1>
         </div>
