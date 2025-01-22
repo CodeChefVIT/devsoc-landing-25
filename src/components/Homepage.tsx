@@ -9,6 +9,7 @@ import dev2k25 from "../assets/images/Devlogoheader.svg"; // Import the SVG
 
 import HomeRIve from "./HomeRIve";
 import MobileRive from "./MobileRive";
+import TopComponent from "./TopComponent";
 
 interface HomePageProps {
   backgroundImage: StaticImageData;
@@ -66,6 +67,7 @@ const HomePage: React.FC<HomePageProps> = ({
         className="object-cover opacity-30"
         priority
       />
+      
 
       <div className="relative z-10 w-full   ">
         {/* Header Section */}
