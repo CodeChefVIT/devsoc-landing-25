@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import LoaderScreen from "@/components/LoaderScreen";
 import Tracks from "@/components/tracks";
 import Sponsors from "@/components/Sponsors";
-import Prizes from "@/components/Prizes";
+// import Prizes from "@/components/Prizes";
 import About from "@/components/About";
 import Faq from "@/components/Faq";
 import HomePage from "@/components/Homepage";
@@ -17,7 +17,7 @@ import peekImage from "../assets/images/Group 236.png";
 // import Timeline from '@/components/Timelinesm';
 import TracksMobile from "@/components/Trackssm";
 import Gallery from "@/components/Gallery";
-import TopComponent from "@/components/TopComponent";
+// import TopComponent from "@/components/TopComponent";
 
 const CombinedPage: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
