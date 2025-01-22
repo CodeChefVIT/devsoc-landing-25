@@ -13,6 +13,7 @@ import theCopy from "@/assets/images/theCopy.png";
 // import fArrow1 from "@/assets/images/footer-2.svg";
 // import fArrow2 from "@/assets/images/footer-3.svg";
 import theFooterSVG from "@/assets/images/theFooterSVG.svg";
+import TopComponent from "@/components/TopComponent";
 
 export default function Footer() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -35,12 +36,12 @@ export default function Footer() {
   };
   return (
     <div>
-      <div className="font-yerk text-4xl text-center text-black bg-white py-6 h-fit "> 
-        LMAO   {/*just keeping it*/ }
-      </div> 
+      <div className="font-yerk text-4xl text-center text-black bg-white py-6 h-fit ">
+        LMAO {/*just keeping it*/}
+      </div>
       <div
         style={footerStyle}
-        className="pt-[140px] md:pt-[300px] grid grid-rows-[80%_20%] font-yerk items-baseline"
+        className="pt-[140px] md:pt-[230px] grid grid-rows-[60%_20%_20%] font-yerk items-baseline"
       >
         {/* pt-[20%] is just some extra space for the moving text, can always remove it and edit the bg */}
         <div className="grid grid-rows-3 md:grid-rows-1 md:grid-cols-4  md:py-16 h-fit">
@@ -107,7 +108,7 @@ export default function Footer() {
             </div>
             <div className="pb-8 text-base">
               <Link
-              target="__blank"
+                target="__blank"
                 href={"https://www.codechefvit.com/"}
                 className="rounded-lg bg-[#FC1D21] p-4 drop-shadow-md hover:drop-shadow-lg transition-all duration-100"
               >
@@ -117,7 +118,7 @@ export default function Footer() {
           </div>
 
           <div className="flex justify-center items-start">
-            <div className="grid grid-cols-3 md:grid-cols-2 grid-rows-1 md:grid-rows-3 gap-0 items-center">
+            <div className="mt-8 md:mt-0 grid grid-cols-3 md:grid-cols-2 grid-rows-1 md:grid-rows-3 gap-0 items-center">
               <Link
                 href={"https://www.facebook.com/devsoccodechefvit/"}
                 target="__value"
@@ -199,8 +200,11 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="text-center">
-          <div className="flex justify-center items-center mt-8 pt-2 border-t-4 border-[#FC1D21] mx-[10%] drop-shadow-lg">
+        <div className="mt-[125px] md:mt-20 bg-[#ff6f4e] border-y-4 border-[#fe5a42] shadow-md">
+          <TopComponent />
+        </div>
+        <div className="text-center  mt-10">
+          <div className="flex justify-center items-center   border-[#FC1D21] mx-[10%] drop-shadow-lg">
             <Image src={theCopy} alt="@" height={40} width={40} />{" "}
             <p>2025 CODECHEF</p>
           </div>
