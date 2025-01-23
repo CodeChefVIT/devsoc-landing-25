@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/DEVSOC.png" }],
   openGraph: {
     title: "DEVSOC'25",
-    images: [{ url: "/devsoc_portal.png" }],
-    url: "https://www.devsoc.codechefvit.com/",
+    images: [{ url: "/devsoc-og.png" }],
+    url: "https://devsoc.codechefvit.com/",
     type: "website",
     description:
       "DEVSOC-25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
@@ -76,8 +76,7 @@ export const metadata: Metadata = {
     "DEVSOC collaboration projects",
     "DEVSOC hackathon news",
     "DEVSOC networking and innovation",
-  ]
-
+  ],
 };
 
 export default function RootLayout({
