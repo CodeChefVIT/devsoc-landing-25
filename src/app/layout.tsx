@@ -87,6 +87,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+       <link rel="icon" type="image/x-icon" href="/assets/Devsoc.svg"></link>
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-XK2D8J0C4L" // Replace with your Google Analytics ID
