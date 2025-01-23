@@ -36,15 +36,12 @@ export default function Footer() {
   };
   return (
     <div>
-      <div className="font-yerk text-4xl text-center text-black bg-white py-6 h-fit ">
-        LMAO {/*just keeping it*/}
-      </div>
       <div
         style={footerStyle}
-        className="pt-[140px] md:pt-[230px] grid grid-rows-[60%_20%_20%] font-yerk items-baseline"
+        className="pt-[140px] md:pt-[270px] flex flex-col md:grid grid-rows-[70%_20%_10%] font-yerk md:items-baseline"
       >
         {/* pt-[20%] is just some extra space for the moving text, can always remove it and edit the bg */}
-        <div className="grid grid-rows-3 md:grid-rows-1 md:grid-cols-4  md:py-16 h-fit">
+        <div className="grid grid-rows-[40%_40%_20%] md:grid-rows-1 md:grid-cols-4  md:py-16 h-fit">
           <div className="flex justify-center items-end md:mb-0 mb-4">
             <Image src={img1} height={250} width={250} alt="devsoc" />
           </div>
@@ -73,7 +70,7 @@ export default function Footer() {
             </div>
           )}
 
-          <div className="text-2xl md:ml-12 text-center md:text-left">
+          <div className="flex mt-4 md:mt-0 md:block flex-col justify-center text-2xl md:ml-12 text-center md:text-left">
             <div className="pb-8">
               <Link
                 href={"#about"}
@@ -117,8 +114,8 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex justify-center items-start">
-            <div className="mt-8 md:mt-0 grid grid-cols-3 md:grid-cols-2 grid-rows-1 md:grid-rows-3 gap-0 items-center">
+          <div className="flex justify-center items-center md:items-start">
+            <div className="py-4 md:py-0 md:mt-0 grid grid-cols-3 md:grid-cols-2 grid-rows-1 md:grid-rows-3 gap-0 items-center">
               <Link
                 href={"https://www.facebook.com/devsoccodechefvit/"}
                 target="__value"
@@ -200,10 +197,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-[125px] md:mt-20 bg-[#ff6f4e] border-y-4 border-[#fe5a42] shadow-md">
+        <div className="mt-10  bg-[#ff6f4e] border-y-4 border-[#fe5a42] shadow-md">
           <TopComponent />
         </div>
-        <div className="text-center  mt-10">
+        <div className="text-center  my-7 md:my-0 ">
           <div className="flex justify-center items-center   border-[#FC1D21] mx-[10%] drop-shadow-lg">
             <Image src={theCopy} alt="@" height={40} width={40} />{" "}
             <p>2025 CODECHEF</p>
