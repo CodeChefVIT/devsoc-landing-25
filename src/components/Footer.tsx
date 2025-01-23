@@ -185,7 +185,7 @@ export default function Footer() {
                 />
               </Link>
               <Link
-                href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+                href={"https://discord.gg/M8V6vxXnUq"}
                 className="m-3 hover:drop-shadow-lg transition-all duration-200"
                 target="__value"
               >
