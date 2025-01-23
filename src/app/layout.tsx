@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "DEVSOC'25",
   description:
     "DEVSOC-25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
-  icons: [{ rel: "icon", url: "/DEVSOC.png" }],
+  icons: [{ rel: "icon", url: "https://devsoc.codechefvit.com/favicon.svg" }],
   openGraph: {
     title: "DEVSOC'25",
     images: [{ url: "/devsoc-og.png" }],
