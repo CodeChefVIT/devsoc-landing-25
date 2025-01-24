@@ -57,7 +57,7 @@ const SlantedBanner: React.FC<SlantedBannerProps> = ({
   });
 
   const fullText = Array(40).fill(" DEVSOC 2K25").join(" ");
-  const sponsorText = Array(40).fill("BUILD-BEYOUND-LIMITS").join(" • ");
+  const sponsorText = Array(40).fill("BUILD-BEYOND-LIMITS").join(" • ");
 
   return (
     <div className="h-0 relative flex items-center mt-16">
