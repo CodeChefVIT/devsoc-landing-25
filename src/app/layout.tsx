@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.devsoc.codechefvit.com/"),
   title: "DEVSOC'25",
   description:
-    "DEVSOC-25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
+    "DEVSOC'25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
   icons: [{ rel: "icon", url: "https://devsoc.codechefvit.com/favicon.svg" }],
   openGraph: {
     title: "DEVSOC'25",
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     url: "https://devsoc.codechefvit.com/",
     type: "website",
     description:
-      "DEVSOC-25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
+      "DEVSOC'25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
     siteName: "DEVSOC'25",
   },
   twitter: {
     card: "summary_large_image",
     title: "DEVSOC'25",
     description:
-      "DEVSOC-25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
+      "DEVSOC'25 is here! Join us in the Anna Auditorium on 3rd Feb for an intense coding experience, fun activities, and insightful speaker sessions. Find out more at our website!",
     images: [{ url: "/DEVSOC.png" }],
   },
   keywords: [
