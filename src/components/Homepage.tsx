@@ -9,6 +9,7 @@ import dev2k25 from "../assets/images/Devlogoheader.svg"; // Import the SVG
 
 import HomeRIve from "./HomeRIve";
 import MobileRive from "./MobileRive";
+import RegComp from "./RegComp";
 // import TopComponent from "./TopComponent";
 
 interface HomePageProps {
@@ -23,7 +24,7 @@ const HomePage: React.FC<HomePageProps> = ({
   const [isMobile, setIsMobile] = useState(false);
   const [isHeld, setIsHeld] = useState<"discord" | "register" | null>(null);
   const [registerText, setRegisterText] = useState("Register"); // Added state for register button text
-
+  const [regClicked, setRegClicked] = useState(false);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.matchMedia("(max-width: 768px)").matches);
@@ -53,10 +54,9 @@ const HomePage: React.FC<HomePageProps> = ({
     window.open("https://discord.gg/M8V6vxXnUq", "_blank");
   };
 
-
   useEffect(() => {
-      setRegisterText("Coming Soon")
-  }, [])
+    setRegisterText("Register Now");
+  }, []);
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden pb-[120px] md:pb-[180px]">
@@ -67,7 +67,6 @@ const HomePage: React.FC<HomePageProps> = ({
         className="object-cover opacity-30"
         priority
       />
-      
 
       <div className="relative z-10 w-full   ">
         {/* Header Section */}
@@ -82,16 +81,18 @@ const HomePage: React.FC<HomePageProps> = ({
                 onMouseDown={() => handleButtonMouseDown("discord")}
                 onMouseUp={handleButtonMouseUp}
                 onMouseLeave={handleButtonMouseLeave}
-                onClick={handleDiscordButtonClick} 
+                onClick={handleDiscordButtonClick}
                 className={`hidden lg:block rounded-lg transition  mt-3 
                   ${
-                    isHeld === "discord" ? "translate-x-[4px] translate-y-[4px]" : ""
-                  }`
-                }
+                    isHeld === "discord"
+                      ? "translate-x-[4px] translate-y-[4px]"
+                      : ""
+                  }`}
                 style={{
-                  boxShadow: isHeld === "discord"
-                    ? "none"
-                    : "4px 4px 0px rgba(0, 0, 0, 0.4)",
+                  boxShadow:
+                    isHeld === "discord"
+                      ? "none"
+                      : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                 }}
               >
                 <AnimatedButton
@@ -118,16 +119,25 @@ const HomePage: React.FC<HomePageProps> = ({
 
               {/* Button Container Right - Visible on large screens*/}
               <div
-                onMouseDown={() => handleButtonMouseDown("register")}
+                onMouseDown={() => {
+                  handleButtonMouseDown("register");
+                }}
                 onMouseUp={handleButtonMouseUp}
                 onMouseLeave={handleButtonMouseLeave}
+                onClick={() => {
+                  setRegClicked(!regClicked);
+  
+                }}
                 className={`hidden lg:block rounded-lg transition  mt-3 ${
-                  isHeld === "register" ? " translate-x-[4px] translate-y-[4px] " : ""
+                  isHeld === "register"
+                    ? " translate-x-[4px] translate-y-[4px] "
+                    : ""
                 }`}
                 style={{
-                  boxShadow: isHeld === "register"
-                    ? "none"
-                    : "4px 4px 0px rgba(0, 0, 0, 0.4)",
+                  boxShadow:
+                    isHeld === "register"
+                      ? "none"
+                      : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                 }}
               >
                 <AnimatedButton
@@ -137,23 +147,25 @@ const HomePage: React.FC<HomePageProps> = ({
                   icon={devsoc}
                 />
               </div>
-
+              <RegComp regClicked={regClicked} setRegClicked={setRegClicked} />
               {/* Buttons Section - On bottom on small screens, in a line*/}
               <div className="lg:hidden flex items-center justify-center space-x-5 w-full">
                 <div
                   onMouseDown={() => handleButtonMouseDown("discord")}
                   onMouseUp={handleButtonMouseUp}
                   onMouseLeave={handleButtonMouseLeave}
-                   onClick={handleDiscordButtonClick}
+                  onClick={handleDiscordButtonClick}
                   className={`rounded-lg transition  mt-3
                   ${
-                    isHeld === "discord" ? "translate-x-[4px] translate-y-[4px]" : ""
-                  }`
-                }
+                    isHeld === "discord"
+                      ? "translate-x-[4px] translate-y-[4px]"
+                      : ""
+                  }`}
                   style={{
-                  boxShadow: isHeld === "discord"
-                    ? "none"
-                    : "4px 4px 0px rgba(0, 0, 0, 0.4)",
+                    boxShadow:
+                      isHeld === "discord"
+                        ? "none"
+                        : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                   }}
                 >
                   <AnimatedButton
@@ -168,13 +180,20 @@ const HomePage: React.FC<HomePageProps> = ({
                   onMouseDown={() => handleButtonMouseDown("register")}
                   onMouseUp={handleButtonMouseUp}
                   onMouseLeave={handleButtonMouseLeave}
+                  onClick={() => {
+                    setRegClicked(!regClicked);
+    
+                  }}
                   className={`rounded-lg transition  mt-3 ${
-                    isHeld === "register" ? " translate-x-[4px] translate-y-[4px] " : ""
+                    isHeld === "register"
+                      ? " translate-x-[4px] translate-y-[4px] "
+                      : ""
                   }`}
                   style={{
-                    boxShadow: isHeld === "register"
-                      ? "none"
-                      : "4px 4px 0px rgba(0, 0, 0, 0.4)",
+                    boxShadow:
+                      isHeld === "register"
+                        ? "none"
+                        : "4px 4px 0px rgba(0, 0, 0, 0.4)",
                   }}
                 >
                   <AnimatedButton
