@@ -13,11 +13,11 @@ import Footer from "@/components/Footer";
 import frameImage from "../assets/images/Frame 34.png";
 import bgHomeImage from "../assets/images/Frame 53.png";
 import peekImage from "../assets/images/Group 236.png";
-// import AnimatedTimeline from '@/components/Timeline';
-// import Timeline from '@/components/Timelinesm';
+import AnimatedTimeline from '@/components/Timeline';
+import Timeline from '@/components/Timelinesm';
 import TracksMobile from "@/components/Trackssm";
 import Gallery from "@/components/Gallery";
-// import TopComponent from "@/components/TopComponent";
+//import TopComponent from "@/components/TopComponent";
 
 const CombinedPage: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -28,7 +28,7 @@ const CombinedPage: React.FC = () => {
     home: null as unknown as HTMLDivElement,
     about: null as unknown as HTMLDivElement,
     gallery: null as unknown as HTMLDivElement,
-    // timeline: null as unknown as HTMLDivElement,
+    timeline: null as unknown as HTMLDivElement,
     tracks: null as unknown as HTMLDivElement,
     sponsors: null as unknown as HTMLDivElement,
     prizes: null as unknown as HTMLDivElement,
@@ -44,7 +44,7 @@ const CombinedPage: React.FC = () => {
         home: { color: "#24637B", ref: sectionRefs.current.home },
         about: { color: "#A85059", ref: sectionRefs.current.about },
         gallery: { color: "#FFE6D4", ref: sectionRefs.current.gallery },
-        // timeline: { color: "#F6F5F5", ref: sectionRefs.current.timeline },
+        timeline: { color: "#F6F5F5", ref: sectionRefs.current.timeline },
         tracks: { color: "#48634A", ref: sectionRefs.current.tracks },
         sponsors: { color: "#60A2BB", ref: sectionRefs.current.sponsors },
         prizes: { color: "#FFE6D4", ref: sectionRefs.current.prizes },
@@ -136,16 +136,16 @@ const CombinedPage: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* <div ref={el => { if(el) sectionRefs.current.timeline = el}} className="relative">
+          <div ref={el => { if(el) sectionRefs.current.timeline = el}} className="relative">
           {isMobile ? <Timeline /> : <AnimatedTimeline />}
-        </div> */}
+        </div> 
 
         <motion.div
           ref={postTimelineRef}
           style={{
             backgroundColor: currentBackground,
             transition: "background-color 0.5s ease-out",
-            // marginTop: isMobile ? '0' : '-100vh'
+            marginTop: isMobile ? '0' : '-100vh'
           }}
         >
           <div
