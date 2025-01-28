@@ -33,7 +33,7 @@ const AnimatedTimeline = () => {
   const nightMode = isNightTime(currentEvent.time);
   const cloudImageUrl = nightMode
     ? "/assets/Cloudsblack.svg"
-    : "/assets/clouds.svg";
+    : "/assets/Clouds.svg";
   const starMoonImageUrl = "/assets/Starmoon.svg";
   const clouddudeImageUrl = "/assets/CloudDude.svg";
 
