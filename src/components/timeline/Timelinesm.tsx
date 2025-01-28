@@ -1,47 +1,14 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import "./timeline.css";
-
-const events = [
-  // Day 1 - 03.02.2025
-  { time: "9:00 am - 3/2/25", event: "Doors open and check-in" },
-  { time: "10:00 am", event: "Opening Ceremony" },
-  { time: "11:00 am", event: "Hacking Session" },
-  { time: "1:00 pm", event: "Lunch Break" },
-  { time: "2:00 pm", event: "Hacking Session" },
-  { time: "3:30 pm", event: "Informative Tech Session - 1" },
-  { time: "4:30 pm", event: "Hacking Session" },
-  { time: "7:00 pm", event: "Dinner Break" },
-  { time: "9:00 pm", event: "Hacking Session" },
-  { time: "10:00 pm", event: "Engagement Activity" },
-  { time: "11:30 pm", event: "Review 1" },
-
-  // Day 2 - 04.02.2025
-  { time: "2:30 am - 4/2/25", event: "Hacking Session" },
-  { time: "6:00 am", event: "Breakfast Break" },
-  { time: "9:00 am", event: "Hacking Session" },
-  { time: "12:00 pm", event: "Lunch Break" },
-  { time: "2:00 pm", event: "Hacking Session" },
-  { time: "4:00 pm", event: "Informative Tech Session - 2" },
-  { time: "5:30 pm", event: "Hacking Session" },
-  { time: "7:00 pm", event: "Dinner Break" },
-  { time: "9:00 pm", event: "Hacking Session" },
-
-  // Day 3 - 05.02.2025
-  { time: "12:00 am - 5/2/25", event: "Review 2" },
-  { time: "3:00 am", event: "Hacking Session" },
-  { time: "5:30 am", event: "Final Submission" },
-  { time: "6:00 am", event: "Breakfast Break" },
-  { time: "9:00 am", event: "Final Pitches" },
-  { time: "11:00 am", event: "Prize Distribution and Closing Ceremony" },
-];
+import { events } from "./timelineData";
 
 function Timeline() {
   const [isNightMode, setIsNightMode] = useState(false);
@@ -104,33 +71,32 @@ function Timeline() {
     let lastPos = 0;
     const handleScroll = () => {
       if (!timelineRef.current) return;
-      const curretnScrollPos = window.scrollY ;
+      const curretnScrollPos = window.scrollY;
       const allevents = Array.from(
         timelineRef.current.querySelectorAll(".vertical-timeline-element")
       );
       const isScrollingDown = curretnScrollPos > lastPos;
       lastPos = curretnScrollPos;
-      if(isScrollingDown){
-
+      if (isScrollingDown) {
         for (let i = allevents.length - 1; i >= 0; i--) {
           const element = allevents[i];
           const elRect = element.getBoundingClientRect();
-          
+
           if (elRect.top >= 0 && elRect.top <= window.innerHeight) {
             // console.log(element)
             const theEvent = element.querySelector(".content-title");
             if (theEvent) {
               const time = theEvent.textContent || "";
-              setIsNightMode(isNightTime(time)); 
+              setIsNightMode(isNightTime(time));
             }
-            break; 
+            break;
           }
         }
-      }else{
+      } else {
         for (let i = allevents.length - 1; i >= 0; i--) {
           const element = allevents[i];
           const elRect = element.getBoundingClientRect();
-    
+
           if (elRect.top >= 0 && elRect.top <= window.innerHeight) {
             // console.log(element);
             const theEvent = element.querySelector(".content-title");
@@ -166,9 +132,9 @@ function Timeline() {
         className={`p-4 px-8 relative ${
           isNightMode ? "bg-[#1E1E1E]" : "bg-white"
         }`}
-         style={{
-           transition: 'background-color 0.5s ease-in-out',
-          }}
+        style={{
+          transition: "background-color 0.5s ease-in-out",
+        }}
       >
         <div className="absolute inset-0 opacity-100 z-0 top-32">
           <Image
@@ -192,9 +158,9 @@ function Timeline() {
           className={`pt-20 flex justify-center pb-7 relative z-10 text-4xl font-yerk font-bold ${
             isNightMode ? "text-[#FF9737]" : "text-[#242323]"
           }`}
-           style={{
-                transition: "color 0.5s ease-in-out",
-             }}
+          style={{
+            transition: "color 0.5s ease-in-out",
+          }}
         >
           Timeline
         </motion.div>
@@ -209,7 +175,10 @@ function Timeline() {
           Day 2
         </motion.div> */}
 
-        <div className="timeline-container relative z-10 mt-6" ref={timelineRef}>
+        <div
+          className="timeline-container relative z-10 mt-6"
+          ref={timelineRef}
+        >
           <div
             className="timeline-line"
             style={{
@@ -217,7 +186,7 @@ function Timeline() {
               height: lineHeight,
               top: lineTopOffset,
               left: lineLeftOffset,
-                 transition: 'background-color 0.5s ease-in-out',
+              transition: "background-color 0.5s ease-in-out",
             }}
           />
           <VerticalTimeline lineColor="transparent">
@@ -226,41 +195,42 @@ function Timeline() {
                 key={index}
                 className="vertical-timeline-element--work"
                 style={{ marginBottom: "80px" }}
-                 contentStyle={{
-                     background: isNightMode ? "rgba(255,255,255,0.7)" : "white",
-                   color: isNightMode ? "black" : "black",
-                     border: `4px solid ${isNightMode ? "white" : "black"}`,
-                   boxShadow: "none",
-                    borderRadius: "25px",
-                    height: "fit-content",
-                    minWidth: "300px",
-                    transition: 'background-color 0.5s ease-in-out, border-color 0.5s ease-in-out',
-                   }}
-                  contentArrowStyle={{
-                    borderRight: `7px solid ${isNightMode ? "white" : "black"}`,
-                    top: "50%",
-                      marginTop: "-7px",
-                      transition: 'border-color 0.5s ease-in-out',
-                   }}
+                contentStyle={{
+                  background: isNightMode ? "rgba(255,255,255,0.7)" : "white",
+                  color: isNightMode ? "black" : "black",
+                  border: `4px solid ${isNightMode ? "white" : "black"}`,
+                  boxShadow: "none",
+                  borderRadius: "25px",
+                  height: "fit-content",
+                  minWidth: "300px",
+                  transition:
+                    "background-color 0.5s ease-in-out, border-color 0.5s ease-in-out",
+                }}
+                contentArrowStyle={{
+                  borderRight: `7px solid ${isNightMode ? "white" : "black"}`,
+                  top: "50%",
+                  marginTop: "-7px",
+                  transition: "border-color 0.5s ease-in-out",
+                }}
                 iconStyle={{ ...defaultIconStyle }}
               >
                 <motion.h3
-                 className={`vertical-timeline-element-title font-mono pl-3 text-2xl content-title ${
-                   isNightMode ? "text-black" : "text-black"
-                 }`}
+                  className={`vertical-timeline-element-title font-mono pl-3 text-2xl content-title ${
+                    isNightMode ? "text-black" : "text-black"
+                  }`}
                   style={{
-                    transition: 'color 0.5s ease-in-out',
-                    }}
-                  >
+                    transition: "color 0.5s ease-in-out",
+                  }}
+                >
                   {event.time}
                 </motion.h3>
-                 <motion.h3
-                   className={`vertical-timeline-element-subtitle font-mono text-2xl pl-3 content-subtitle ${
-                      isNightMode ? "text-black" : "text-black"
-                    }`}
-                      style={{
-                        transition: 'color 0.5s ease-in-out',
-                     }}
+                <motion.h3
+                  className={`vertical-timeline-element-subtitle font-mono text-2xl pl-3 content-subtitle ${
+                    isNightMode ? "text-black" : "text-black"
+                  }`}
+                  style={{
+                    transition: "color 0.5s ease-in-out",
+                  }}
                 >
                   {event.event}
                 </motion.h3>

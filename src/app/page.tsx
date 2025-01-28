@@ -13,8 +13,8 @@ import Footer from "@/components/Footer";
 import frameImage from "../assets/images/Frame 34.png";
 import bgHomeImage from "../assets/images/Frame 53.png";
 import peekImage from "../assets/images/Group 236.png";
-import AnimatedTimeline from '@/components/Timeline';
-import Timeline from '@/components/Timelinesm';
+import AnimatedTimeline from "@/components/timeline/Timeline";
+import Timeline from "@/components/timeline/Timelinesm";
 import TracksMobile from "@/components/Trackssm";
 import Gallery from "@/components/Gallery";
 //import TopComponent from "@/components/TopComponent";
@@ -113,7 +113,6 @@ const CombinedPage: React.FC = () => {
               if (el) sectionRefs.current.home = el;
             }}
           >
-            
             <HomePage
               backgroundImage={bgHomeImage}
               mascotPeekImage={peekImage}
@@ -136,16 +135,21 @@ const CombinedPage: React.FC = () => {
           </div>
         </motion.div>
 
-          <div ref={el => { if(el) sectionRefs.current.timeline = el}} className="relative">
+        <div
+          ref={(el) => {
+            if (el) sectionRefs.current.timeline = el;
+          }}
+          className="relative"
+        >
           {isMobile ? <Timeline /> : <AnimatedTimeline />}
-        </div> 
+        </div>
 
         <motion.div
           ref={postTimelineRef}
           style={{
             backgroundColor: currentBackground,
             transition: "background-color 0.5s ease-out",
-            marginTop: isMobile ? '0' : '-100vh'
+            marginTop: isMobile ? "0" : "-100vh",
           }}
         >
           <div

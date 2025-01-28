@@ -126,7 +126,6 @@ const HomePage: React.FC<HomePageProps> = ({
                 onMouseLeave={handleButtonMouseLeave}
                 onClick={() => {
                   setRegClicked(!regClicked);
-  
                 }}
                 className={`hidden lg:block rounded-lg transition  mt-3 ${
                   isHeld === "register"
@@ -182,7 +181,6 @@ const HomePage: React.FC<HomePageProps> = ({
                   onMouseLeave={handleButtonMouseLeave}
                   onClick={() => {
                     setRegClicked(!regClicked);
-    
                   }}
                   className={`rounded-lg transition  mt-3 ${
                     isHeld === "register"

@@ -1,46 +1,7 @@
 "use client";
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-
-interface TimelineEvent {
-  time: string;
-  event: string;
-  day: number;
-}
-
-const events: TimelineEvent[] = [
-  // Day 1 - 03.02.2025
-  { time: "9:00 am", event: "Doors open and check-in", day: 1 },
-  { time: "10:00 am", event: "Opening Ceremony", day: 1 },
-  { time: "11:00 am", event: "Hacking Session", day: 1 },
-  { time: "1:00 pm", event: "Lunch Break", day: 1 },
-  { time: "2:00 pm", event: "Hacking Session", day: 1 },
-  { time: "3:30 pm", event: "Informative Tech Session - 1", day: 1 },
-  { time: "4:30 pm", event: "Hacking Session", day: 1 },
-  { time: "7:00 pm", event: "Dinner Break", day: 1 },
-  { time: "9:00 pm", event: "Hacking Session", day: 1 },
-  { time: "10:00 pm", event: "Engagement Activity", day: 1 },
-  { time: "11:30 pm", event: "Review 1", day: 1 },
-
-  // Day 2 - 04.02.2025
-  { time: "2:30 am", event: "Hacking Session", day: 2 },
-  { time: "6:00 am", event: "Breakfast Break", day: 2 },
-  { time: "9:00 am", event: "Hacking Session", day: 2 },
-  { time: "12:00 pm", event: "Lunch Break", day: 2 },
-  { time: "2:00 pm", event: "Hacking Session", day: 2 },
-  { time: "4:00 pm", event: "Informative Tech Session - 2", day: 2 },
-  { time: "5:30 pm", event: "Hacking Session", day: 2 },
-  { time: "7:00 pm", event: "Dinner Break", day: 2 },
-  { time: "9:00 pm", event: "Hacking Session", day: 2 },
-
-  // Day 3 - 05.02.2025
-  { time: "12:00 am", event: "Review 2", day: 3 },
-  { time: "3:00 am", event: "Hacking Session", day: 3 },
-  { time: "5:30 am", event: "Final Submission", day: 3 },
-  { time: "6:00 am", event: "Breakfast Break", day: 3 },
-  { time: "9:00 am", event: "Final Pitches", day: 3 },
-  { time: "11:00 am", event: "Prize Distribution and Closing Ceremony", day: 3 },
-];
+import { events, TimelineEvent } from "./timelineData";
 
 const AnimatedTimeline = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,7 +17,7 @@ const AnimatedTimeline = () => {
 
   const timelineWidth =
     typeof window !== "undefined" ? window.innerWidth * 6 : 1200;
-  const dotSpacing = timelineWidth / (events.length*1.5);
+  const dotSpacing = timelineWidth / (events.length * 1.5);
 
   // Night mode detection function
   const isNightTime = (time: string): boolean => {
@@ -81,26 +42,22 @@ const AnimatedTimeline = () => {
     offset: ["start start", "end end"],
   });
 
- const timelineProgress = useTransform(
-   scrollYProgress,
-    [0, 0.95],
-    [0, 1]
- );
+  const timelineProgress = useTransform(scrollYProgress, [0, 0.99], [0, 1]);
 
- const containerTransitionProgress = useTransform(
+  const containerTransitionProgress = useTransform(
     scrollYProgress,
     [0.95, 1],
     [0, 1]
- );
+  );
 
   const translateX = useTransform(
-      timelineProgress,
+    timelineProgress,
     [0, 1],
     [0, -(events.length * dotSpacing)]
   );
 
   const containerTranslateY = useTransform(
-      containerTransitionProgress,
+    containerTransitionProgress,
     [0, 1],
     ["0vh", "-100vh"]
   );
@@ -116,7 +73,6 @@ const AnimatedTimeline = () => {
     [0, 1],
     [0, -((events.length - 1) * dotSpacing * 0.2)]
   );
-
 
   const [cloudDudeY, setCloudDudeY] = useState(0);
   const jumpHeight = -30;
@@ -138,25 +94,36 @@ const AnimatedTimeline = () => {
       if (Math.abs(dotCenterX - cloudPosition) <= PEAK_ZONE) {
         setCloudDudeY(jumpHeight);
       }
-       if (Math.abs(dotCenterX - markerX) <= HIGHLIGHT_ZONE + 5) {
-           newActiveIndex = index;
-       }
-
-       if (dotCenterX <= markerX + HIGHLIGHT_ZONE) {
-         lastPassedIndex = index;
+      if (Math.abs(dotCenterX - markerX) <= HIGHLIGHT_ZONE + 5) {
+        newActiveIndex = index;
       }
-   });
+
+      if (dotCenterX <= markerX + HIGHLIGHT_ZONE) {
+        lastPassedIndex = index;
+      }
+    });
 
     setActiveCircle(newActiveIndex);
-      if (lastPassedIndex !== events.findIndex((e) => e.time === currentEvent.time)) {
-        setCurrentEvent(events[lastPassedIndex]);
+    if (
+      lastPassedIndex !== events.findIndex((e) => e.time === currentEvent.time)
+    ) {
+      setCurrentEvent(events[lastPassedIndex]);
     }
-  }, [timelineLineRef, timelineRef, PEAK_ZONE, HIGHLIGHT_ZONE, jumpHeight, setCloudDudeY, setActiveCircle, currentEvent,  setCurrentEvent])
-
+  }, [
+    timelineLineRef,
+    timelineRef,
+    PEAK_ZONE,
+    HIGHLIGHT_ZONE,
+    jumpHeight,
+    setCloudDudeY,
+    setActiveCircle,
+    currentEvent,
+    setCurrentEvent,
+  ]);
 
   useEffect(() => {
-        setCloudDudeY(0);
-  },[currentEvent.time])
+    setCloudDudeY(0);
+  }, [currentEvent.time]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -181,7 +148,10 @@ const AnimatedTimeline = () => {
         const scrollY = window.scrollY;
         const maxScroll = document.body.scrollHeight - window.innerHeight;
         const percentage = (scrollY / maxScroll) * 1000;
-        cloudRef.current.style.opacity = Math.min(1, percentage / 100).toString();
+        cloudRef.current.style.opacity = Math.min(
+          1,
+          percentage / 100
+        ).toString();
       }
     };
 
@@ -192,7 +162,11 @@ const AnimatedTimeline = () => {
 
   return (
     <>
-      <div id="timeline" ref={containerRef} className="relative w-full h-[1500vh]">
+      <div
+        id="timeline"
+        ref={containerRef}
+        className="relative w-full h-[1500vh]"
+      >
         <motion.div
           style={{
             position: isPinned ? "fixed" : "absolute",
@@ -209,9 +183,9 @@ const AnimatedTimeline = () => {
         >
           <motion.div
             className="w-full h-full flex flex-col items-center"
-             style={{
-                    transition: "background-color 0.5s ease-in-out",
-                 }}
+            style={{
+              transition: "background-color 0.5s ease-in-out",
+            }}
           >
             <motion.div
               ref={cloudRef}
@@ -260,7 +234,7 @@ const AnimatedTimeline = () => {
               </motion.p>
             </div>
             <div className="relative flex 2xl:mt-16 2xl:mb-20">
-            <motion.div
+              <motion.div
                 className="font-mono rounded-[50px] p-12 shadow-xl text-center border-8 w-[650px]"
                 style={{
                   backgroundColor: nightMode
@@ -270,19 +244,23 @@ const AnimatedTimeline = () => {
                   borderColor: nightMode ? "white" : "black",
                   transition:
                     "background-color 0.5s ease-in-out, border-color 0.5s ease-in-out",
-                    maxWidth: "650px",
+                  maxWidth: "650px",
                 }}
               >
                 <p className="text-5xl">{currentEvent.time}</p>
-                <p className="text-5xl whitespace-normal overflow-hidden" style={{ wordBreak: 'break-word' }}>
+                <p
+                  className="text-5xl whitespace-normal overflow-hidden"
+                  style={{ wordBreak: "break-word" }}
+                >
                   {currentEvent.event}
                 </p>
               </motion.div>
             </div>
             <div className="relative w-full h-32 flex justify-start items-center z-10">
               <div
-                  ref={timelineLineRef}
-                className="absolute left-[20%] top-1/2 w-10 h-8 bg-red-500/10 -translate-x-5 -translate-y-1/2 z-10" />
+                ref={timelineLineRef}
+                className="absolute left-[20%] top-1/2 w-10 h-8 bg-red-500/10 -translate-x-5 -translate-y-1/2 z-10"
+              />
               <div className="absolute left-[20%] top-1/2 w-0.5 h-8 bg-red-500 -translate-y-1/2 z-20" />
               <div
                 className="absolute top-1/2 w-[100%] h-1"
@@ -291,26 +269,26 @@ const AnimatedTimeline = () => {
                   transition: "background-color 0.5s ease-in-out",
                 }}
               />
-               <motion.div
-                  ref={clouddudeRef}
-                  className="absolute ml-60 -translate-x-1/2 z-30"
-                  animate={{ y: cloudDudeY }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 150,
-                    damping: 15,
-                    mass: 1,
-                    duration: 0.1,
-                  }}
-                  style={{
-                    backgroundImage: `url(${clouddudeImageUrl})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "contain",
-                    width: "150px",
-                    height: "150px",
-                    transform: `translate(-50%, -50%) scale(1.5)`,
-                  }}
-                />
+              <motion.div
+                ref={clouddudeRef}
+                className="absolute ml-60 -translate-x-1/2 z-30"
+                animate={{ y: cloudDudeY }}
+                transition={{
+                  type: "spring",
+                  stiffness: 150,
+                  damping: 15,
+                  mass: 1,
+                  duration: 0.1,
+                }}
+                style={{
+                  backgroundImage: `url(${clouddudeImageUrl})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "contain",
+                  width: "150px",
+                  height: "150px",
+                  transform: `translate(-50%, -50%) scale(1.5)`,
+                }}
+              />
               <motion.div
                 ref={timelineRef}
                 className="absolute top-1/2 flex items-center"
