@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
-import devsoc from "../assets/images/DEVSOC.png";
+import devsoc from "../../public/assets/Devsoc.svg";
 import discord from "../assets/images/discord.svg";
 import dev2k25 from "../assets/images/Devlogoheader.svg"; // Import the SVG
 
@@ -248,7 +248,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         whileHover={{ y: 2 }}
       >
         <motion.div
-          className="flex items-center justify-center relative z-10 overflow-hidden"
+          className="flex items-center justify-center relative z-10 overflow-hidden gap-2"
           style={{ height: "1.5rem" }}
           variants={{
             initial: { y: 0, fontSize: "0.875rem" },
@@ -260,11 +260,9 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
             <Image
               src={icon}
               alt="Button Icon"
-              width={12} // Adjust width
-              height={12} // Adjust height
-              className={`mr-1 sm:mr-2 
-      ${text === "Discord" ? "w-3 sm:w-4 md:w-6 " : "w-3 sm:w-4 md:w-6"}
-    `}
+              width={24} // Adjust width
+              height={24} // Adjust height
+              className="p-[1px]"
             />
           )}
           <span
