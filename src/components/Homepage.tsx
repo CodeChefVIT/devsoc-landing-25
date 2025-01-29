@@ -23,7 +23,7 @@ const HomePage: React.FC<HomePageProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isHeld, setIsHeld] = useState<"discord" | "register" | null>(null);
-  const [registerText, setRegisterText] = useState("Register"); // Added state for register button text
+  
   const [regClicked, setRegClicked] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -50,13 +50,7 @@ const HomePage: React.FC<HomePageProps> = ({
     setIsHeld(null);
   };
 
-  const handleDiscordButtonClick = () => {
-    window.open("https://discord.gg/M8V6vxXnUq", "_blank");
-  };
 
-  useEffect(() => {
-    setRegisterText("Register Now");
-  }, []);
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden pb-[120px] md:pb-[180px]">
@@ -77,11 +71,12 @@ const HomePage: React.FC<HomePageProps> = ({
             {/* Responsive Header Container */}
             <div className="max-w-7xl mx-auto px-3 flex flex-col lg:flex-row sm:justify-between justify-center items-center   ">
               {/* Button Container Left  - Visible on large screens*/}
+              <a href="https://discord.gg/M8V6vxXnUq" target="_blank" rel="noreferrer">
               <div
                 onMouseDown={() => handleButtonMouseDown("discord")}
                 onMouseUp={handleButtonMouseUp}
                 onMouseLeave={handleButtonMouseLeave}
-                onClick={handleDiscordButtonClick}
+
                 className={`hidden lg:block rounded-lg transition  mt-3 
                   ${
                     isHeld === "discord"
@@ -102,6 +97,8 @@ const HomePage: React.FC<HomePageProps> = ({
                   icon={discord}
                 />
               </div>
+              </a>
+              
 
               {/* Logo Section - Always on top on small screens*/}
               <div className="flex flex-col items-center lg:items-center w-full lg:w-auto">
@@ -140,7 +137,7 @@ const HomePage: React.FC<HomePageProps> = ({
                 }}
               >
                 <AnimatedButton
-                  text={registerText}
+                  text="Register Now"
                   mascotImage={mascotPeekImage}
                   className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                   icon={devsoc}
@@ -149,11 +146,12 @@ const HomePage: React.FC<HomePageProps> = ({
               <RegComp regClicked={regClicked} setRegClicked={setRegClicked} />
               {/* Buttons Section - On bottom on small screens, in a line*/}
               <div className="lg:hidden flex items-center justify-center space-x-5 w-full">
+                <a href="https://discord.gg/M8V6vxXnUq" target="_blank" rel="noreferrer">
                 <div
                   onMouseDown={() => handleButtonMouseDown("discord")}
                   onMouseUp={handleButtonMouseUp}
                   onMouseLeave={handleButtonMouseLeave}
-                  onClick={handleDiscordButtonClick}
+                  
                   className={`rounded-lg transition  mt-3
                   ${
                     isHeld === "discord"
@@ -174,6 +172,8 @@ const HomePage: React.FC<HomePageProps> = ({
                     icon={discord}
                   />
                 </div>
+                </a>
+                  
 
                 <div
                   onMouseDown={() => handleButtonMouseDown("register")}
@@ -195,9 +195,9 @@ const HomePage: React.FC<HomePageProps> = ({
                   }}
                 >
                   <AnimatedButton
-                    text={registerText}
+                    text="Register Now"
                     mascotImage={mascotPeekImage}
-                    className="w-24 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
+                    className="w-28 sm:w-32 md:w-40 sm:mb-0 rounded-lg"
                     icon={devsoc}
                   />
                 </div>
@@ -242,7 +242,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
       initial="initial"
     >
       <motion.div
-        className="bg-[#FF7657] px-1 py-2 sm:py-3 md:py-4 rounded transition-all duration-200 "
+        className="bg-[#FF7657] px-1 py-2 sm:py-3 md:py-4 rounded transition-all  duration-200 "
         style={{ boxShadow: "4px 4px 0px rgba(0, 0, 0, 0.4)" }}
         initial={{ y: 0 }}
         whileHover={{ y: 2 }}
@@ -266,7 +266,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
             />
           )}
           <span
-            className={`text-white font-mono sm:text-base md:text-lg ${
+            className={`text-white font-mono sm:text-base md:text-lg whitespace-nowrap${
               text === "discord" ? "lowercase" : ""
             }`}
           >
