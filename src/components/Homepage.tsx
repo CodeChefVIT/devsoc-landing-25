@@ -9,8 +9,6 @@ import dev2k25 from "../assets/images/Devlogoheader.svg"; // Import the SVG
 
 import HomeRIve from "./HomeRIve";
 import MobileRive from "./MobileRive";
-import RegComp from "./RegComp";
-// import TopComponent from "./TopComponent";
 
 interface HomePageProps {
   backgroundImage: StaticImageData;
@@ -71,7 +69,8 @@ const HomePage: React.FC<HomePageProps> = ({
             {/* Responsive Header Container */}
             <div className="max-w-7xl mx-auto px-3 flex flex-col lg:flex-row sm:justify-between justify-center items-center   ">
               {/* Button Container Left  - Visible on large screens*/}
-              <a href="https://discord.gg/M8V6vxXnUq" target="_blank" rel="noreferrer">
+              
+            <a href="https://discord.gg/M8V6vxXnUq">
               <div
                 onMouseDown={() => handleButtonMouseDown("discord")}
                 onMouseUp={handleButtonMouseUp}
@@ -97,7 +96,7 @@ const HomePage: React.FC<HomePageProps> = ({
                   icon={discord}
                 />
               </div>
-              </a>
+            </a>
               
 
               {/* Logo Section - Always on top on small screens*/}
@@ -115,6 +114,7 @@ const HomePage: React.FC<HomePageProps> = ({
               </div>
 
               {/* Button Container Right - Visible on large screens*/}
+              <a href="https://portal.devsoc.codechefvit.com/dashboard" target="_blank" rel="noreferrer">
               <div
                 onMouseDown={() => {
                   handleButtonMouseDown("register");
@@ -143,7 +143,8 @@ const HomePage: React.FC<HomePageProps> = ({
                   icon={devsoc}
                 />
               </div>
-              <RegComp regClicked={regClicked} setRegClicked={setRegClicked} />
+              </a>
+              
               {/* Buttons Section - On bottom on small screens, in a line*/}
               <div className="lg:hidden flex items-center justify-center space-x-5 w-full">
                 <a href="https://discord.gg/M8V6vxXnUq" target="_blank" rel="noreferrer">
@@ -174,7 +175,7 @@ const HomePage: React.FC<HomePageProps> = ({
                 </div>
                 </a>
                   
-
+                <a href="https://portal.devsoc.codechefvit.com/dashboard" target="_blank" rel="noreferrer">
                 <div
                   onMouseDown={() => handleButtonMouseDown("register")}
                   onMouseUp={handleButtonMouseUp}
@@ -201,6 +202,7 @@ const HomePage: React.FC<HomePageProps> = ({
                     icon={devsoc}
                   />
                 </div>
+                </a>
               </div>
             </div>
           </div>
