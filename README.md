@@ -5,9 +5,10 @@
 <br/>
 
 
-> <p>Welcome to Code of DEVSOC'25 Landing, your one-stop destination for all information regarding our 48-hour hackathon. From prize pools to tracks, sponsors to timelines, everything you need to know is conveniently located on this website. Plus, enjoy the added bonus of an interactive terminal where popular commands like cd, ls, help, etc., seamlessly operate.</p>
+> <p>Welcome to Code of DEVSOC'25 Landing, your one-stop destination for all information regarding our 48-hour hackathon. From prize pools to tracks, sponsors to timelines, everything you need to know is conveniently located on this website, seamlessly operate.</p>
+
 ## 🌐 Deploy
-[https://devsoc.codechefvit.com/](https://devsoc.codechefvit.com/)
+[https://devsoc25.codechefvit.com /](https://devsoc25.codechefvit.com/)
 
 ## ⚙️ Tech Stack:
 
@@ -16,6 +17,9 @@
 - Tailwind CSS
 - Framer Motion
 - Zustand
+- ShadCN
+- React Hot Toast
+- Axios
 
 ## 🖼 Screenshots
 
@@ -121,7 +125,7 @@ pnpm dev
 		</a>
 	</p>
 </td>
-</tr>
+
 
 <tr align="center">
 <td>
@@ -149,12 +153,12 @@ pnpm dev
 		</a>
 	</p>
 </td>
-
+</tr>
  <td>
 	<p align="center">
 		<img src = "https://avatars.githubusercontent.com/u/88274018?v=4" width="200" height="200" alt="profilepic" style="border: 2px solid grey; width: 170px; height:170px">
 	</p>
-	<p style="font-size:17px; font-weight:600;">Harshit Kashyap Sarma</p>
+	<p style="font-size:17px; font-weight:600;">Harshit Sarma</p>
 	<p align="center">
 		<a href = "https://github.com/kashyap-harshit"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/></a>
 		<a href = "https://www.linkedin.com/in/harshit-sarma-247175179">
