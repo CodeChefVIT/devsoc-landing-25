@@ -5,7 +5,7 @@
 <br/>
 
 
-> <p>Welcome to Code of DEVSOC'25 Landing, your one-stop destination for all information regarding our 48-hour hackathon. From prize pools to tracks, sponsors to timelines, everything you need to know is conveniently located on this website, seamlessly operate.</p>
+> <p>Welcome to Code of DEVSOC'25 Landing, your one-stop destination for all information regarding our 48-hour hackathon. From prize pools to tracks, sponsors to timelines, everything you need to know is conveniently located on this website.</p>
 
 ## 🌐 Deploy
 [https://devsoc25.codechefvit.com /](https://devsoc25.codechefvit.com/)
