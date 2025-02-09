@@ -152,7 +152,6 @@ pnpm dev
 </td>
 
 
-<tr align="center">
  <td>
 	<p align="center">
 		<img src = "https://avatars.githubusercontent.com/u/88274018?v=4" width="200" height="200" alt="profilepic" style="border: 2px solid grey; width: 170px; height:170px">
