@@ -1,11 +1,11 @@
 <p align="center"><a href="https://www.codechefvit.com" target="_blank"><img src="https://i.ibb.co/4J9LXxS/cclogo.png" width=160 title="CodeChef-VIT" alt="Codechef-VIT"></a>
 </p>
 
-<h2 align="center"> DEVSOC'24 Landing</h2>
+<h2 align="center"> DEVSOC'25 Landing</h2>
 <br/>
 
 
-> <p>Welcome to Code of DEVSOC'24 Landing, your one-stop destination for all information regarding our 48-hour hackathon. From prize pools to tracks, sponsors to timelines, everything you need to know is conveniently located on this website. Plus, enjoy the added bonus of an interactive terminal where popular commands like cd, ls, help, etc., seamlessly operate.</p>
+> <p>Welcome to Code of DEVSOC'25 Landing, your one-stop destination for all information regarding our 48-hour hackathon. From prize pools to tracks, sponsors to timelines, everything you need to know is conveniently located on this website. Plus, enjoy the added bonus of an interactive terminal where popular commands like cd, ls, help, etc., seamlessly operate.</p>
 ## 🌐 Deploy
 [https://devsoc.codechefvit.com/](https://devsoc.codechefvit.com/)
 
