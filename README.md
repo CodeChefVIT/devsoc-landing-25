@@ -17,9 +17,6 @@
 - Tailwind CSS
 - Framer Motion
 - Zustand
-- ShadCN
-- React Hot Toast
-- Axios
 
 ## 🖼 Screenshots
 
