@@ -24,7 +24,7 @@
 
 #### Loader
 
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/loading.png">
+<img width="1440" alt="image" src="Landing/loading.png">
 
 #### Home
 
