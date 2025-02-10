@@ -12,11 +12,11 @@
 
 ## ⚙️ Tech Stack:
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Zustand
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://motion.dev/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
 
 ## 🖼 Screenshots
 
