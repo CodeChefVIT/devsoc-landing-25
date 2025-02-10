@@ -28,15 +28,15 @@
 
 #### Home
 
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/devsocbanner.png">
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/home.png">
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/about.png">
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/gallery.png">
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/timeline.png">
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/tracks.png">
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/sponsors.png">
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/faqs.png">
-<img width="1440" alt="image" src="https://github.com/CodeChefVIT/devsoc-landing-25/blob/ritika/readme/Landing/footer.png">
+<img width="1440" alt="image" src="Landing/devsocbanner.png">
+<img width="1440" alt="image" src="Landing/home.png">
+<img width="1440" alt="image" src="Landing/about.png">
+<img width="1440" alt="image" src="Landing/gallery.png">
+<img width="1440" alt="image" src="Landing/timeline.png">
+<img width="1440" alt="image" src="Landing/tracks.png">
+<img width="1440" alt="image" src="Landing/sponsors.png">
+<img width="1440" alt="image" src="Landing/faqs.png">
+<img width="1440" alt="image" src="Landing/footer.png">
 
 </p>
 
