@@ -4,10 +4,10 @@
 <h2 align="center"> DEVSOC'25 Landing</h2>
 <br/>
 
-
 > <p>Welcome to Code of DEVSOC'25 Landing, your one-stop destination for all information regarding our 48-hour hackathon. From prize pools to tracks, sponsors to timelines, everything you need to know is conveniently located on this website.</p>
 
 ## 🌐 Deploy
+
 [https://devsoc25.codechefvit.com /](https://devsoc25.codechefvit.com/)
 
 ## ⚙️ Tech Stack:
@@ -24,19 +24,19 @@
 
 #### Loader
 
-<img width="1440" alt="image" src="Landing/loading.png">
+<img width="1440" alt="image" src="screenshots/loading.png">
 
 #### Home
 
-<img width="1440" alt="image" src="Landing/devsocbanner.png">
-<img width="1440" alt="image" src="Landing/home.png">
-<img width="1440" alt="image" src="Landing/about.png">
-<img width="1440" alt="image" src="Landing/gallery.png">
-<img width="1440" alt="image" src="Landing/timeline.png">
-<img width="1440" alt="image" src="Landing/tracks.png">
-<img width="1440" alt="image" src="Landing/sponsors.png">
-<img width="1440" alt="image" src="Landing/faqs.png">
-<img width="1440" alt="image" src="Landing/footer.png">
+<img width="1440" alt="image" src="screenshots/devsocbanner.png">
+<img width="1440" alt="image" src="screenshots/home.png">
+<img width="1440" alt="image" src="screenshots/about.png">
+<img width="1440" alt="image" src="screenshots/gallery.png">
+<img width="1440" alt="image" src="screenshots/timeline.png">
+<img width="1440" alt="image" src="screenshots/tracks.png">
+<img width="1440" alt="image" src="screenshots/sponsors.png">
+<img width="1440" alt="image" src="screenshots/faqs.png">
+<img width="1440" alt="image" src="screenshots/footer.png">
 
 </p>
 
@@ -151,7 +151,6 @@ pnpm dev
 	</p>
 </td>
 
-
  <td>
 	<p align="center">
 		<img src = "https://avatars.githubusercontent.com/u/88274018?v=4" width="200" height="200" alt="profilepic" style="border: 2px solid grey; width: 170px; height:170px">
@@ -229,7 +228,3 @@ pnpm dev
 <p align="center">
 	Made with :heart: by <a href="https://www.codechefvit.com" target="_blank">CodeChef-VIT</a>
 </p>
-
-
-
-
